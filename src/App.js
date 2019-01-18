@@ -1,11 +1,12 @@
 import React, { Component, Fragment} from 'react'; // add Fragment later
 import './App.css';
 import store from './config/store'
-import { setBookmarksAction, setTokenAction, setLoginErrorAction } from './config/actions'
+import { setBookmarksAction, setTokenAction, setLoginErrorAction, setSignupErrorAction } from './config/actions'
 import { api, setJwt } from './api/init'
 import decodeJWT from 'jwt-decode'
 import Bookmark from './components/Bookmark'
 import Signin from './components/Signin'
+import Signup from './components/Signup'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom' // add Redirect later
 import {fetchBookmarks, removeBookmark } from './services/BookmarkService'
 import HomePage from './components/HomePage';
@@ -42,6 +43,23 @@ class App extends Component {
     })
   }
 
+  handleSignUp = async (event) => {
+    try {
+      event.preventDefault()
+      const form = event.target
+      const response = await api.post('/auth/register', {
+        email: form.elements.email.value,
+        password: form.elements.password.value
+      })
+      let token = response.data.token
+      setJwt(response.data.token)
+      store.dispatch(setTokenAction(token))
+      fetchBookmarks()
+    } catch (error) {
+      store.dispatch(setSignupErrorAction(error.message))
+    }
+  }
+
   render() {
     const bookmarks = store.getState().bookmarks
     const token = store.getState().token
@@ -60,6 +78,13 @@ class App extends Component {
                   return (<Redirect to="/" />)
                 } else {
                   return (<Signin loginError={store.getState().loginError} handleSignIn={this.handleSignIn} />)
+                }
+              }} />
+              <Route exact path='/signup' render={ () => {
+                if (tokenDetails) {
+                  return (<Redirect to="/" />)
+                } else {
+                  return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
                 }
               }} />
               <Route exact path="/" render={() => (

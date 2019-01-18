@@ -17,4 +17,12 @@ export function setLoginErrorAction(loginError) {
     type: 'set_loginError',
     loginError
   }
+  
+}
+
+export function setSignupErrorAction(signupError) {
+  return {
+    type: 'set_signupError',
+    signupError
+  }
 }
