@@ -1,15 +1,18 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment} from 'react'; // add Fragment later
 import './App.css';
 import store from './config/store'
-import { setBookmarksAction, setTokenAction, setLoginErrorAction } from './config/actions'
+import { setBookmarksAction, setTokenAction, setLoginErrorAction, setSignupErrorAction } from './config/actions'
 import { api, setJwt } from './api/init'
 import decodeJWT from 'jwt-decode'
 import Bookmark from './components/Bookmark'
 import Signin from './components/Signin'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import Signup from './components/Signup'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom' // add Redirect later
 import {fetchBookmarks, removeBookmark } from './services/BookmarkService'
-class App extends Component {
+import HomePage from './components/HomePage';
+import NavBar from './components/HeaderComponent/NavBar';
 
+class App extends Component {
   
   componentDidMount() {
     fetchBookmarks()
@@ -40,8 +43,22 @@ class App extends Component {
     })
   }
 
-  
-
+  handleSignUp = async (event) => {
+    try {
+      event.preventDefault()
+      const form = event.target
+      const response = await api.post('/auth/register', {
+        email: form.elements.email.value,
+        password: form.elements.password.value
+      })
+      let token = response.data.token
+      setJwt(response.data.token)
+      store.dispatch(setTokenAction(token))
+      fetchBookmarks()
+    } catch (error) {
+      store.dispatch(setSignupErrorAction(error.message))
+    }
+  }
 
   render() {
     const bookmarks = store.getState().bookmarks
@@ -53,15 +70,24 @@ class App extends Component {
         {
           <Router>
             <Fragment>
-              <Route exact path='/' render = { ()=> <Redirect to ="/bookmarks"/>}/>
-              <Route exact path='/login' render={() => {
+              {/* <Route exact path='/' render = { ()=> <Redirect to ="/"/>}/> */}
+              <Route component={NavBar} />
+              <Route exact path="/" component={HomePage} />
+              <Route exact path='/login' render={ () => {
                 if (tokenDetails) {
-                  return (<Redirect to="/bookmarks" />)
+                  return (<Redirect to="/" />)
                 } else {
                   return (<Signin loginError={store.getState().loginError} handleSignIn={this.handleSignIn} />)
                 }
               }} />
-              <Route exact path="/bookmarks" render={() => (
+              <Route exact path='/signup' render={ () => {
+                if (tokenDetails) {
+                  return (<Redirect to="/" />)
+                } else {
+                  return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
+                }
+              }} />
+              <Route exact path="/" render={() => (
                 <Fragment>
                   {tokenDetails && (
                     <div>
@@ -80,7 +106,6 @@ class App extends Component {
             </Fragment>
           </Router>
         }
-
       </div>
     );
   }
