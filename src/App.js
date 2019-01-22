@@ -55,7 +55,7 @@ class App extends Component {
             <Fragment>
               <Route exact path='/' render = { ()=> <Redirect to ="/bookmarks"/>}/>
               <Route exact path='/login' render={() => {
-                if (true) {
+                if (tokenDetails) {
                   return (<Redirect to="/bookmarks" />)
                 } else {
                   return (<Signin loginError={store.getState().loginError} handleSignIn={this.handleSignIn} />)
@@ -63,7 +63,7 @@ class App extends Component {
               }} />
               <Route exact path="/bookmarks" render={() => (
                 <Fragment>
-                  {false && (
+                  {tokenDetails && (
                     <div>
                       <h4>Welcome {tokenDetails.email}</h4>
                       <p>You logged in at: {new Date(tokenDetails.iat * 1000).toLocaleString()}</p>
