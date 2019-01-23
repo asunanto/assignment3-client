@@ -72,7 +72,6 @@ class App extends Component {
           <Router>
             <Fragment>
               {/* <Route exact path='/' render = { ()=> <Redirect to ="/"/>}/> */}
-              <Route component={NavBar} />
               <Switch>  
               <Route exact path="/" component={HomePage} />
               <Route exact path='/login' render={ () => {
@@ -107,6 +106,7 @@ class App extends Component {
               } />
               <Route component={NotFound}/>
               </Switch>
+              <Route component={NavBar} />
             </Fragment>
           </Router>
         }
