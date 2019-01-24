@@ -7,10 +7,11 @@ import decodeJWT from 'jwt-decode'
 import Bookmark from './components/Bookmark'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom' // add Redirect later
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom' // add Redirect later
 import {fetchBookmarks, removeBookmark } from './services/BookmarkService'
-import HomePage from './components/HomePage';
-import NavBar from './components/HeaderComponent/NavBar';
+import HomePage from './components/HomePage'
+import TabBar from './components/HeaderComponent/TabBar'
+import NotFound from './components/NotFound'
 
 class App extends Component {
   
@@ -71,7 +72,7 @@ class App extends Component {
           <Router>
             <Fragment>
               {/* <Route exact path='/' render = { ()=> <Redirect to ="/"/>}/> */}
-              <Route component={NavBar} />
+              <Switch>  
               <Route exact path="/" component={HomePage} />
               <Route exact path='/login' render={ () => {
                 if (tokenDetails) {
@@ -103,6 +104,9 @@ class App extends Component {
                 </Fragment>
               )
               } />
+              <Route component={NotFound}/>
+              </Switch>
+              <Route component={TabBar} />
             </Fragment>
           </Router>
         }
