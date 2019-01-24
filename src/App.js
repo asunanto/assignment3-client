@@ -12,7 +12,9 @@ import {fetchBookmarks, removeBookmark } from './services/BookmarkService'
 import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
 import AboutPage from './components/AboutPage'
-import UserProfile from './components/UserProfile'
+import User from './components/User'
+import Unit from './components/Unit'
+import Library from './components/Library'
 
 class App extends Component {
   
@@ -105,7 +107,9 @@ class App extends Component {
                   </Fragment>
                 )
                 } />
-              <Route path="/userprofile" exact component={UserProfile} />
+              <Route path="/user" exact component={User} />
+              <Route path="/unit" exact component={Unit} />
+              <Route path="/library" exact component={Library} />
               <Route path="/about" exact component={AboutPage} />
               <Route component={NotFound} />
               </Switch>
