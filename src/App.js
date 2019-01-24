@@ -15,6 +15,7 @@ import AboutPage from './components/AboutPage'
 import User from './components/User'
 import Unit from './components/Unit'
 import Library from './components/Library'
+import CreateProgram from './components/CreateProgram'
 
 class App extends Component {
   
@@ -109,6 +110,7 @@ class App extends Component {
                 } />
               <Route path="/user" exact component={User} />
               <Route path="/unit" exact component={Unit} />
+              <Route path="/create-program" exact component={CreateProgram} />
               <Route path="/library" exact component={Library} />
               <Route path="/about" exact component={AboutPage} />
               <Route component={NotFound} />
