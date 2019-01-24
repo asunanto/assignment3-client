@@ -15,7 +15,10 @@ import AboutPage from './components/AboutPage'
 import User from './components/User'
 import Unit from './components/Unit'
 import Library from './components/Library'
+import CreateActivity from './components/CreateActivity'
 import CreateProgram from './components/CreateProgram'
+import Activity from './components/Activity'
+import Program from './components/Program'
 
 class App extends Component {
   
@@ -111,8 +114,11 @@ class App extends Component {
               <Route path="/user" exact component={User} />
               <Route path="/unit" exact component={Unit} />
               <Route path="/create-program" exact component={CreateProgram} />
+              <Route path="/create-activity" exact component={CreateActivity} />
               <Route path="/library" exact component={Library} />
               <Route path="/about" exact component={AboutPage} />
+              <Route path="/activity" exact component={Activity} />
+              <Route path="/program" exact component={Program} />
               <Route component={NotFound} />
               </Switch>
             </Fragment>
