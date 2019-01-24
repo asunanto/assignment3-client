@@ -10,7 +10,7 @@ import Signup from './components/Signup'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom' // add Redirect later
 import {fetchBookmarks, removeBookmark } from './services/BookmarkService'
 import HomePage from './components/HomePage'
-import NavBar from './components/HeaderComponent/NavBar'
+import TabBar from './components/HeaderComponent/TabBar'
 import NotFound from './components/NotFound'
 
 class App extends Component {
@@ -106,7 +106,7 @@ class App extends Component {
               } />
               <Route component={NotFound}/>
               </Switch>
-              <Route component={NavBar} />
+              <Route component={TabBar} />
             </Fragment>
           </Router>
         }
