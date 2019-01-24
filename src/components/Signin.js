@@ -17,7 +17,7 @@ class Signin extends Component {
     render() {
         return (
             <Paper style={style.Paper}>
-                <img src={logo}></img>
+                <img src={logo} alt="Girl Guides Australia Logo"></img>
                 <form>
                     {/* <input type='email' id='email' name="email" placeholder='Enter your email' required /><br /> */}
                     {/* <input type='password' id='password' name="password" placeholder='Password' required /><br /> */}
