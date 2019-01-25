@@ -1,14 +1,15 @@
-import React, { Component, Fragment} from 'react'; // add Fragment later
+import React, { Component, Fragment } from 'react'; // add Fragment later
 import './App.css';
 import store from './config/store'
-import { setBookmarksAction, setTokenAction, setLoginErrorAction, setSignupErrorAction } from './config/actions'
+import { setBookmarksAction, setTokenAction, setLoginErrorAction, setSignupErrorAction, setActivitiesAction } from './config/actions'
 import { api, setJwt } from './api/init'
 import decodeJWT from 'jwt-decode'
 import Bookmark from './components/Bookmark'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom' // add Redirect later
-import {fetchBookmarks, removeBookmark } from './services/BookmarkService'
+import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
+import { fetchActivities } from './services/ActivityService'
 import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
 import AboutPage from './components/AboutPage'
@@ -19,11 +20,13 @@ import CreateActivity from './components/CreateActivity'
 import CreateProgram from './components/CreateProgram'
 import Activity from './components/Activity'
 import Program from './components/Program'
+import Activities from './components/Activities'
 
 class App extends Component {
-  
+
   componentDidMount() {
     fetchBookmarks()
+    fetchActivities()
   }
 
   handleSignIn = async (event) => {
@@ -48,6 +51,7 @@ class App extends Component {
       localStorage.removeItem('token')
       store.dispatch(setTokenAction(null))
       store.dispatch(setBookmarksAction([]))
+      store.dispatch(setActivitiesAction([]))
     })
   }
 
@@ -70,6 +74,7 @@ class App extends Component {
 
   render() {
     const bookmarks = store.getState().bookmarks
+    const activities = store.getState().activities
     const token = store.getState().token
     const tokenDetails = token && decodeJWT(token)
     console.log(tokenDetails)
@@ -80,15 +85,15 @@ class App extends Component {
             <Fragment>
               {/* <Route exact path='/' render = { ()=> <Redirect to ="/"/>}/> */}
               <TabBar />
-              <Switch>  
-                <Route exact path='/login' render={ () => {
+              <Switch>
+                <Route exact path='/login' render={() => {
                   if (tokenDetails) {
                     return (<Redirect to="/" />)
                   } else {
                     return (<Signin loginError={store.getState().loginError} handleSignIn={this.handleSignIn} />)
                   }
                 }} />
-                <Route exact path='/signup' render={ () => {
+                <Route exact path='/signup' render={() => {
                   if (tokenDetails) {
                     return (<Redirect to="/" />)
                   } else {
@@ -104,22 +109,34 @@ class App extends Component {
                         <p>Your token expires at: {new Date(tokenDetails.exp * 1000).toLocaleString()}</p>
                       </div>
                     )}
-                  <h1> Bookmarks</h1>
+                    <h1> Bookmarks</h1>
                     <ul>
                       {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)}
                     </ul>
                   </Fragment>
                 )
                 } />
-              <Route path="/user" exact component={User} />
-              <Route path="/unit" exact component={Unit} />
-              <Route path="/create-program" exact component={CreateProgram} />
-              <Route path="/create-activity" exact component={CreateActivity} />
-              <Route path="/library" exact component={Library} />
-              <Route path="/about" exact component={AboutPage} />
-              <Route path="/activity" exact component={Activity} />
-              <Route path="/program" exact component={Program} />
-              <Route component={NotFound} />
+                <Route exact path="/activities" render={() => (
+                  <Fragment>
+                    <h1>Activities</h1>
+                    <ul>
+                      {activities.map(activity =>
+                        <div key={activity._id}><Activities {...activity} /></div>)}
+                    </ul>
+                    <p></p>
+                  </Fragment>
+                )
+                } />
+                <Route path="/user" exact component={User} />
+                <Route path="/unit" exact component={Unit} />
+                <Route path="/create-program" exact component={CreateProgram} />
+                <Route path="/create-activity" exact component={CreateActivity} />
+                <Route path="/library" exact component={Library} />
+                <Route path="/about" exact component={AboutPage} />
+                <Route path="/activity" exact component={Activity} />
+                <Route path="/program" exact component={Program} />
+
+                <Route component={NotFound} />
               </Switch>
             </Fragment>
           </Router>
