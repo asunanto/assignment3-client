@@ -95,7 +95,7 @@ See this [Trello Board](https://trello.com/b/XKKr8jof/user-stories) for our comp
 
 Our colours specifications, logo usage and branding was informed by the existing [style guidelines](https://www.guidelinesforgirlguides.org.au/wp-content/uploads/2015/10/GGA-Style-Guide-updated-Dec-2014.pdf) for Girl Guides Australia.
 
-### CSS Framework
+### Material-UI & Styled-Components
 
 We decided to use [Material-UI](https://material-ui.com/) as our component library. For one, it's great for prototyping; standing on Google's shoulders, we can craft a persuasive user experience quickly and easily. It's a tried-and-true visual system that encourages us to think about information hierarchy and promotes consistent look that many users will be accustomed to already. Plus, Material Design offers many of the standard components we'll be using in our own app - buttons, icons, modals, navbars, cards etc. 
 
@@ -118,6 +118,7 @@ Opens Sans
 
 ### Graphics
 
+**Logo:**
 ![Logo](./docs/logo.svg)
 
 ## Wireframes
@@ -126,7 +127,20 @@ Opens Sans
 ![Sketches](./docs/wireframe-sketch.jpg)
 
 ** Low-Fidelity:**
-![Low-Fidelity](./docs/wireframe-lofi.png)
+![Low-Fidelity](./docs/wireframe-lofi.png) 
+
+![User Profile](.docs/wireframes/user-profile.png) ![Login](.docs/wireframes/login-page.png) ![Manage Account](.docs/wireframes/manage-account.png)
+
+![Unit Profile](.docs/wireframes/unit-profile.png)
+![Create Activity](.docs/wireframes/create-activity.png)
+![View Activities Library](.docs/wireframes/activities-library.png) 
+
+![Create Program](.docs/wireframes/create-program.png)
+![Add Activities to Program](.docs/wireframes/add-activities.png) ![Modal Alert](.docs/wireframes/modal-alert.png)
+
+![View Program](.docs/wireframes/view-program.png) 
+![Not Found Page](.docs/wireframes/notfound.png)
+![Register New User](.docs/wireframes/register-user.png) 
 
 ## Database Schema Design
 
