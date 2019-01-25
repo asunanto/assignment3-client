@@ -77,13 +77,17 @@ Another extra feature we could have is a way to store information about the memb
 
 ## User Stories
 
-![User Stories](./docs/userstories.png)
-
 See this [Trello Board](https://trello.com/b/XKKr8jof/user-stories) for our complete list of user stories organised by priority and t-shirt sizes.
+
+![User Stories](./docs/userstories.png)
 
 ## User Journeys
 
-![User Journeys](./docs/userjourneys)
+**Leaders:**
+![Userflow Diagram for Leaders](./docs/leader-user-journey.png)
+
+**Managers/Admin:**
+![Userflow Diagram for Managers](./docs/manager-user-journey.pdf)
 
 ## Style Guide
 
@@ -173,8 +177,8 @@ We used Trello as our project management tool. We tracked our build progress usi
 
 You can view our Trello Board [here](https://trello.com/b/2FbFSl6m/web-app).
 
-![Trello 1](./trello-16jan.png)
-![Trello 2](./trello-18jan.png)
+![Trello 1](./docs/trello-16jan.png)
+![Trello 2](./docs/trello-18jan.png)
 
 ### Slack
 
