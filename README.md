@@ -1,5 +1,7 @@
 # Girl Guides Helper App
 
+![Girl Guides Queensland](.docs/logo-ggq.jpg)
+
 Deployed on Netlify: [Girl Guides Helper App (Client)](https://5c3db9c1268ad9f0e15ddad0--assignment3-client.netlify.com)
 
 Deployed on Heroku: [Girl Guides Helper App (Server)](https://assignment3-client.herokuapp.com/)
@@ -87,7 +89,7 @@ See this [Trello Board](https://trello.com/b/XKKr8jof/user-stories) for our comp
 ![Userflow Diagram for Leaders](./docs/leader-user-journey.png)
 
 **Managers/Admin:**
-![Userflow Diagram for Managers](./docs/manager-user-journey.pdf)
+![Userflow Diagram for Managers](./docs/manager-user-journey.png)
 
 ## Style Guide
 
@@ -118,9 +120,14 @@ Orange | #EC963A
 
 ## Wireframes
 
+** Initial Sketches**
 ![Sketches](./docs/wireframe-sketch.jpg)
 
+** Low-Fidelity:
 ![Low-Fidelity](./docs/wireframe-lofi.png)
+
+** Video Walkthrough:**
+![Interactive Design Prototype](./docs/wireframe-walkthrough.mp4)
 
 ## Database Schema Design
 
@@ -182,13 +189,13 @@ You can view our Trello Board [here](https://trello.com/b/2FbFSl6m/web-app).
 
 ### Slack
 
+When we're not at campus together, and even when we are :wink:, Slack is our main communication tool.
+
 ![Our Slack Group](./docs/slack.png)
 
 ### GitHub
 
-We're using GitHub for our version control with a feature-branch workflow. 
-
-We each forked and cloned the project repository to our local machines and set up remote connections. Then, we followed a feature-branch workflow for committing and merging changes to the pristine master branch on the project repository:
+We used GitHub for our version control. We each forked and cloned the project repository to our local machines and set up remote connections. Then, we followed a feature-branch workflow for committing and merging changes to the pristine master branch on the project repository:
 
 1. git pull project master
 2. git checkout -b feature-1
