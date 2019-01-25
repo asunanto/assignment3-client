@@ -30,3 +30,13 @@
     transform: rotate(360deg);
   }
 }
+
+h1, h2 {
+  color:#0033A1;
+  font-family: 'Open Sans'
+}
+
+p {
+  color: #4C70BD;
+  font-family: 'Open Sans'
+}

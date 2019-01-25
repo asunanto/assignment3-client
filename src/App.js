@@ -9,9 +9,16 @@ import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom' // add Redirect later
 import {fetchBookmarks, removeBookmark } from './services/BookmarkService'
-import HomePage from './components/HomePage'
-import TabBar from './components/HeaderComponent/TabBar'
+import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
+import AboutPage from './components/AboutPage'
+import User from './components/User'
+import Unit from './components/Unit'
+import Library from './components/Library'
+import CreateActivity from './components/CreateActivity'
+import CreateProgram from './components/CreateProgram'
+import Activity from './components/Activity'
+import Program from './components/Program'
 
 class App extends Component {
   
@@ -72,41 +79,48 @@ class App extends Component {
           <Router>
             <Fragment>
               {/* <Route exact path='/' render = { ()=> <Redirect to ="/"/>}/> */}
+              <TabBar />
               <Switch>  
-              <Route exact path="/" component={HomePage} />
-              <Route exact path='/login' render={ () => {
-                if (tokenDetails) {
-                  return (<Redirect to="/" />)
-                } else {
-                  return (<Signin loginError={store.getState().loginError} handleSignIn={this.handleSignIn} />)
-                }
-              }} />
-              <Route exact path='/signup' render={ () => {
-                if (tokenDetails) {
-                  return (<Redirect to="/" />)
-                } else {
-                  return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
-                }
-              }} />
-              <Route exact path="/" render={() => (
-                <Fragment>
-                  {tokenDetails && (
-                    <div>
-                      <h4>Welcome {tokenDetails.email}</h4>
-                      <p>You logged in at: {new Date(tokenDetails.iat * 1000).toLocaleString()}</p>
-                      <p>Your token expires at: {new Date(tokenDetails.exp * 1000).toLocaleString()}</p>
-                    </div>
-                  )}
-                <h1> Bookmarks</h1>
-                  <ul>
-                    {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)}
-                  </ul>
-                </Fragment>
-              )
-              } />
-              <Route component={NotFound}/>
+                <Route exact path='/login' render={ () => {
+                  if (tokenDetails) {
+                    return (<Redirect to="/" />)
+                  } else {
+                    return (<Signin loginError={store.getState().loginError} handleSignIn={this.handleSignIn} />)
+                  }
+                }} />
+                <Route exact path='/signup' render={ () => {
+                  if (tokenDetails) {
+                    return (<Redirect to="/" />)
+                  } else {
+                    return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
+                  }
+                }} />
+                <Route exact path="/" render={() => (
+                  <Fragment>
+                    {tokenDetails && (
+                      <div>
+                        <h4>Welcome {tokenDetails.email}</h4>
+                        <p>You logged in at: {new Date(tokenDetails.iat * 1000).toLocaleString()}</p>
+                        <p>Your token expires at: {new Date(tokenDetails.exp * 1000).toLocaleString()}</p>
+                      </div>
+                    )}
+                  <h1> Bookmarks</h1>
+                    <ul>
+                      {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)}
+                    </ul>
+                  </Fragment>
+                )
+                } />
+              <Route path="/user" exact component={User} />
+              <Route path="/unit" exact component={Unit} />
+              <Route path="/create-program" exact component={CreateProgram} />
+              <Route path="/create-activity" exact component={CreateActivity} />
+              <Route path="/library" exact component={Library} />
+              <Route path="/about" exact component={AboutPage} />
+              <Route path="/activity" exact component={Activity} />
+              <Route path="/program" exact component={Program} />
+              <Route component={NotFound} />
               </Switch>
-              <Route component={TabBar} />
             </Fragment>
           </Router>
         }
