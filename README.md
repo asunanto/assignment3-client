@@ -1,6 +1,6 @@
 # Girl Guides Helper App
 
-![Girl Guides Queensland](.docs/logo-ggq.jpg)
+![Girl Guides Queensland](./docs/logo-ggq.jpg)
 
 Deployed on Netlify: [Girl Guides Helper App (Client)](https://5c3db9c1268ad9f0e15ddad0--assignment3-client.netlify.com)
 
@@ -114,20 +114,19 @@ Orange | #EC963A
 
 ### Fonts
 
+Opens Sans
+
 ### Graphics
 
 ![Logo](./docs/logo.svg)
 
 ## Wireframes
 
-** Initial Sketches**
+** Initial Sketches:**
 ![Sketches](./docs/wireframe-sketch.jpg)
 
-** Low-Fidelity:
+** Low-Fidelity:**
 ![Low-Fidelity](./docs/wireframe-lofi.png)
-
-** Video Walkthrough:**
-![Interactive Design Prototype](./docs/wireframe-walkthrough.mp4)
 
 ## Database Schema Design
 
