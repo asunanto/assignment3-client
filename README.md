@@ -118,7 +118,7 @@ Orange | #EC963A
 
 ## Wireframes
 
-![Sketches](./docs/wireframe-sketch.png)
+![Sketches](./docs/wireframe-sketch.jpg)
 
 ![Low-Fidelity](./docs/wireframe-lofi.png)
 
