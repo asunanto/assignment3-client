@@ -1,8 +1,8 @@
 # Girl Guides Helper App
 
-Deployed on Netlify: [Girl Guides Helper App](https://5c3db9c1268ad9f0e15ddad0--assignment3-client.netlify.com)
+Deployed on Netlify: [Girl Guides Helper App (Client)](https://5c3db9c1268ad9f0e15ddad0--assignment3-client.netlify.com)
 
-Deployed on Heroku:
+Deployed on Heroku: [Girl Guides Helper App (Server)](https://assignment3-client.herokuapp.com/)
 
 **Dev Team:** @asunanto (Bo), @watsbeat (Caitlin), @DanBytes (Danylo), @markconanan (Mark), @Shadow-Blitz (Skye).
 
@@ -23,20 +23,20 @@ Deployed on Heroku:
   - [Object-Oriented Design Notes](#object-oriented-design-notes)
 - [Project Management](#project-management)
   - [Project Charter](#project-charter)
-  - [Project Breakdown & Schedule](#project-breakdown-&-schedule)
+  - [Project Breakdown & Schedule](#project-breakdown--schedule)
   - [Team Management](#team-management)
-  - [Task Delegation & Monitoring](#task-delegation-&-monitoring)
+  - [Task Delegation & Monitoring](#task-delegation--monitoring)
   - [Post-Project Review](#post-project-review)
   - [Client Satisfaction Questionnaire](#client-satisfaction-questionnaire)
-- [Tools & Methodologies](#tools-&-methodologies)
+- [Tools & Methodologies](#tools--methodologies)
   - [Agile](#agile)
   - [Trello](#trello)
   - [Slack](#slack)
   - [GitHub](#github)
-  - [Code Reviews](#code-reviews)
+  - [Code Review](#code-review)
   - [Client Communication](#client-communication)
 - [Short-Answer Questions](#short-answer-questions)
-- [Installation / Setup / Deployment](#installation-setup-deployment)
+- [Installation / Setup / Deployment](#installation--setup--deployment)
 
 # Introduction
 
@@ -50,7 +50,7 @@ For our final assignment at [Coder Academy](https://coderacademy.edu.au/?ads_adi
 Our aim is to reduce the time volunteers have to spend planning and doing administrative tasks during their week, so that when they turn up at their unit meeting they are relaxed, organised and can focus on enjoying the experience and leading the girls.
 
 ## Solution
-_A resource manager app for new leaders_
+_"A resource manager app for new leaders."_
 
 To achieve this, we proposed an app that allows users to collaboratively create programs from an activities database. 
 
@@ -77,7 +77,7 @@ Another extra feature we could have is a way to store information about the memb
 
 ## User Stories
 
-![User Stories](./docs/userstories)
+![User Stories](./docs/userstories.png)
 
 See this [Trello Board](https://trello.com/b/XKKr8jof/user-stories) for our complete list of user stories organised by priority and t-shirt sizes.
 
@@ -110,13 +110,13 @@ Orange | #EC963A
 
 ### Graphics
 
-![Logo](./docs/logo)
+![Logo](./docs/logo.svg)
 
 ## Wireframes
 
-![Sketches](./docs/wireframe-sketch)
+![Sketches](./docs/wireframe-sketch.png)
 
-![Low-Fidelity](./docs/wireframe-lofi)
+![Low-Fidelity](./docs/wireframe-lofi.png)
 
 ## Database Schema Design
 
@@ -128,8 +128,8 @@ Per our assignment requirements, we are using MongoDB - a NoSQL database with no
 
 ## Dataflow Diagram
 
-![Dataflow Diagram](./docs/dataflow-diagram-1)
-![Dataflow Diagram](./docs/dataflow-diagram-2)
+![Dataflow Diagram](./docs/dataflow-diagram-1.png)
+![Dataflow Diagram](./docs/dataflow-diagram-2.png)
 
 ## Object-Oriented Design Notes
 
@@ -147,7 +147,7 @@ After discussing our individual strengths and things we'd like to learn, we allo
 - **Caitlin:** client relations, documentation, design direction, frontend development, backend development when needed
 - **Danylo & Skye:** API integration, frontend development, frontend test design, authentication and authorisation on the client
 
-## Task Delegation & Tracking
+## Task Delegation & Monitoring
 
 ## Post-Project Review
 
@@ -163,9 +163,9 @@ _How satisfied was the client with our product and services?_
 
 ### Agile
 
-1. Scrum Board
-2. StandUp Meetings
-3. Brainstorming Sessions
+1. StandUp Meetings
+2. Brainstorming Sessions
+3. Scrum Board
 
 ### Trello
 
@@ -173,13 +173,32 @@ We used Trello as our project management tool. We tracked our build progress usi
 
 You can view our Trello Board [here](https://trello.com/b/2FbFSl6m/web-app).
 
+![Trello 1](./trello-16jan.png)
+![Trello 2](./trello-18jan.png)
+
 ### Slack
+
+![Our Slack Group](./docs/slack.png)
 
 ### GitHub
 
-Source control process
+We're using GitHub for our version control with a feature-branch workflow. 
+
+We each forked and cloned the project repository to our local machines and set up remote connections. Then, we followed a feature-branch workflow for committing and merging changes to the pristine master branch on the project repository:
+
+1. git pull project master
+2. git checkout -b feature-1
+3. git add .
+4. git commit "feature-1 implented"
+5. git push origin master
+6. git push origin feature-1 
+7. merge into project master via pull request on GitHub
+
+![Git Workflow](./docs/gitworkflow.png)
 
 ### Code Review
+
+Before merging pull requests into the pristine master branch, we assign another team member to review our code. If their are no major conflict, we generally approve the requests straight-up even if some refactoring needs to be done. This is because we have limited time to build the app, and properly drying out the code and doing comprehensive testing can still happen later. So long as the requestor appropriately names the branch, write good commits messages and leaves comments.
 
 ### Client Communication
 
@@ -246,6 +265,8 @@ Clone a copy of this repo to your local machine:
 `git clone git@github.com:asunanto/assignment3-client.git`
 
 Make sure [nodemon](https://nodemon.io/) and [mongodb](https://www.npmjs.com/package/mongodb) are installed globally on your machine.
+
+## Setup
 
 **Frontend**
 
