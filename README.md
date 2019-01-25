@@ -123,24 +123,19 @@ Opens Sans
 
 ## Wireframes
 
-** Initial Sketches:**
+**Initial Sketches:**
 ![Sketches](./docs/wireframe-sketch.jpg)
 
-** Low-Fidelity:**
+**Low-Fidelity:**
 ![Low-Fidelity](./docs/wireframe-lofi.png) 
 
-![User Profile](.docs/wireframes/user-profile.png) ![Login](./docs/wireframes/login-page.png) ![Manage Account](./docs/wireframes/manage-account.png)
+![User Profile](./docs/wireframes/user-profile.png)![Login](./docs/wireframes/login-page.png)![Manage Account](./docs/wireframes/manage-account.png)
 
-![Unit Profile](./docs/wireframes/unit-profile.png)
-![Create Activity](./docs/wireframes/create-activity.png)
-![View Activities Library](./docs/wireframes/activities-library.png) 
+![Unit Profile](./docs/wireframes/unit-profile.png)![Create Activity](./docs/wireframes/create-activity.png)![View Activities Library](./docs/wireframes/activities-library.png) 
 
-![Create Program](./docs/wireframes/create-program.png)
-![Add Activities to Program](./docs/wireframes/add-activities.png) ![Modal Alert](./docs/wireframes/modal-alert.png)
+![Create Program](./docs/wireframes/create-program.png)![Add Activities to Program](./docs/wireframes/add-activities.png)![Modal Alert](./docs/wireframes/modal-alert.png)
 
-![View Program](./docs/wireframes/view-program.png) 
-![Not Found Page](./docs/wireframes/notfound.png)
-![Register New User](./docs/wireframes/register-user.png) 
+![View Program](./docs/wireframes/view-program.png)![Not Found Page](./docs/wireframes/notfound.png)![Register New User](./docs/wireframes/register-user.png) 
 
 ## Database Schema Design
 
