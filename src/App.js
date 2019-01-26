@@ -1,7 +1,14 @@
 import React, { Component, Fragment } from 'react'; // add Fragment later
 import './App.css';
 import store from './config/store'
-import { setBookmarksAction, setTokenAction, setLoginErrorAction, setSignupErrorAction, setActivitiesAction } from './config/actions'
+import {
+  setBookmarksAction,
+  setTokenAction,
+  setLoginErrorAction,
+  setSignupErrorAction,
+  setActivitiesAction,
+  setProgramsAction
+} from './config/actions'
 import { api, setJwt } from './api/init'
 import decodeJWT from 'jwt-decode'
 import Bookmark from './components/Bookmark'
@@ -10,6 +17,7 @@ import Signup from './components/Signup'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom' // add Redirect later
 import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
 import { fetchActivities } from './services/ActivityService'
+import { fetchPrograms } from './services/ProgramService'
 import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
 import AboutPage from './components/AboutPage'
@@ -19,14 +27,17 @@ import Library from './components/Library'
 import CreateActivity from './components/CreateActivity'
 import CreateProgram from './components/CreateProgram'
 import Activity from './components/Activity'
-import Program from './components/Program'
 import Activities from './components/Activities'
+import Program from './components/Program'
+import Programs from './components/Programs'
+
 
 class App extends Component {
 
   componentDidMount() {
     fetchBookmarks()
     fetchActivities()
+    fetchPrograms()
   }
 
   handleSignIn = async (event) => {
@@ -41,6 +52,7 @@ class App extends Component {
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
       fetchBookmarks()
+      fetchPrograms()
     } catch (error) {
       store.dispatch(setLoginErrorAction(error.message))
     }
@@ -52,6 +64,7 @@ class App extends Component {
       store.dispatch(setTokenAction(null))
       store.dispatch(setBookmarksAction([]))
       store.dispatch(setActivitiesAction([]))
+      store.dispatch(setProgramsAction([]))
     })
   }
 
@@ -75,6 +88,7 @@ class App extends Component {
   render() {
     const bookmarks = store.getState().bookmarks
     const activities = store.getState().activities
+    const programs = store.getState().programs
     const token = store.getState().token
     const tokenDetails = token && decodeJWT(token)
     console.log(tokenDetails)
@@ -117,16 +131,11 @@ class App extends Component {
                 )
                 } />
                 <Route exact path="/activities" render={() => (
-                  <Fragment>
-                    <h1>Activities</h1>
-                    <ul>
-                      {activities.map(activity =>
-                        <div key={activity._id}><Activities {...activity} /></div>)}
-                    </ul>
-                    <p></p>
-                  </Fragment>
-                )
-                } />
+                  <Activities activities={activities} />
+                )} />
+                <Route exact path="/programs" render={() => (
+                  <Programs programs={programs} />
+                )} />
                 <Route path="/user" exact component={User} />
                 <Route path="/unit" exact component={Unit} />
                 <Route path="/create-program" exact component={CreateProgram} />

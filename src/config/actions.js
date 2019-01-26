@@ -12,6 +12,13 @@ export function setActivitiesAction(activities) {
   }
 }
 
+export function setProgramsAction(programs) {
+  return {
+    type: 'set_programs',
+    programs
+  }
+}
+
 export function setTokenAction(token) {
   return {
     type: 'set_token',
