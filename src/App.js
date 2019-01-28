@@ -27,6 +27,7 @@ import Library from './components/Library'
 import CreateActivity from './components/CreateActivity'
 import CreateProgram from './components/CreateProgram'
 import Activity from './components/Activity'
+import ActivityIndex from './components/ActivityIndex'
 import Activities from './components/Activities'
 import Program from './components/Program'
 import Programs from './components/Programs'
@@ -132,12 +133,17 @@ class App extends Component {
                 )
                 } />
                 <Route exact path="/activities" render={() => (
-                  <Activities activities={activities} />
+                  <div>
+                    <h1>Activities</h1>
+                    <ul>
+                      {activities.map(activity => <li key={activity._id}><Activity {...activity}/></li>)}
+                    </ul>  
+                  </div>
                 )} />
-                {/* <Route path="/activities/:id" render={() => 
-                  <Activity activity={activity}/>
-                } /> */}
-                <Route path="/activities/:id" exact component={Activity} />
+
+
+                
+                <Route path="/activities/:id" exact component={ActivityIndex} />
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
