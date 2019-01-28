@@ -130,15 +130,12 @@ class App extends Component {
                   </Fragment>
                 )
                 } />
-<<<<<<< HEAD
-=======
                 <Route exact path="/activities" render={() => (
                   <Activities activities={activities} />
                 )} />
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
->>>>>>> 89eb04491fa9a86d985bca94c71b0c4660367b72
                 <Route path="/user" exact component={User} />
                 <Route path="/unit" exact component={Unit} />
                 <Route path="/create-program" exact component={CreateProgram} />
@@ -147,10 +144,6 @@ class App extends Component {
                 <Route path="/about" exact component={AboutPage} />
                 <Route path="/activity" exact component={Activity} />
                 <Route path="/program" exact component={Program} />
-<<<<<<< HEAD
-=======
-
->>>>>>> 89eb04491fa9a86d985bca94c71b0c4660367b72
                 <Route component={NotFound} />
               </Switch>
             </Fragment>
