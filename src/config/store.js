@@ -2,8 +2,9 @@ import { createStore } from 'redux'
 
 const initialState = {
   activities: [],
+  activity: null,
   programs: [],
-  bookmarks: [],
+  // bookmarks: [],
   loggedIn: false,
   signedUp: false,
   token: null,
@@ -13,10 +14,12 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'set_bookmarks':
-      return { ...state, bookmarks: action.bookmarks }
+    // case 'set_bookmarks':
+    //   return { ...state, bookmarks: action.bookmarks }
     case 'set_activities':
       return { ...state, activities: action.activities }
+    case 'set_activity':
+      return { ...state, activity: action.activity }
     case 'set_programs':
       return { ...state, programs: action.programs }
     case 'set_loginError':
