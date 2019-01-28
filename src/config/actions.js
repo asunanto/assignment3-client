@@ -5,6 +5,20 @@ export function setBookmarksAction(bookmarks) {
   }
 }
 
+export function setActivitiesAction(activities) {
+  return {
+    type: 'set_activities',
+    activities
+  }
+}
+
+export function setProgramsAction(programs) {
+  return {
+    type: 'set_programs',
+    programs
+  }
+}
+
 export function setTokenAction(token) {
   return {
     type: 'set_token',
@@ -17,7 +31,7 @@ export function setLoginErrorAction(loginError) {
     type: 'set_loginError',
     loginError
   }
-  
+
 }
 
 export function setSignupErrorAction(signupError) {
