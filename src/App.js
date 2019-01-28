@@ -86,7 +86,7 @@ class App extends Component {
   }
 
   render() {
-    const bookmarks = store.getState().bookmarks
+    // const bookmarks = store.getState().bookmarks
     const activities = store.getState().activities
     const programs = store.getState().programs
     const token = store.getState().token
@@ -134,8 +134,8 @@ class App extends Component {
                 <Route exact path="/activities" render={() => (
                   <Activities activities={activities} />
                 )} />
-                {/* <Route path="/activities/:id" render={(props) => 
-                  <Activity activity={activity} {...props}/>
+                {/* <Route path="/activities/:id" render={() => 
+                  <Activity activity={activity}/>
                 } /> */}
                 <Route path="/activities/:id" exact component={Activity} />
                 <Route exact path="/programs" render={() => (
@@ -147,7 +147,7 @@ class App extends Component {
                 <Route path="/create-activity" exact component={CreateActivity} />
                 <Route path="/library" exact component={Library} />
                 <Route path="/about" exact component={AboutPage} />
-                <Route path="/activity" exact component={Activity} />
+                {/* <Route path="/activity" exact component={Activity} /> */}
                 <Route path="/program" exact component={Program} />
 
                 <Route component={NotFound} />

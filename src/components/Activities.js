@@ -1,10 +1,9 @@
 import React from 'react'
-import { fetchActivity } from '../services/ActivityService';
-import {withRouter} from 'react-router-dom'
+// import { fetchActivity } from '../services/ActivityService';
+// import {withRouter} from 'react-router-dom'
 
 function Activities(props) {
     const activities = props.activities
-    console.log(props.history)
     return (
         <div>
             <h1>Activities</h1>
@@ -15,7 +14,7 @@ function Activities(props) {
                         <p>Description: {activity.description}</p>
                         <p>Age Level: {activity.ageLevel.name}</p>
                         {/* <button onClick={() => {
-                            // fetchActivity(activity._id);
+                            fetchActivity(activity._id);
                              props.history.push(`/activities/${activity._id}`);
                              }}>View</button> */}
                         <a href={`/activities/${activity._id}`}><button>View</button></a>
@@ -25,4 +24,4 @@ function Activities(props) {
         </div>
     )
 }
-export default withRouter(Activities)
+export default Activities
