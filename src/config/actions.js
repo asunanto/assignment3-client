@@ -12,6 +12,13 @@ export function setActivitiesAction(activities) {
   }
 }
 
+export function setActivityAction(activity) {
+  return {
+    type: 'set_activity',
+    activity
+  }
+}
+
 export function setProgramsAction(programs) {
   return {
     type: 'set_programs',
