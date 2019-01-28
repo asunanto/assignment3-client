@@ -16,7 +16,7 @@ import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom' // add Redirect later
 import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
-import { fetchActivities } from './services/ActivityService'
+import { fetchActivities, fetchActivity } from './services/ActivityService'
 import { fetchPrograms } from './services/ProgramService'
 import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
@@ -51,7 +51,7 @@ class App extends Component {
       let token = response.data.token
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
-      fetchBookmarks()
+      // fetchBookmarks()
       fetchPrograms()
     } catch (error) {
       store.dispatch(setLoginErrorAction(error.message))
@@ -91,7 +91,8 @@ class App extends Component {
     const programs = store.getState().programs
     const token = store.getState().token
     const tokenDetails = token && decodeJWT(token)
-    console.log(tokenDetails)
+    // const activity = store.getState().activity
+    // console.log(activity)
     return (
       <div className="App">
         {
@@ -125,7 +126,7 @@ class App extends Component {
                     )}
                     <h1> Bookmarks</h1>
                     <ul>
-                      {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)}
+                      {/* {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)} */}
                     </ul>
                   </Fragment>
                 )
@@ -133,6 +134,10 @@ class App extends Component {
                 <Route exact path="/activities" render={() => (
                   <Activities activities={activities} />
                 )} />
+                {/* <Route path="/activities/:id" render={(props) => 
+                  <Activity activity={activity} {...props}/>
+                } /> */}
+                <Route path="/activities/:id" exact component={Activity} />
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
