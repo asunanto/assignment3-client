@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import logo from '../assets/logo.svg'
 import { Paper, Button, TextField } from '@material-ui/core'
 

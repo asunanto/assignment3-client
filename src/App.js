@@ -153,7 +153,6 @@ class App extends Component {
                 <Route path="/about" exact component={AboutPage} />
                 {/* <Route path="/activity" exact component={Activity} /> */}
                 <Route path="/program" exact component={Program} />
-
                 <Route component={NotFound} />
               </Switch>
             </Fragment>
