@@ -49,9 +49,10 @@ class App extends Component {
         password: form.elements.password.value
       })
       let token = response.data.token
-      console.log(token)
+      localStorage.setItem('token',token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
+      
       // fetchBookmarks()
       fetchPrograms()
     } catch (error) {
@@ -92,7 +93,6 @@ class App extends Component {
     const programs = store.getState().programs
     const token = store.getState().token
     const tokenDetails = token && decodeJWT(token)
-    console.log(tokenDetails)
     // const activity = store.getState().activity
     // console.log(activity)
     return (
