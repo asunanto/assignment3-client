@@ -117,7 +117,7 @@ class App extends Component {
                     return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
                   }
                 }} />
-                <Route exact path="/" render={() => (
+                {/* <Route exact path="/" render={() => (
                   <Fragment>
                     {tokenDetails && (
                       <div>
@@ -127,12 +127,16 @@ class App extends Component {
                       </div>
                     )}
                     <h1> Bookmarks</h1>
-                    <ul>
+                    <ul> */}
                       {/* {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)} */}
-                    </ul>
+                    {/* </ul>
                   </Fragment>
                 )
-                } />
+                } /> */}
+                <Route exact path="/" render={() => (
+                  <Redirect to="/user" />
+                )} />
+              
                 <Route exact path="/activities" render={() => (
                   <Activities activities={activities} />
                 )} />
