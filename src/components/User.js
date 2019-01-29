@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Fab} from '@material-ui/core/';
+import { Button, Fab } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add/';
 
 class User extends Component {
