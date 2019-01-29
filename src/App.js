@@ -11,12 +11,12 @@ import {
 } from './config/actions'
 import { api, setJwt } from './api/init'
 import decodeJWT from 'jwt-decode'
-import Bookmark from './components/Bookmark'
+// import Bookmark from './components/Bookmark'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom' // add Redirect later
-import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
-import { fetchActivities, fetchActivity } from './services/ActivityService'
+// import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
+import { fetchActivities } from './services/ActivityService'
 import { fetchPrograms } from './services/ProgramService'
 import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
@@ -35,7 +35,7 @@ import Programs from './components/Programs'
 class App extends Component {
 
   componentDidMount() {
-    fetchBookmarks()
+    // fetchBookmarks()
     fetchActivities()
     fetchPrograms()
   }
@@ -49,6 +49,7 @@ class App extends Component {
         password: form.elements.password.value
       })
       let token = response.data.token
+      console.log(token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
       // fetchBookmarks()
@@ -79,7 +80,7 @@ class App extends Component {
       let token = response.data.token
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
-      fetchBookmarks()
+      // fetchBookmarks()
     } catch (error) {
       store.dispatch(setSignupErrorAction(error.message))
     }
@@ -91,6 +92,7 @@ class App extends Component {
     const programs = store.getState().programs
     const token = store.getState().token
     const tokenDetails = token && decodeJWT(token)
+    console.log(tokenDetails)
     // const activity = store.getState().activity
     // console.log(activity)
     return (
