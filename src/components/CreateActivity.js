@@ -85,8 +85,7 @@ class CreateActivity extends Component {
           type="length"
         />
         <p>Attachments</p>
-        <Button type="submit" variant="contained" color="primary">Create</Button>
-        {/* <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button> */}
+        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
         </form>
       </div>
       
