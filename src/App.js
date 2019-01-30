@@ -18,6 +18,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 // import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
 import { fetchActivities } from './services/ActivityService'
 import { fetchPrograms } from './services/ProgramService'
+
 import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
 import AboutPage from './components/AboutPage'
@@ -49,7 +50,6 @@ class App extends Component {
         password: form.elements.password.value
       })
       let token = response.data.token
-      console.log(token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
       // fetchBookmarks()
@@ -92,7 +92,6 @@ class App extends Component {
     const programs = store.getState().programs
     const token = store.getState().token
     const tokenDetails = token && decodeJWT(token)
-    console.log(tokenDetails)
     // const activity = store.getState().activity
     // console.log(activity)
     return (

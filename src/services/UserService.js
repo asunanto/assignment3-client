@@ -1,13 +1,15 @@
-import store from '../config/store'
-import { setProgramsAction } from '../config/actions'
+// import store from '../config/store'
 import { api } from '../api/init'
+
 
 const fetchUser = () => {
     api.get('/users').then((res) => {
-        store.dispatch(setProgramsAction(res.data))
+        console.log(res.data)
+
     }).catch((err) => {
         console.error('Could not fetch user', err)
     })
+
 }
 
 export { fetchUser }
