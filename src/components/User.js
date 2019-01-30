@@ -7,9 +7,7 @@ import { api, setJwt } from '../api/init'
 
 
 class User extends Component {
-  state = {
-    name: 'Leader'
-  }
+  state = {}
 
   componentDidMount() {
     const token = localStorage.getItem('token')
@@ -27,7 +25,7 @@ class User extends Component {
     console.log(this.user)
     return (
       <div>
-        <h1>Hi, {this.state.name.firstname}!</h1>
+        <h1>Hi, {this.state.name && this.state.name.firstname}!</h1>
         <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Manage Account</Button>
         <h2>My Guide Hut</h2>
         <p>Brisbane</p>
