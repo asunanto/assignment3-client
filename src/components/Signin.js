@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from 'react'
+=======
+import React, { Component} from 'react'
+>>>>>>> 82084a231451461d7a7e2b0a932b2271c6dc38ff
 import logo from '../assets/logo.svg'
 import { Paper, Button, TextField } from '@material-ui/core'
 
@@ -36,7 +40,7 @@ export default ({ handleSignIn, loginError }) => (
             />
             <br />
             <Button type="submit" variant="contained" color="primary">Sign In</Button>
-            <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Register</Button>
+            {/* <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Register</Button> */}
         </form>
 
     </Paper>

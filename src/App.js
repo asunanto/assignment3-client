@@ -50,8 +50,10 @@ class App extends Component {
         password: form.elements.password.value
       })
       let token = response.data.token
+      localStorage.setItem('token', token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
+
       // fetchBookmarks()
       fetchPrograms()
     } catch (error) {
@@ -153,7 +155,7 @@ class App extends Component {
                 <Route path="/library" exact component={Library} />
                 <Route path="/about" exact component={AboutPage} />
                 {/* <Route path="/activity" exact component={Activity} /> */}
-                <Route path="/program" exact component={Program} />
+                <Route path="/programs/:id" exact component={Program} />
                 <Route component={NotFound} />
               </Switch>
             </Fragment>
