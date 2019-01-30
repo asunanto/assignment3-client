@@ -18,6 +18,7 @@ function Activities(props) {
                              props.history.push(`/activities/${activity._id}`);
                              }}>View</button> */}
                         <a href={`/activities/${activity._id}`}><button>View</button></a>
+                        <a href={`/activities/${activity._id}/edit`}><button>Edit</button></a>
                     </li>
                 ))}
             </ul>
