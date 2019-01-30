@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from 'react'
-=======
-import React, { Component} from 'react'
->>>>>>> 82084a231451461d7a7e2b0a932b2271c6dc38ff
+import React, { Component } from 'react'
 import logo from '../assets/logo.svg'
 import { Paper, Button, TextField } from '@material-ui/core'
 
