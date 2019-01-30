@@ -128,15 +128,15 @@ class App extends Component {
                     )}
                     <h1> Bookmarks</h1>
                     <ul> */}
-                      {/* {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)} */}
-                    {/* </ul>
+                {/* {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)} */}
+                {/* </ul>
                   </Fragment>
                 )
                 } /> */}
                 <Route exact path="/" render={() => (
                   <Redirect to="/user" />
                 )} />
-              
+
                 <Route exact path="/activities" render={() => (
                   <Activities activities={activities} />
                 )} />
@@ -154,7 +154,7 @@ class App extends Component {
                 <Route path="/library" exact component={Library} />
                 <Route path="/about" exact component={AboutPage} />
                 {/* <Route path="/activity" exact component={Activity} /> */}
-                <Route path="/program" exact component={Program} />
+                <Route path="/programs/:id" exact component={Program} />
                 <Route component={NotFound} />
               </Switch>
             </Fragment>

@@ -19,6 +19,13 @@ export function setActivityAction(activity) {
   }
 }
 
+export function setProgramAction(program) {
+  return {
+    type: 'set_program',
+    program
+  }
+}
+
 export function setProgramsAction(programs) {
   return {
     type: 'set_programs',
