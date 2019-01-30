@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
+import { addActivity } from '../services/ActivityService';
 class CreateActivity extends Component {
   state = {
     ageLevel: null,
@@ -26,12 +27,13 @@ class CreateActivity extends Component {
     e.preventDefault()
     try{
       const {title, description, length} = e.target.elements
-      const response = await api.post('/activities', {
+      const req = {
         title: title.value,
         description: description.value,
         length: length.value,
         ageLevel: this.state.ageLevel
-     })
+      }
+      addActivity(req)
     }
     catch(error){console.error(error)}
     
