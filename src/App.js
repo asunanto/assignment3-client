@@ -18,6 +18,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 // import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
 import { fetchActivities } from './services/ActivityService'
 import { fetchPrograms } from './services/ProgramService'
+
 import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
 import AboutPage from './components/AboutPage'
@@ -49,10 +50,10 @@ class App extends Component {
         password: form.elements.password.value
       })
       let token = response.data.token
-      localStorage.setItem('token',token)
+      localStorage.setItem('token', token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
-      
+
       // fetchBookmarks()
       fetchPrograms()
     } catch (error) {
