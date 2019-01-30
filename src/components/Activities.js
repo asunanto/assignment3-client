@@ -1,6 +1,8 @@
 import React from 'react'
+import { removeActivity } from '../services/ActivityService';
 // import { fetchActivity } from '../services/ActivityService';
 // import {withRouter} from 'react-router-dom'
+
 
 function Activities(props) {
     const activities = props.activities
@@ -18,6 +20,8 @@ function Activities(props) {
                              props.history.push(`/activities/${activity._id}`);
                              }}>View</button> */}
                         <a href={`/activities/${activity._id}`}><button>View</button></a>
+                        <a href={`/activities/${activity._id}/edit`}><button>Edit</button></a>
+                        <button onClick={() => removeActivity(activity._id)}>Delete</button>
                     </li>
                 ))}
             </ul>
