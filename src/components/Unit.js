@@ -46,9 +46,11 @@ class Unit extends Component {
           )
         })}
 
-        <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-          <AddIcon />
-        </Fab>
+        <Link to='/create-program'>
+          <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+            <AddIcon />
+          </Fab>
+        </Link>
         <h2>Unit Members</h2>
         <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
           <AddIcon />
