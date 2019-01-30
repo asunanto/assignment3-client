@@ -1,5 +1,5 @@
 import store from '../config/store'
-import { setProgramsAction } from '../config/actions'
+import { setProgramsAction, setProgramAction } from '../config/actions'
 import { api } from '../api/init'
 
 const fetchPrograms = () => {
@@ -10,4 +10,13 @@ const fetchPrograms = () => {
     })
 }
 
-export { fetchPrograms }
+const fetchProgram = (id) => {
+    api.get(`/programs/${id}`).then((res) => {
+        store.dispatch(setProgramAction(res.data))
+    }).catch((err) => {
+        console.error('Could not fetch program', err)
+    })
+
+}
+
+export { fetchPrograms, fetchProgram }

@@ -11,6 +11,7 @@ export default function Programs(props) {
                     <li>
                         <p>{program.name}</p>
                         <p>{program.description}</p>
+                        <a href={`/programs/${program._id}`}><button>View</button></a>
                     </li>
                 ))}
             </ul>
