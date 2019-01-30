@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Fab } from '@material-ui/core/';
+import { Fab, } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add/';
 import { api, setJwt } from '../api/init'
+import { Link } from 'react-router-dom';
 class Unit extends Component {
   state = {
-    users: []
+    users: [],
+    programs: []
   }
 
   componentDidMount() {
@@ -21,6 +23,7 @@ class Unit extends Component {
 
   render() {
     console.log(this.state.users[0])
+    console.log(this.state.programs, 'programs')
     return (
       <div>
         <h1>{this.state.unit && this.state.unit.name}</h1>
@@ -32,6 +35,16 @@ class Unit extends Component {
 
 
         <h2>Unit Programs</h2>
+
+        {this.state.programs.map((program) => {
+          return (
+
+            <li key={program._id}>{program.name}
+              <br />
+              <Link to={`/programs/${program._id}`}><button> View</button></Link>
+            </li>
+          )
+        })}
 
         <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
           <AddIcon />
