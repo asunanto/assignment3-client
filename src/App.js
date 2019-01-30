@@ -148,7 +148,7 @@ class App extends Component {
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
-                <Route path="/user" exact component={User} />
+                <Route path="/user" render={() => (<User handleSignOut={this.handleSignOut} />)} />
                 <Route path="/unit" exact component={Unit} />
                 <Route path="/create-program" exact component={CreateProgram} />
                 <Route path="/create-activity" exact component={CreateActivity} />
