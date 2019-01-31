@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
-import { addActivity } from '../services/ActivityService';
-class CreateActivity extends Component {
+
+class EditActivity extends Component {
   state = {
-    ageLevel: null,
+    title: '',
     ageLevels: []
   }
 
   componentDidMount(){
-    api.get('/agelevels').then((res) => {
-      this.setState({ageLevels: res.data})
-      this.setState({ageLevel: res.data[0]})
+    const {id} = this.props.match.params
+    api.get(`/activities/${id}`).then((res) => {
+        this.setState({...res.data})
     }).catch((err) => {
       console.error('Could not fetch age levels', err)
     })
+    
+    api.get('/agelevels').then((res) => {
+      this.setState({ageLevels: res.data})
+    }).catch((err) => {
+      console.error('Could not fetch age levels', err)
+    })
+
   }
-  
   handleChange =(e)=> {
     this.setState({ageLevel: this.state.ageLevels[e.target.value]})
+    
   }
 
   handleSubmit = async (e) => {
@@ -26,38 +33,36 @@ class CreateActivity extends Component {
     setJwt(token)
     e.preventDefault()
     try{
+      const {id} = this.props.match.params
       const {title, description, length} = e.target.elements
-      const req = {
+      const response = await api.put(`/activities/${id}`, {
         title: title.value,
         description: description.value,
         length: length.value,
         ageLevel: this.state.ageLevel
-      }
-      addActivity(req)
+     })
     }
     catch(error){console.error(error)}
-    
-
-
   }
-  // handleCreateActivity = async (event) => {
-  //   event.preventDefault()
-  //   const {title, description, length} = event.target.elements
-  //   const response = await api.post('/activities', {
-  //     title: title.value,
-  //     description: description.value,
-  //     length: length.value,
-  //     ageLevel: ageLevel.value
-  //   })
-  // }
+
+  
+  _change = (title,description,length) => event => {
+    this.setState({
+      [title]: event.target.value,
+      [description]: event.target.value,
+      [length]: event.target.length
+    });
+  };
+
   render() {
+    const ageIndex = this.state.ageLevel && this.state.ageLevels.findIndex(ageLevel => ageLevel.name == this.state.ageLevel.name)
     
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
         <h1>Create a new activity to add to our share library</h1>
         <p>Age Level</p>
-        <select onChange={this.handleChange} >
+        <select value={ageIndex} onChange={this.handleChange} >
           { this.state.ageLevels.map((ageLevel,index) =>
             <option key={index} value={index}>{ageLevel.name}</option>
           )};
@@ -68,19 +73,21 @@ class CreateActivity extends Component {
           label="Title"
           margin="normal"
           type="title"
+          value={this.state.title}
+          onChange={this._change('title')}
         />
-            <br />
+        <br />
         <TextField
           required
           id="description"
           label="Description"
           margin="normal"
           type="description"
+          value={this.state.description}
           multiline={true}
-          // rows={2}
-          // rowsMax={4}
+          onChange={this._change('description')}
         />
-            <br />
+        <br />
         <p>Category</p>
         <TextField
           required
@@ -88,13 +95,17 @@ class CreateActivity extends Component {
           label="Length"
           margin="normal"
           type="length"
+          value={this.state.length}
+          onChange={this._change('length')}
         />
+        
         <p>Attachments</p>
-        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
+        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
         </form>
       </div>
       
     )
   }
 }
-export default CreateActivity;
+
+export default EditActivity

@@ -20,4 +20,27 @@ const fetchActivity = (id) => {
     
 }
 
-export { fetchActivities, fetchActivity }
+const addActivity = (activity) => {
+    api.post('/activities', {
+        title: activity.title,
+        description: activity.description,
+        length: activity.length,
+        ageLevel: activity.ageLevel
+     }).then((res)=>{
+        const newActivities = [...store.getState().activities,res.data]
+        store.dispatch(setActivitiesAction(newActivities))
+     })
+}
+
+const removeActivity = (id) => {
+    api.delete(`/activities/${id}`)
+    const index = store.getState().activities.findIndex(activity => activity._id === id)
+    if (index >= 0) {
+      const newActivities = [...store.getState().activities]
+      newActivities.splice(index, 1)
+      store.dispatch(setActivitiesAction(newActivities))
+    }
+  
+  }
+
+export { fetchActivities, fetchActivity, removeActivity, addActivity }

@@ -18,6 +18,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 // import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
 import { fetchActivities } from './services/ActivityService'
 import { fetchPrograms } from './services/ProgramService'
+
 import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
 import AboutPage from './components/AboutPage'
@@ -30,6 +31,7 @@ import Activity from './components/Activity'
 import Activities from './components/Activities'
 import Program from './components/Program'
 import Programs from './components/Programs'
+import EditActivity from './components/EditActivity'
 
 
 class App extends Component {
@@ -49,10 +51,10 @@ class App extends Component {
         password: form.elements.password.value
       })
       let token = response.data.token
-      localStorage.setItem('token',token)
+      localStorage.setItem('token', token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
-      
+
       // fetchBookmarks()
       fetchPrograms()
     } catch (error) {
@@ -143,11 +145,12 @@ class App extends Component {
                 {/* <Route path="/activities/:id" render={() => 
                   <Activity activity={activity}/>
                 } /> */}
-                <Route path="/activities/:id" exact component={Activity} />
+                <Route exact path="/activities/:id" exact component={Activity} />
+                <Route path="/activities/:id/edit" exact component={EditActivity} />
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
-                <Route path="/user" exact component={User} />
+                <Route path="/user" render={() => (<User handleSignOut={this.handleSignOut} />)} />
                 <Route path="/unit" exact component={Unit} />
                 <Route path="/create-program" exact component={CreateProgram} />
                 <Route path="/create-activity" exact component={CreateActivity} />

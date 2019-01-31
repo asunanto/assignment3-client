@@ -7,7 +7,6 @@ class TabBar extends Component {
     return (
       <footer>
         <TabBarStyles>
-
           <Link to="/user"><i style={{ color: (window.location.pathname === '/user' ? '#EC963A' : '#F5F9FF')}} className="material-icons">account_circle</i></Link>
           <Link to="/unit"><i style={{ color: (window.location.pathname === '/unit' ? '#EC963A' : '#F5F9FF')}} className="material-icons">home</i></Link>
           <Link to="/create-program"><i style={{ color: (window.location.pathname === '/create-program' ? '#EC963A' : '#F5F9FF')}} className="material-icons">description</i></Link>

@@ -1,39 +1,5 @@
-/* Desktop or Laptop */
-@media only screen {
-  div .App {
-    font-size: 1.5rem;
-    padding-block-end: 5%;
-  }
-    .plusButton {
-    width: 5rem !important;
-    height: 5rem !important;
-    font-size: 3rem !important;
-  }
-  .manageAccountButton {
-    width: 15rem !important;
-    height: 3rem !important;
-    font-size: 1.2rem !important;
-  }
-  .formTextField {
-    font-size: 30rem !important;
-  }
-  footer .material-icons {
-    flex: 1; font-size: 5rem;
-  }
-} 
-
-/* iPad Pro */
-/* @media only screen and (max-width: 400px) {
-  div .App {
-    font-size: 1rem;
-  }
-  footer .material-icons {
-    flex: 1; font-size: 2rem;
-  }
-} */
-
-
-.App {
+@import url("./Reactivecss.css"); 
+ .App {
   text-align: center;
 }
 
