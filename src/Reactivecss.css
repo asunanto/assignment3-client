@@ -1,0 +1,55 @@
+/* Desktop or Laptop */
+@media only screen {
+  div .App {
+    font-size: 2rem;
+    padding-block-end: 15%;
+  }
+  footer .material-icons {
+    flex: 1; font-size: 8rem;
+  }
+} 
+
+/* Tablet high res (portrait) */
+@media only screen and (max-width: 1025px) {
+    div .App {
+      font-size: 1.5rem;
+      padding-block-end: 20%;
+    }
+    footer .material-icons {
+      flex: 1; font-size: 7rem;
+    }
+  } 
+
+/* Tablet (portrait) */
+@media only screen and (max-width: 770px) {
+    div .App {
+      font-size: 1.5rem;
+      padding-block-end: 20%;
+    }
+    footer .material-icons {
+      flex: 1; font-size: 6rem;
+    }
+  } 
+  
+  
+  /* Pixel XL (portrait) */
+  @media only screen and (max-width: 500px) {
+    div .App {
+      font-size: 1.2rem;
+      padding-block-end: 20%;
+    }
+    footer .material-icons {
+      flex: 1; font-size: 3rem;
+    }
+  } 
+  
+  /* Galaxy S5 (portrait) */
+  @media only screen and (max-width: 400px) {
+    div .App {
+      font-size: 1rem;
+      padding-block-end: 20%;
+    }
+    footer .material-icons {
+      flex: 1; font-size: 2rem;
+    }
+  }

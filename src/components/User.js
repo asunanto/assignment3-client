@@ -39,8 +39,8 @@ class User extends Component {
     return (
       <div>
         <h1>Hi, {this.state.name && this.state.name.firstname}!</h1>
-        <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Manage Account</Button>
-        <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535' }} onClick={this.props.handleSignOut}>Log Out</Button>
+        <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Manage Account</Button>
+        <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535' }} onClick={this.props.handleSignOut}>Log Out</Button>
 
         <h2>My Guide Hut</h2>
         <p>Brisbane</p>

@@ -1,4 +1,5 @@
-.App {
+@import url("./Reactivecss.css"); 
+ .App {
   text-align: center;
 }
 
@@ -40,3 +41,4 @@ p {
   color: #4C70BD;
   font-family: 'Open Sans'
 }
+ 

@@ -3,7 +3,7 @@ import { Paper } from '@material-ui/core'
 
 const style = {
     Paper: {
-        'width': '500px',
+        'width': '400px',
         'margin': '10% auto 0 auto',
         'textAlign': 'center',
         'padding': '5%'
