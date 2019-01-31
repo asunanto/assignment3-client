@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import {Button} from '@material-ui/core/';
+import { Button } from '@material-ui/core/';
 import store from '../config/store'
 import { fetchActivity } from '../services/ActivityService';
 
 
 class Activity extends Component {
-  
-  componentDidMount(){
+
+  componentDidMount() {
     fetchActivity(this.props.match.params.id)
   }
 
-  render(){// strangely render here gets executed multiple times
+  render() {// strangely render here gets executed multiple times
     const activity = store.getState().activity
     return (
       <div>
@@ -26,7 +26,7 @@ class Activity extends Component {
 
 // function Activity (props){
 //   const {title,description} = props.activity
-  
+
 //   return (
 //           <div>
 //             <h1>Activity Title: {title}</h1>
