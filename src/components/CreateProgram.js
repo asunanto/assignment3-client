@@ -34,6 +34,7 @@ class CreateProgram extends Component {
                         margin="normal"
                         placeholder="Write a short description of your program"
                         multiline
+                        style={{ 'width': '300px'}}
                     />
                     <br />
                     <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Next</Button>
