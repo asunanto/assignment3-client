@@ -13,10 +13,10 @@ class Program extends Component {
     const program = store.getState().program
     return (
       <div>
-        <h1>Program Title: {program && program.name}</h1>
-        <p>Description: {program && program.description}</p>
+        <h1>Program Title: {program && program.program.name}</h1>
+        <p>Description: {program && program.program.description}</p>
         <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Edit program</Button>
-        <p>Unit: {program && program.unit.name}</p>
+        <p>Unit: {program && program.program.unit.name}</p>
         <p>Activities</p>
         <ul>
           {program && program.activities.map(activity => (

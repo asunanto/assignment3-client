@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
-import { fetchActivities } from '../services/ActivityService';
 import store from '../config/store'
 import { fetchProgram } from '../services/ProgramService';
 import { Paper, Button, TextField } from '@material-ui/core'
@@ -50,16 +49,18 @@ class UpdateActivitytoProgram extends Component {
     }
 
     render() {
-        const activities = store.getState().activities
         const program = store.getState().program
 
         return (
             <div>
 
-                <h1>Add activities to {program && program.name}</h1>
+                <h1>Add activities to {program && program.program.name}</h1>
 
                 <form onSubmit={this.handleSubmit}>
-                    <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Add Activities</Button>
+
+                    <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>
+                        Add Activities
+                    </Button>
                     {this.state.activities.map((activity, index) => (
                         <div className="input-group">
                             <label>
