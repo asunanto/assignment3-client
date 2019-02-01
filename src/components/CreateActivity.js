@@ -8,25 +8,25 @@ class CreateActivity extends Component {
     ageLevels: []
   }
 
-  componentDidMount(){
+  componentDidMount() {
     api.get('/agelevels').then((res) => {
-      this.setState({ageLevels: res.data})
-      this.setState({ageLevel: res.data[0]})
+      this.setState({ ageLevels: res.data })
+      this.setState({ ageLevel: res.data[0] })
     }).catch((err) => {
       console.error('Could not fetch age levels', err)
     })
   }
-  
-  handleChange =(e)=> {
-    this.setState({ageLevel: this.state.ageLevels[e.target.value]})
+
+  handleChange = (e) => {
+    this.setState({ ageLevel: this.state.ageLevels[e.target.value] })
   }
 
   handleSubmit = async (e) => {
     const token = localStorage.getItem("token")
     setJwt(token)
     e.preventDefault()
-    try{
-      const {title, description, length} = e.target.elements
+    try {
+      const { title, description, length } = e.target.elements
       const req = {
         title: title.value,
         description: description.value,
@@ -35,8 +35,8 @@ class CreateActivity extends Component {
       }
       addActivity(req)
     }
-    catch(error){console.error(error)}
-    
+    catch (error) { console.error(error) }
+
 
 
   }
@@ -51,49 +51,49 @@ class CreateActivity extends Component {
   //   })
   // }
   render() {
-    
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-        <h1>Create a new activity to add to our share library</h1>
-        <p>Age Level</p>
-        <select onChange={this.handleChange} >
-          { this.state.ageLevels.map((ageLevel,index) =>
-            <option key={index} value={index}>{ageLevel.name}</option>
-          )};
+          <h1>Create a new activity to add to our share library</h1>
+          <p>Age Level</p>
+          <select onChange={this.handleChange} >
+            {this.state.ageLevels.map((ageLevel, index) =>
+              <option key={index} value={index}>{ageLevel.name}</option>
+            )};
         </select>
-        <TextField
-          required
-          id="title"
-          label="Title"
-          margin="normal"
-          type="title"
-        />
-            <br />
-        <TextField
-          required
-          id="description"
-          label="Description"
-          margin="normal"
-          type="description"
-          multiline={true}
+          <TextField
+            required
+            id="title"
+            label="Title"
+            margin="normal"
+            type="title"
+          />
+          <br />
+          <TextField
+            required
+            id="description"
+            label="Description"
+            margin="normal"
+            type="description"
+            multiline={true}
           // rows={2}
           // rowsMax={4}
-        />
-            <br />
-        <p>Category</p>
-        <TextField
-          required
-          id="length"
-          label="Length"
-          margin="normal"
-          type="length"
-        />
-        <p>Attachments</p>
-        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
+          />
+          <br />
+          <p>Category</p>
+          <TextField
+            required
+            id="length"
+            label="Length"
+            margin="normal"
+            type="length"
+          />
+          <p>Attachments</p>
+          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
         </form>
       </div>
-      
+
     )
   }
 }
