@@ -23,7 +23,7 @@ class CreateActivity extends Component {
     this.setState({ ageLevel: this.state.ageLevels[e.target.value] })
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     const token = localStorage.getItem("token")
     setJwt(token)
     e.preventDefault()
@@ -36,6 +36,7 @@ class CreateActivity extends Component {
         ageLevel: this.state.ageLevel
       }
       addActivity(req)
+      this.props.history.push(`/user`)
     }
     catch (error) { console.error(error) }
   }
@@ -43,13 +44,13 @@ class CreateActivity extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={(e) => { this.handleSubmit(e); this.props.history.push(`/user`) }}>
-          <h1>Create a new activity to add to our share library</h1>
-          <p>Age Level</p>
-          <select onChange={this.handleChange} >
-            {this.state.ageLevels.map((ageLevel, index) =>
-              <option key={index} value={index}>{ageLevel.name}</option>
-            )};
+        <form onSubmit={this.handleSubmit}>
+        <h1>Create a new activity to add to our share library</h1>
+        <p>Age Level</p>
+        <select onChange={this.handleChange} >
+          { this.state.ageLevels.map((ageLevel,index) =>
+            <option key={index} value={index}>{ageLevel.name}</option>
+          )};
         </select>
           <TextField
             required

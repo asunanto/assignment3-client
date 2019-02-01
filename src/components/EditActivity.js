@@ -40,10 +40,9 @@ class EditActivity extends Component {
         description: description.value,
         length: length.value,
         ageLevel: this.state.ageLevel
-      })
-        .then((response) => {
-          this.props.history.push(`/user`)
-        })
+     })
+     this.props.history.push(`/user`)
+
     }
     catch (error) { console.error(error) }
   }
@@ -62,6 +61,7 @@ class EditActivity extends Component {
 
     return (
       <div>
+        
         <form onSubmit={this.handleSubmit}>
           <h1>Edit Activity</h1>
           <p>Age Level :
