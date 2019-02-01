@@ -43,6 +43,7 @@ class EditActivity extends Component {
         length: length.value,
         ageLevel: this.state.ageLevel
      })
+     this.props.history.push(`/user`)
     }
     catch(error){console.error(error)}
   }
@@ -61,6 +62,7 @@ class EditActivity extends Component {
     
     return (
       <div>
+        
         <form onSubmit={this.handleSubmit}>
         <h1>Edit activity</h1>
         <p>Age Level</p>
