@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
 
@@ -8,8 +8,10 @@ class CreateProgram extends Component {
         const token = localStorage.getItem("token")
         setJwt(token)
         e.preventDefault()
+
         try {
             const { name, description, length, date } = e.target.elements
+            console.log(date.value)
             const response = await api.post('/programs', {
                 name: name.value,
                 description: description.value,
@@ -26,12 +28,6 @@ class CreateProgram extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <h1>Create a new program for your unit</h1>
-                    {/* <p>Age Level</p>
-                    <select onChange={this.handleChange} >
-                        {this.state.ageLevels.map((ageLevel, index) =>
-                            <option key={index} value={index}>{ageLevel.name}</option>
-                        )}; */}
-                    {/* </select> */}
                     <TextField
                         required
                         id="name"
@@ -52,7 +48,6 @@ class CreateProgram extends Component {
                     <TextField
                         required
                         id="date"
-                        // label="Date"
                         margin="normal"
                         type="date"
                     />
@@ -71,38 +66,6 @@ class CreateProgram extends Component {
 
         )
     }
-
-
-    // render() {
-    //     return (
-    //         <Paper style={style.Paper}>
-    //             <h1>Create a new program for your upcoming meeting</h1>
-    //             <form>
-    //                 {/* <input type='email' id='email' name="email" placeholder='Enter your email' required /><br /> */}
-    //                 {/* <input type='password' id='password' name="password" placeholder='Password' required /><br /> */}
-
-    //                 <TextField
-    //                     required
-    //                     id="standard-textarea"
-    //                     margin="normal"
-    //                     placeholder="Give your program a title"
-    //                     multiline
-    //                 />
-    //                 <br />
-    //                 <TextField
-    //                     required
-    //                     id="standard-textarea"
-    //                     margin="normal"
-    //                     placeholder="Write a short description of your program"
-    //                     multiline
-    //                 />
-    //                 <br />
-    //                 <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Next</Button>
-    //             </form>
-
-    //         </Paper>
-    //     )
-    // }
 }
 
 export default CreateProgram;

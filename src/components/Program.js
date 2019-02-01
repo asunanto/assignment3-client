@@ -14,6 +14,8 @@ class Program extends Component {
     return (
       <div>
         <h1>Program Title: {program && program.program.name}</h1>
+        <p>Date: {program && program.program.date}</p>
+        <p>Length: {program && program.program.length}</p>
         <p>Description: {program && program.program.description}</p>
         <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Edit program</Button>
         <p>Unit: {program && program.program.unit.name}</p>
