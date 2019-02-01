@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-import {Paper, Button } from '@material-ui/core/';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Paper, Button } from '@material-ui/core/'
 import store from '../config/store'
-import { fetchActivity } from '../services/ActivityService';
+import { fetchActivity } from '../services/ActivityService'
 
 const style = {
   Paper: {
-      'width': '500px',
-      'margin': '10% auto 0 auto',
-      'textAlign': 'center',
-      'padding': '5%'
+    'width': '500px',
+    'margin': '10% auto 0 auto',
+    'textAlign': 'center',
+    'padding': '5%'
 
   }
 }
-
 
 class Activity extends Component {
 
@@ -35,19 +34,4 @@ class Activity extends Component {
   }
 }
 
-// function Activity (props){
-//   const {title,description} = props.activity
-
-//   return (
-//           <div>
-//             <h1>Activity Title: {title}</h1>
-//             <p>Description: {description} </p>
-//             <p>Age Level: </p>
-//             <p>Category</p>
-//           </div>
-//         )
-
-// }
-
-
-export default Activity;
+export default Activity

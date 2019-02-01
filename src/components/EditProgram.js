@@ -12,20 +12,23 @@ class EditProgram extends Component {
 
 
 
-    handleSubmit = async (e) => {
+    handleSubmit = (e) => {
         const token = localStorage.getItem("token")
         setJwt(token)
         e.preventDefault()
         try {
             const { id } = this.props.match.params
             const { name, description, length, date } = e.target.elements
-            const response = await api.put(`/programs/${id}`, {
+            api.put(`/programs/${id}`, {
                 name: name.value,
                 description: description.value,
                 length: length.value,
                 date: date.value
 
             })
+                .then((response) => {
+                    this.props.history.push(`/user`)
+                })
         }
         catch (error) { console.error(error) }
     }

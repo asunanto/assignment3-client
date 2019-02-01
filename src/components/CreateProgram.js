@@ -4,7 +4,8 @@ import { Paper, Button, TextField } from '@material-ui/core'
 
 class CreateProgram extends Component {
 
-    handleSubmit = async (e) => {
+
+    handleSubmit = (e) => {
         const token = localStorage.getItem("token")
         setJwt(token)
         e.preventDefault()
@@ -12,12 +13,16 @@ class CreateProgram extends Component {
         try {
             const { name, description, length, date } = e.target.elements
             console.log(date.value)
-            const response = await api.post('/programs', {
+            api.post('/programs', {
                 name: name.value,
                 description: description.value,
                 date: date.value,
                 length: length.value
             })
+                .then((response) => {
+                    this.props.history.push(`/programs/${response.data._id}/updateactivities`)
+                })
+
         }
         catch (error) { console.error(error) }
     }
@@ -27,6 +32,7 @@ class CreateProgram extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    {console.log(this.props.history)}
                     <h1>Create a new program for your unit</h1>
                     <TextField
                         required
@@ -48,6 +54,7 @@ class CreateProgram extends Component {
                     <TextField
                         required
                         id="date"
+                        // label="Date"
                         margin="normal"
                         type="date"
                     />
@@ -68,4 +75,4 @@ class CreateProgram extends Component {
     }
 }
 
-export default CreateProgram;
+export default CreateProgram
