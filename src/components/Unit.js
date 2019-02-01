@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import { Fab, } from '@material-ui/core/';
+import { Fab, Paper } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add/';
 import { api, setJwt } from '../api/init'
 import { Link } from 'react-router-dom';
+
+const style = {
+  Paper: {
+      'width': '400px',
+      'margin': '10% auto 0 auto',
+      'textAlign': 'center',
+      'padding': '5%'
+
+  }
+}
+
 class Unit extends Component {
   state = {
     users: [],
@@ -20,42 +31,44 @@ class Unit extends Component {
       console.error('Could not fetch user', err)
     })
   }
+  
 
   render() {
     console.log(this.state.users[0])
     console.log(this.state.programs, 'programs')
     return (
-      <div>
+      <React.Fragment>
         <h1>{this.state.unit && this.state.unit.name}</h1>
-        <h2>Guide Hut</h2>
-        <p>Brisbane</p>
-        <h2>Unit Leaders</h2>
-
-        {this.state.users.map((user) => <p key={user._id}>{user.name.firstname} {user.name.lastname}</p>)}
-
-
-        <h2>Unit Programs</h2>
-
-        {this.state.programs.map((program) => {
-          return (
-
-            <li key={program._id}>{program.name}
-              <br />
-              <Link to={`/programs/${program._id}`}><button> View</button></Link>
-            </li>
-          )
-        })}
-
-        <Link to='/create-program'>
-          <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+        <Paper style={style.Paper}>
+          <h2>Guide Hut</h2>
+        </Paper>
+        <Paper style={style.Paper}>
+          <h2>Unit Leaders</h2>
+          {this.state.users.map((user) => <p key={user._id}>{user.name.firstname} {user.name.lastname}</p>)}
+        </Paper>
+        <Paper style={style.Paper}>
+          <h2>Unit Programs</h2>
+          {this.state.programs.map((program) => {
+            return (
+              <li key={program._id}>{program.name}
+                <br />
+                <Link to={`/programs/${program._id}`}><button> View</button></Link>
+              </li>
+            )
+          })}
+          <Link to='/create-program'>
+            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+              <AddIcon />
+            </Fab>
+          </Link>
+        </Paper>
+        <Paper style={style.Paper}>
+          <h2>Unit Members</h2>
+          <Fab className="plusButton" size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
             <AddIcon />
           </Fab>
-        </Link>
-        <h2>Unit Members</h2>
-        <Fab className="plusButton" size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-          <AddIcon />
-        </Fab>
-      </div>
+        </Paper>
+      </React.Fragment>
     )
   }
 }
