@@ -5,7 +5,7 @@ import { addActivity } from '../services/ActivityService';
 import {Redirect} from 'react-router-dom'
 class CreateActivity extends Component {
   state = {
-    ageLevel: null,
+    // ageLevel: null,
     ageLevels: []
   }
 
@@ -57,21 +57,25 @@ class CreateActivity extends Component {
                              props.history.push(`/activities/${activity._id}`);
                              }}>View</button> */}
         <form onSubmit={ (e) => {this.handleSubmit(e); this.props.history.push(`/user`)} }>
-        <h1>Create a new activity to add to our share library</h1>
+        <h1>Create new activity</h1>
         <p>Age Level</p>
         <select onChange={this.handleChange} >
           { this.state.ageLevels.map((ageLevel,index) =>
             <option key={index} value={index}>{ageLevel.name}</option>
-          )};
+          )}
         </select>
+        <br/>
         <TextField
           required
           id="title"
           label="Title"
           margin="normal"
           type="title"
+          style={{width: "20rem"}}
         />
+
             <br />
+
         <TextField
           required
           id="description"
@@ -79,10 +83,14 @@ class CreateActivity extends Component {
           margin="normal"
           type="description"
           multiline={true}
+          rowsMax="10"
+          style={{width: "25rem"}}
           // rows={2}
           // rowsMax={4}
         />
-            <br />
+
+            <br/>
+
         <p>Category</p>
         <TextField
           required
@@ -90,9 +98,10 @@ class CreateActivity extends Component {
           label="Length"
           margin="normal"
           type="length"
+          style={{width: "20rem"}}
         />
+
         <p>Attachments</p>
-        
         <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
         </form>
       </div>

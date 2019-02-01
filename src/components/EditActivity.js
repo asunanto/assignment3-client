@@ -5,6 +5,8 @@ import { Paper, Button, TextField } from '@material-ui/core'
 class EditActivity extends Component {
   state = {
     title: '',
+    description: '',
+    length: '',
     ageLevels: []
   }
 
@@ -60,13 +62,16 @@ class EditActivity extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-        <h1>Create a new activity to add to our share library</h1>
+        <h1>Edit activity</h1>
         <p>Age Level</p>
         <select value={ageIndex} onChange={this.handleChange} >
           { this.state.ageLevels.map((ageLevel,index) =>
             <option key={index} value={index}>{ageLevel.name}</option>
-          )};
+          )}
         </select>
+
+        <br/>
+
         <TextField
           required
           id="title"
@@ -75,8 +80,11 @@ class EditActivity extends Component {
           type="title"
           value={this.state.title}
           onChange={this._change('title')}
+          style={{width: "20rem"}}
         />
-        <br />
+
+        <br/>
+
         <TextField
           required
           id="description"
@@ -84,10 +92,14 @@ class EditActivity extends Component {
           margin="normal"
           type="description"
           value={this.state.description}
-          multiline={true}
           onChange={this._change('description')}
+          autoFocus="true"
+          rowsMax="10"
+          style={{width: "25rem"}}
         />
-        <br />
+
+        <br/>
+
         <p>Category</p>
         <TextField
           required
@@ -97,6 +109,8 @@ class EditActivity extends Component {
           type="length"
           value={this.state.length}
           onChange={this._change('length')}
+          focused="true"
+          style={{width: "20rem"}}
         />
         
         <p>Attachments</p>
