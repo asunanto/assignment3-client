@@ -32,7 +32,7 @@ import Activities from './components/Activities'
 import Program from './components/Program'
 import Programs from './components/Programs'
 import EditActivity from './components/EditActivity'
-
+import EditUser from './components/EditUser'
 
 class App extends Component {
 
@@ -147,6 +147,7 @@ class App extends Component {
                 } /> */}
                 <Route exact path="/activities/:id" exact component={Activity} />
                 <Route path="/activities/:id/edit" exact component={EditActivity} />
+                <Route path="/user/edit" exact component={EditUser} />
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
