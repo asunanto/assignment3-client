@@ -52,10 +52,6 @@ class CreateActivity extends Component {
   render() {
     return (
       <div>
-                                {/* <button onClick={() => {
-                            fetchActivity(activity._id);
-                             props.history.push(`/activities/${activity._id}`);
-                             }}>View</button> */}
         <form onSubmit={ (e) => {this.handleSubmit(e); this.props.history.push(`/user`)} }>
         <h1>Create a new activity to add to our share library</h1>
         <p>Age Level</p>

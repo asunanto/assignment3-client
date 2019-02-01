@@ -59,7 +59,8 @@ class EditActivity extends Component {
     
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        
+        <form onSubmit={(e) => {this.handleSubmit(e); this.props.history.push(`/user`)}}>
         <h1>Create a new activity to add to our share library</h1>
         <p>Age Level</p>
         <select value={ageIndex} onChange={this.handleChange} >
