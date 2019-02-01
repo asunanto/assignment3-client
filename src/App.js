@@ -31,6 +31,8 @@ import Activity from './components/Activity'
 import Activities from './components/Activities'
 import Program from './components/Program'
 import Programs from './components/Programs'
+import EditProgram from './components/EditProgram'
+import UpdateActivitytoProgram from './components/UpdateActivitytoProgram';
 import EditActivity from './components/EditActivity'
 import EditUser from './components/EditUser'
 
@@ -154,11 +156,14 @@ class App extends Component {
                 <Route path="/user" render={() => (<User handleSignOut={this.handleSignOut} />)} />
                 <Route path="/unit" exact component={Unit} />
                 <Route path="/create-program" exact component={CreateProgram} />
+                <Route path="/create-program" exact component={CreateProgram} />
                 <Route path="/create-activity" exact component={CreateActivity} />
                 <Route path="/library" exact component={Library} />
                 <Route path="/about" exact component={AboutPage} />
                 {/* <Route path="/activity" exact component={Activity} /> */}
                 <Route path="/programs/:id" exact component={Program} />
+                <Route path="/programs/:id/updateactivities" exact component={UpdateActivitytoProgram} />
+                <Route path="/programs/:id/editprogram" exact component={EditProgram} />
                 <Route component={NotFound} />
               </Switch>
             </Fragment>

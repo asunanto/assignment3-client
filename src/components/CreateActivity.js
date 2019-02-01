@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
 import { addActivity } from '../services/ActivityService';
+import { Redirect } from 'react-router-dom'
 class CreateActivity extends Component {
   state = {
     ageLevel: null,
@@ -36,10 +37,8 @@ class CreateActivity extends Component {
       addActivity(req)
     }
     catch (error) { console.error(error) }
-
-
-
   }
+
   // handleCreateActivity = async (event) => {
   //   event.preventDefault()
   //   const {title, description, length} = event.target.elements
@@ -51,10 +50,13 @@ class CreateActivity extends Component {
   //   })
   // }
   render() {
-
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        {/* <button onClick={() => {
+                            fetchActivity(activity._id);
+                             props.history.push(`/activities/${activity._id}`);
+                             }}>View</button> */}
+        <form onSubmit={(e) => { this.handleSubmit(e); this.props.history.push(`/user`) }}>
           <h1>Create a new activity to add to our share library</h1>
           <p>Age Level</p>
           <select onChange={this.handleChange} >
@@ -90,6 +92,7 @@ class CreateActivity extends Component {
             type="length"
           />
           <p>Attachments</p>
+
           <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
         </form>
       </div>

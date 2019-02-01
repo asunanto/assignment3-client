@@ -52,7 +52,7 @@ class Unit extends Component {
           </Fab>
         </Link>
         <h2>Unit Members</h2>
-        <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+        <Fab className="plusButton" size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
           <AddIcon />
         </Fab>
       </div>

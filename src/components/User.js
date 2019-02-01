@@ -73,10 +73,11 @@ class User extends Component {
           })
         }
 
-
-        <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-          <AddIcon />
-        </Fab>
+        <Link to='/create-activity/'>
+          <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+            <AddIcon />
+          </Fab>
+        </Link>
       </div >
     )
   }
