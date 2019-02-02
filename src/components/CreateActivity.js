@@ -5,7 +5,7 @@ import { addActivity } from '../services/ActivityService';
 import { Redirect } from 'react-router-dom'
 class CreateActivity extends Component {
   state = {
-    ageLevel: null,
+    // ageLevel: null,
     ageLevels: []
   }
 
