@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { Button } from '@material-ui/core/';
+import React, { Component } from 'react'
+import { Button } from '@material-ui/core/'
 import store from '../config/store'
-import { fetchProgram } from '../services/ProgramService';
+import { fetchProgram } from '../services/ProgramService'
+import { Link } from 'react-router-dom'
 
 class Program extends Component {
 
@@ -14,8 +15,11 @@ class Program extends Component {
     return (
       <div>
         <h1>Program Title: {program && program.program.name}</h1>
+        <p>Date: {program && program.program.date}</p>
+        <p>Length: {program && program.program.length}</p>
         <p>Description: {program && program.program.description}</p>
-        <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Edit program</Button>
+        <Link to={`/programs/${this.props.match.params.id}/editprogram`}><Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>
+          Edit Program</Button></Link>
         <p>Unit: {program && program.program.unit.name}</p>
         <p>Activities</p>
         <ul>
@@ -32,4 +36,4 @@ class Program extends Component {
     )
   }
 }
-export default Program;
+export default Program

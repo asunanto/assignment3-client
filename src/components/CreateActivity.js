@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
+<<<<<<< HEAD
 import { addActivity } from '../services/ActivityService';
 import { Redirect } from 'react-router-dom'
+=======
+import { addActivity } from '../services/ActivityService'
+import { Redirect } from 'react-router-dom'
+
+>>>>>>> 57dfee997c39c3777bbf65868d9333df7fdffe99
 class CreateActivity extends Component {
   state = {
     // ageLevel: null,
@@ -22,7 +28,7 @@ class CreateActivity extends Component {
     this.setState({ ageLevel: this.state.ageLevels[e.target.value] })
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     const token = localStorage.getItem("token")
     setJwt(token)
     e.preventDefault()
@@ -35,23 +41,15 @@ class CreateActivity extends Component {
         ageLevel: this.state.ageLevel
       }
       addActivity(req)
+      this.props.history.push(`/user`)
     }
     catch (error) { console.error(error) }
   }
 
-  // handleCreateActivity = async (event) => {
-  //   event.preventDefault()
-  //   const {title, description, length} = event.target.elements
-  //   const response = await api.post('/activities', {
-  //     title: title.value,
-  //     description: description.value,
-  //     length: length.value,
-  //     ageLevel: ageLevel.value
-  //   })
-  // }
   render() {
     return (
       <div>
+<<<<<<< HEAD
         {/* <button onClick={() => {
                             fetchActivity(activity._id);
                              props.history.push(`/activities/${activity._id}`);
@@ -63,6 +61,15 @@ class CreateActivity extends Component {
             {this.state.ageLevels.map((ageLevel, index) =>
               <option key={index} value={index}>{ageLevel.name}</option>
             )};
+=======
+        <form onSubmit={this.handleSubmit}>
+        <h1>Create a new activity to add to our share library</h1>
+        <p>Age Level</p>
+        <select onChange={this.handleChange} >
+          { this.state.ageLevels.map((ageLevel,index) =>
+            <option key={index} value={index}>{ageLevel.name}</option>
+          )};
+>>>>>>> 57dfee997c39c3777bbf65868d9333df7fdffe99
         </select>
           <TextField
             required

@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
 
 class CreateProgram extends Component {
 
-    handleSubmit = async (e) => {
+
+    handleSubmit = (e) => {
         const token = localStorage.getItem("token")
         setJwt(token)
         e.preventDefault()
+
         try {
             const { name, description, length, date } = e.target.elements
-            const response = await api.post('/programs', {
+            console.log(date.value)
+            api.post('/programs', {
                 name: name.value,
                 description: description.value,
                 date: date.value,
                 length: length.value
             })
+                .then((response) => {
+                    this.props.history.push(`/programs/${response.data._id}/updateactivities`)
+                })
+
         }
         catch (error) { console.error(error) }
     }
@@ -25,13 +32,8 @@ class CreateProgram extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    {console.log(this.props.history)}
                     <h1>Create a new program for your unit</h1>
-                    {/* <p>Age Level</p>
-                    <select onChange={this.handleChange} >
-                        {this.state.ageLevels.map((ageLevel, index) =>
-                            <option key={index} value={index}>{ageLevel.name}</option>
-                        )}; */}
-                    {/* </select> */}
                     <TextField
                         required
                         id="name"
@@ -71,38 +73,6 @@ class CreateProgram extends Component {
 
         )
     }
-
-
-    // render() {
-    //     return (
-    //         <Paper style={style.Paper}>
-    //             <h1>Create a new program for your upcoming meeting</h1>
-    //             <form>
-    //                 {/* <input type='email' id='email' name="email" placeholder='Enter your email' required /><br /> */}
-    //                 {/* <input type='password' id='password' name="password" placeholder='Password' required /><br /> */}
-
-    //                 <TextField
-    //                     required
-    //                     id="standard-textarea"
-    //                     margin="normal"
-    //                     placeholder="Give your program a title"
-    //                     multiline
-    //                 />
-    //                 <br />
-    //                 <TextField
-    //                     required
-    //                     id="standard-textarea"
-    //                     margin="normal"
-    //                     placeholder="Write a short description of your program"
-    //                     multiline
-    //                 />
-    //                 <br />
-    //                 <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Next</Button>
-    //             </form>
-
-    //         </Paper>
-    //     )
-    // }
 }
 
-export default CreateProgram;
+export default CreateProgram
