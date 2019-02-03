@@ -27,14 +27,18 @@ class UpdateActivitytoProgram extends Component {
         }
     }
 
-    handleSubmit = async (e) => {
+    handleSubmit = (e) => {
         const token = localStorage.getItem("token")
         setJwt(token)
         e.preventDefault()
         try {
-            const response = await api.put(`/programs/${this.props.match.params.id}/addActivities`,
+            api.put(`/programs/${this.props.match.params.id}/addActivities`,
                 this.state.options)
-            console.log(this.state.options)
+                // console.log(this.state.options)
+                .then((response) => {
+                    this.props.history.push(`/user`)
+                })
+
         }
         catch (error) { console.error(error) }
     }

@@ -1,37 +1,34 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
+import store from '../config/store'
+import { fetchProgram } from '../services/ProgramService'
 import { Paper, Button, TextField } from '@material-ui/core'
 
 class EditProgram extends Component {
-    state = {
-        name: '',
-        ageLevels: []
-    }
 
     componentDidMount() {
-        const { id } = this.props.match.params
-        api.get(`/programs/${id}`).then((res) => {
-            this.setState({ ...res.data })
-        }).catch((err) => {
-            console.error('Could not fetch program', err)
-        })
-
+        fetchProgram(this.props.match.params.id)
     }
 
 
-    handleSubmit = async (e) => {
+
+    handleSubmit = (e) => {
         const token = localStorage.getItem("token")
         setJwt(token)
         e.preventDefault()
         try {
             const { id } = this.props.match.params
             const { name, description, length, date } = e.target.elements
-            const response = await api.put(`/programs/${id}`, {
+            api.put(`/programs/${id}`, {
                 name: name.value,
                 description: description.value,
-                date: date.value,
-                length: length.value
+                length: length.value,
+                date: date.value
+
             })
+                .then((response) => {
+                    this.props.history.push(`/user`)
+                })
         }
         catch (error) { console.error(error) }
     }
@@ -41,13 +38,14 @@ class EditProgram extends Component {
         this.setState({
             [name]: event.target.value,
             [description]: event.target.value,
-            [date]: event.target.value,
-            [length]: event.target.length
+            [length]: event.target.length,
+            [date]: event.target.value
+
         });
     };
 
     render() {
-
+        const program = store.getState().program
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -58,7 +56,7 @@ class EditProgram extends Component {
                         label="Name"
                         margin="normal"
                         type="name"
-                        value={this.state.name}
+                        value={program && program.program.name}
                         onChange={this._change('name')}
                     />
                     <br />
@@ -68,7 +66,7 @@ class EditProgram extends Component {
                         label="Description"
                         margin="normal"
                         type="description"
-                        value={this.state.description}
+                        value={program && program.program.description}
                         multiline={true}
                         onChange={this._change('description')}
                     />
@@ -80,7 +78,7 @@ class EditProgram extends Component {
                         label="Length"
                         margin="normal"
                         type="length"
-                        value={this.state.length}
+                        value={program && program.program.length}
                         onChange={this._change('length')}
                     />
                     <br />
@@ -91,7 +89,7 @@ class EditProgram extends Component {
                         label="Date"
                         margin="normal"
                         type="date"
-                        value={this.state.date}
+                        value={program && program.program.date}
                         onChange={this._change('date')}
                     />
 
