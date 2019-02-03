@@ -42,6 +42,26 @@ class App extends Component {
     // fetchBookmarks()
     fetchActivities()
     fetchPrograms()
+
+    api.get('/users').then((res) => {
+      this.setState({ ...res.data })
+
+    }).catch((err) => {
+      console.error('Could not fetch user', err)
+    })
+
+    api.get('/users/programs').then((res) => {
+      this.setState({ ...this.state, programs: res.data })
+
+    }).catch((err) => {
+      console.error('Could not fetch programs', err)
+    })
+
+    api.get('/users/activities').then((res) => {
+      this.setState({ ...this.state, activities: res.data })
+    }).catch((err) => {
+      console.error('Could not fetch programs', err)
+    })
   }
 
   handleSignIn = async (event) => {
