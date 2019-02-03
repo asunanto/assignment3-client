@@ -26,10 +26,12 @@ class User extends Component {
       this.setState({ ...res.data })
 
     }).catch((err) => {
+
       console.error('Could not fetch user', err)
     })
 
     api.get('/users/programs').then((res) => {
+      console.log(res)
       this.setState({ ...this.state, programs: res.data })
 
     }).catch((err) => {
@@ -47,7 +49,9 @@ class User extends Component {
     return (
       <React.Fragment>
         <h1>Hi, {this.state.name && this.state.name.firstname}!</h1>
-        <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Manage Account</Button>
+        <Link to={'/user/edit'}>
+          <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Manage Account</Button>
+        </Link>
         <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535' }} onClick={this.props.handleSignOut}>Log Out</Button>
         <Paper style={style.Paper}>
           <h2>My Guide Hut</h2>
