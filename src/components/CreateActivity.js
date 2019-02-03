@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
-<<<<<<< HEAD
-import { addActivity } from '../services/ActivityService';
-import { Redirect } from 'react-router-dom'
-=======
 import { addActivity } from '../services/ActivityService'
 import { Redirect } from 'react-router-dom'
 
->>>>>>> 57dfee997c39c3777bbf65868d9333df7fdffe99
 class CreateActivity extends Component {
   state = {
     // ageLevel: null,
@@ -49,27 +44,13 @@ class CreateActivity extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
-        {/* <button onClick={() => {
-                            fetchActivity(activity._id);
-                             props.history.push(`/activities/${activity._id}`);
-                             }}>View</button> */}
-        <form onSubmit={(e) => { this.handleSubmit(e); this.props.history.push(`/user`) }}>
+        <form onSubmit={this.handleSubmit}>
           <h1>Create a new activity to add to our share library</h1>
           <p>Age Level</p>
           <select onChange={this.handleChange} >
             {this.state.ageLevels.map((ageLevel, index) =>
               <option key={index} value={index}>{ageLevel.name}</option>
             )};
-=======
-        <form onSubmit={this.handleSubmit}>
-        <h1>Create a new activity to add to our share library</h1>
-        <p>Age Level</p>
-        <select onChange={this.handleChange} >
-          { this.state.ageLevels.map((ageLevel,index) =>
-            <option key={index} value={index}>{ageLevel.name}</option>
-          )};
->>>>>>> 57dfee997c39c3777bbf65868d9333df7fdffe99
         </select>
           <TextField
             required
