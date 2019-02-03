@@ -1,37 +1,148 @@
-import React, { Component } from 'react'
+/* 
+  This ActivityCard component is a card-item that displays all the information of a single activity created by a given leader.
+  An ActivityCard may appear in several places across the app: 
+    - by itself, when a user wants to view the activity
+    - as part of the searchable activities library
+    - on associated user or unit profile pages, as a list-item
+*/
+
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { Paper, Button } from '@material-ui/core/'
 import store from '../config/store'
 import { fetchActivity } from '../services/ActivityService'
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import classnames from 'classnames';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+// import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import red from '@material-ui/core/colors/red';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const style = {
-  Paper: {
-    'width': '500px',
-    'margin': '10% auto 0 auto',
-    'textAlign': 'center',
-    'padding': '5%'
+const styles = theme => ({
+  card: {
+    maxWidth: 400,
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+  actions: {
+    display: 'flex',
+  },
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+  avatar: {
+    backgroundColor: red[500],
+  },
+});
 
-  }
-}
-
-class Activity extends Component {
+class ActivityCard extends React.Component {
+  state = { expanded: false };
 
   componentDidMount() {
     fetchActivity(this.props.match.params.id)
   }
 
-  render() {// strangely render here gets executed multiple times
+  handleExpandClick = () => {
+    this.setState(state => ({ expanded: !state.expanded }));
+  };
+
+  render() {
     const activity = store.getState().activity
+    const { classes } = this.props;
+
     return (
-      <Paper style={style.Paper}>
-        <h1>Activity Title: {activity && activity.title}</h1>
-        <p>Description: {activity && activity.description}</p>
-        <Link to={`/activities/${this.props.match.params.id}/edit`}><Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Edit Activity</Button></Link>
-        <p>Age Level: {activity && activity.ageLevel.name}</p>
-        <p>Category</p>
-      </Paper>
-    )
+      <Card className={classes.card}>
+        <CardHeader
+          // This isn't a user's avatar, but a simple "A" to distinguish this icon from other non-activity items
+          avatar={
+            <Avatar aria-label="Activity" className={classes.avatar}>
+              A
+            </Avatar>
+          }
+          action={
+            // Fix this button to allow users to option to edit etc.
+            <IconButton>
+              {/* Need to make the edit icon orange */}
+              <Link to={`/activities/${this.props.match.params.id}/edit`}><i class="material-icons">edit</i></Link> 
+            </IconButton>
+          }
+          title={activity && activity.title}
+          // Displays the appropriate age level for the activity as the subheader - .createdAt and .categories are missing though?!
+          subheader={activity && activity.ageLevel.name}
+        />
+
+        {/* If we have time: users can add images to an activity */}
+        {/* <CardMedia
+          className={classes.media}
+          image={activity && activity.image}
+          title={activity && activity.image.caption}
+        /> */}
+
+        {/* Displays a description of the activity */}
+        <CardContent>
+          <Typography component="p">
+            {activity && activity.description}
+          </Typography>
+        </CardContent>
+
+        {/* Add to Favourites and Share buttons not working yet */}
+        <CardActions className={classes.actions} disableActionSpacing>
+          <IconButton aria-label="Add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton aria-label="Share">
+            <ShareIcon />
+          </IconButton>
+
+          {/* An expandable section for activities with lots of information to display */}
+          <IconButton
+            className={classnames(classes.expand, {
+              [classes.expandOpen]: this.state.expanded,
+            })}
+            onClick={this.handleExpandClick}
+            aria-expanded={this.state.expanded}
+            aria-label="Show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            {/* We could have an expandable section for full-length description or step-by-step instructions  */}
+            <Typography paragraph>Instructions:</Typography>
+            <Typography paragraph>
+              {activity && activity.instructions}
+            </Typography>
+            <Typography paragraph>Resources Needed:</Typography>
+              {activity && activity.resources}
+          </CardContent>
+        </Collapse>
+
+      </Card>
+    );
   }
 }
 
-export default Activity
+ActivityCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ActivityCard);

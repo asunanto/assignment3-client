@@ -5,7 +5,7 @@ function Activities(props) {
     const activities = props.activities
     return (
         <div>
-            <h1>Activities</h1>
+            <h1>Search our library of guiding activities...</h1>
             <ul>
                 {activities.map(activity => (
                     <li key={activity._id}>
