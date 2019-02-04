@@ -22,6 +22,7 @@ class EditUser extends Component {
 
         api.get('/users').then((res) => {
             this.setState({ user: { ...res.data } })
+            console.log(this.state.user.unit)
         }).catch((err) => {
             console.error('Could not fetch user', err)
         })
@@ -54,6 +55,8 @@ class EditUser extends Component {
                 name: { ...this.state.user.name, firstname: event.target.value }
             }
         })
+
+        console.log(this.state.user._id)
     }
 
     _changeLastname = () => event => {
@@ -69,27 +72,45 @@ class EditUser extends Component {
         this.setState({
             user: {
                 ...this.state.user,
-                unit: { ...this.state.user.unit, name: event.target.value }
+                unit: this.state.units[event.target.value]
+            }
+        })
+
+        console.log(this.state.user.unit)
+    }
+
+    _changeGuideName = () => event => {
+        this.setState({
+            user: {
+                name: { ...this.state.user.name, guidename: event.target.value }
             }
         })
     }
 
-    handleSubmit(event) {
+    _changePhone = () => event => {
+        this.setState({
+            user: {
+                phone: { ...this.state.user, phone: event.target.value }
+            }
+        })
+    }
+    handleSubmit = (event) => {
         event.preventDefault()
         const token = localStorage.getItem("token")
         setJwt(token)
 
         // Getting values from the fields
-        const { email, firstname, lastname, unitName } = event.target.elements
+        const { email, firstname, lastname, guidename } = event.target.elements
 
         // Structuring the object and assigning fields
         const load = {
             email: email.value,
             name: {
                 firstname: firstname.value,
-                lastname: lastname.value
+                lastname: lastname.value,
+                guidename: guidename.value
             },
-            unit: { name: unitName.value }
+            unit: this.state.user.unit
         }
 
         // console.log(load)
@@ -100,6 +121,8 @@ class EditUser extends Component {
             .catch((err) => {
                 console.log(err)
             })
+
+        this.props.history.push(`/user`)
     }
 
     render() {
@@ -133,6 +156,29 @@ class EditUser extends Component {
                 value={this.state.user.name.lastname}
                 onChange={this._changeLastname()}
 
+            /> <br />
+
+            <TextField
+                required
+                id="guidename"
+                label="Guide Name"
+                margin="normal"
+                type="guidename"
+                value={this.state.user.name.guidename}
+                onChange={this._changeGuideName()}
+
+            />
+            <br />
+
+            <TextField
+                required
+                id="phone"
+                label="Guide Name"
+                margin="normal"
+                type="phone"
+                value={this.state.user.phone}
+                onChange={this._changePhone()}
+
             />
             <br />
 
@@ -140,8 +186,8 @@ class EditUser extends Component {
                 onChange={this._changeUnit()}
             >
                 {/* <option key={this.state.user.unit._id} value={this.state.user.unit.name}>{this.state.user.unit.name}</option> */}
-                {this.state.units.map((unit) =>
-                    <option key={unit._id} value={unit.name}>{unit.name}</option>
+                {this.state.units.map((unit, index) =>
+                    <option key={index} value={index}>{unit.name}</option>
                 )};
                 </select>
 
