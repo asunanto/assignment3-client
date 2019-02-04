@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from '../assets/logo.svg'
 import { Paper, Button, TextField } from '@material-ui/core'
-
+import { Link } from 'react-router-dom'
 const style = {
     Paper: {
         'width': '500px',
@@ -36,10 +36,10 @@ export default ({ handleSignIn, loginError }) => (
             />
             <br />
             <Button type="submit" variant="contained" color="primary">Sign In</Button>
-            {/* <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Register</Button> */}
+            <Link to='/signup'><Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Register</Button></Link>
         </form>
 
-    </Paper>
+    </Paper >
 )
 
 
