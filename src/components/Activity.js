@@ -93,7 +93,7 @@ class Activity extends React.Component {
           }
           title={activity && activity.title}
           // Displays the appropriate age level for the activity as the subheader - .createdAt and .categories are missing though?!
-          subheader={activity && activity.ageLevel.name}
+          subheader={activity && activity.ageLevel && activity.ageLevel.name}
         />
 
         {/* If we have time: users can add images to an activity */}

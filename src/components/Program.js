@@ -126,13 +126,14 @@ class Program extends React.Component {
             <ExpandMoreIcon />
           </IconButton>
         </CardActions>
+
+        {/* For each activity belonging to a particular program, show as ActivityCard in a list. */}
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            {/* We could have an expandable section for full-length activities  */}
             <Typography paragraph>Activities:</Typography>
-            <Typography paragraph>
+            <Typography>
               <ul>
-                {program && program.activities.map(activity => (
+                {program.activities && program.activities.map(activity => (
                   <li>
                     <Activity key={activity._id} activity={activity}></Activity>
                   </li>
@@ -147,16 +148,6 @@ class Program extends React.Component {
     );
   }
 }
-
-      //   <h1>Title: {program && program.program.name}</h1>
-      //   <p>Date: {program && program.program.date}</p>
-      //   <p>Length: {program && program.program.length}</p>
-      //   <p>Description: {program && program.program.description}</p>
-      //   <Link to={`/programs/${this.props.match.params.id}/editprogram`}><Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>
-      //     Edit Program</Button></Link>
-      //   <p>Unit: {program && program.program.unit.name}</p>
-
-      /* Display a list of activities to be run during a given program */
 
 Program.propTypes = {
   classes: PropTypes.object.isRequired,

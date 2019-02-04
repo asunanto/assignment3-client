@@ -8,6 +8,7 @@ import Program from './Program'
 // Should be renamed to ProgramList for clarity
 function Programs(props) {
     const programs = props.programs
+    
     return (
         <div>
             <h1>Programs List</h1>
