@@ -8,8 +8,8 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import store from '../config/store'
-import { fetchActivity } from '../services/ActivityService'
+// import store from '../config/store'
+// import { fetchActivity } from '../services/ActivityService'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
@@ -27,7 +27,6 @@ import orange from '@material-ui/core/colors/orange';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import Activities from './Activities.js' -- do I need to render to the DOM here?
 
 const styles = theme => ({
   card: {

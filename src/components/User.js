@@ -5,6 +5,7 @@ import { api, setJwt } from '../api/init'
 import { Link } from 'react-router-dom';
 import store from '../config/store'
 // import { fetchUser } from '../services/UserService'
+import Activity from './Activity.js'
 
 const style = {
   Paper: {
@@ -69,25 +70,22 @@ class User extends Component {
           <AddIcon />
         </Fab>
         </Paper>
+        
+        {/* For each activity created by the user, show as an ActivityCard */}
         <Paper style={style.Paper}>
         <h2>My Activities</h2>
-        {
-          this.state.activities.map((activity) => {
+          {this.state.activities.map((activity) => {
             return (
-              <div key={activity._id}>
-                <h3>{activity.name}</h3>
-                <p>{activity.description}</p>
-                <Link to={`/activities/${activity._id}`}><button>Visit</button></Link>
-              </div>
+              <Activity key={activity._id} activity={activity}></Activity>
             )
-          })
-        }
+          })}
       <Link to='/create-activity/'>
         <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
           <AddIcon />
         </Fab>
       </Link>
       </Paper>
+
      </React.Fragment> 
     )
   }

@@ -25,15 +25,3 @@ function Activities(props) {
 }
 
 export default Activities
-
-/* 
-function Activities(props) {
-const activities = props.activities 
-    return (
-        {activities.map(activity => (
-    <li key={activity._id}>
-        <p>Activity Title: {activity.title}</p>
-        <p>Description: {activity.description}</p>
-        <p>Age Level: {activity.ageLevel.name}</p>
-    </li>
-))} */
