@@ -53,9 +53,11 @@ class User extends Component {
         <Paper style={style.Paper}>
           <h2>My Guide Hut</h2>
         </Paper>
+
+        {/* For each program created by the user, show as a ProgramCard */}
         <Paper style={style.Paper}>
           <h2>My Programs</h2>
-        {
+          {
           this.state.programs.map((program) => {
             return (
               <div key={program._id}>
