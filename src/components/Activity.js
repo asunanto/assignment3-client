@@ -16,16 +16,18 @@ import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 // import CardMedia from '@material-ui/core/CardMedia';
+// import { removeActivity } from '../services/ActivityService'
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
+import orange from '@material-ui/core/colors/orange';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import Activities from './Activities.js' -- do I need to render to the DOM here?
 
 const styles = theme => ({
   card: {
@@ -49,23 +51,24 @@ const styles = theme => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: orange[500],
   },
 });
 
-class ActivityCard extends React.Component {
+// Should be renamed to ActivityCard for clarity
+class Activity extends React.Component {
   state = { expanded: false };
 
-  componentDidMount() {
-    fetchActivity(this.props.match.params.id)
-  }
+  // componentDidMount() {
+  //   fetchActivity(this.props.key)
+  // }
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
 
   render() {
-    const activity = store.getState().activity
+    const activity = this.props.activity //store.getState().activity
     const { classes } = this.props;
 
     return (
@@ -78,11 +81,15 @@ class ActivityCard extends React.Component {
             </Avatar>
           }
           action={
-            // Fix this button to allow users to option to edit etc.
+            // Fix this button to allow users to option to edit and delete etc.
             <IconButton>
               {/* Need to make the edit icon orange */}
-              <Link to={`/activities/${this.props.match.params.id}/edit`}><i class="material-icons">edit</i></Link> 
+              <Link to={`/activities/${this.props.key}/edit`}><i className="material-icons">edit</i></Link> 
             </IconButton>
+            // Make another option "delete":
+            // <button onClick={() => removeActivity(activity._id)}>Delete</button>
+            // Make another option "view":
+            //<a href={`/activities/${activity._id}`}><button>View</button></a>
           }
           title={activity && activity.title}
           // Displays the appropriate age level for the activity as the subheader - .createdAt and .categories are missing though?!
@@ -141,8 +148,8 @@ class ActivityCard extends React.Component {
   }
 }
 
-ActivityCard.propTypes = {
+Activity.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ActivityCard);
+export default withStyles(styles)(Activity);
