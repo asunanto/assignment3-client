@@ -91,17 +91,17 @@ class Program extends React.Component {
             // <a href={`/programs/${program._id}/editprogram`}><button>Edit</button></a>
           }
 
-          title={program && program.program.name}
+          title={program && program.name}
           // Displays date that the program will be run - .createdAt and .categories are missing though?!
-          subheader={program && program.program.date}
+          subheader={program && program.date}
         />
 
         {/* Displays a description of the program */}
         <CardContent>
-          <Typography paragraph>{program && program.program.unit.name}</Typography>
-          <Typography paragraph>{program && program.program.length}</Typography>
+          <Typography paragraph>{program && program.unit.name}</Typography>
+          <Typography paragraph>{program && program.length}</Typography>
           <Typography component="p">
-            {program && program.program.description}
+            {program && program.description}
           </Typography>
         </CardContent>
 
