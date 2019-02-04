@@ -47,7 +47,6 @@ class CreateActivity extends Component {
     return (
       <div>
       
-        <form onSubmit={this.handleSubmit}>
         <h1>Create a new activity to add to our share library</h1>
 
         <p>Age Level</p>
@@ -55,6 +54,7 @@ class CreateActivity extends Component {
           { this.state.ageLevels.map((ageLevel,index) =>
             <option key={index} value={index}>{ageLevel.name}</option>
           )}
+
         </select>
         <br/>
         <TextField

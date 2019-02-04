@@ -34,7 +34,7 @@ import Programs from './components/Programs'
 import EditProgram from './components/EditProgram'
 import UpdateActivitytoProgram from './components/UpdateActivitytoProgram';
 import EditActivity from './components/EditActivity'
-
+import EditUser from './components/EditUser'
 
 class App extends Component {
 
@@ -80,8 +80,18 @@ class App extends Component {
       const form = event.target
       const response = await api.post('/auth/register', {
         email: form.elements.email.value,
-        password: form.elements.password.value
+        password: form.elements.password.value,
+        name: {
+          fristname: form.elements.firstname.value,
+          lastname: form.elements.lastname.value,
+        },
+        membershipNo: form.elements.membershipNo,
+        phone: form.elements.phonenumber,
+        unit: {
+          name: ''
+        }
       })
+
       let token = response.data.token
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
@@ -149,6 +159,7 @@ class App extends Component {
                 } /> */}
                 <Route exact path="/activities/:id" exact component={Activity} />
                 <Route path="/activities/:id/edit" exact component={EditActivity} />
+                <Route path="/user/edit" exact component={EditUser} />
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
