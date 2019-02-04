@@ -5,6 +5,8 @@ import { Paper, Button, TextField } from '@material-ui/core'
 class EditActivity extends Component {
   state = {
     title: '',
+    description: '',
+    length: '',
     ageLevels: []
   }
 
@@ -12,6 +14,7 @@ class EditActivity extends Component {
     const { id } = this.props.match.params
     api.get(`/activities/${id}`).then((res) => {
       this.setState({ ...res.data })
+      console.log(res.data)
     }).catch((err) => {
       console.error('Could not fetch age activity', err)
     })
@@ -38,11 +41,10 @@ class EditActivity extends Component {
       api.put(`/activities/${id}`, {
         title: title.value,
         description: description.value,
-        length: length.value,
+        length: this.state.length,
         ageLevel: this.state.ageLevel
      })
      this.props.history.push(`/user`)
-
     }
     catch (error) { console.error(error) }
   }
@@ -63,49 +65,59 @@ class EditActivity extends Component {
       <div>
         
         <form onSubmit={this.handleSubmit}>
-          <h1>Edit Activity</h1>
-          <p>Age Level :
-
+        <h1>Edit activity</h1>
+        <p>Age Level</p>
         <select value={ageIndex} onChange={this.handleChange} >
-              {this.state.ageLevels.map((ageLevel, index) =>
-                <option key={index} value={index}>{ageLevel.name}</option>
-              )};
+          { this.state.ageLevels.map((ageLevel,index) =>
+            <option key={index} value={index}>{ageLevel.name}</option>
+          )}
         </select>
-          </p>
-          <TextField
-            required
-            id="title"
-            label="Title"
-            margin="normal"
-            type="title"
-            value={this.state.title}
-            onChange={this._change('title')}
-          />
-          <br />
-          <TextField
-            required
-            id="description"
-            label="Description"
-            margin="normal"
-            type="description"
-            value={this.state.description}
-            multiline={true}
-            onChange={this._change('description')}
-          />
-          <br />
-          <p>Category</p>
-          <TextField
-            required
-            id="length"
-            label="Length"
-            margin="normal"
-            type="length"
-            value={this.state.length}
-            onChange={this._change('length')}
-          />
 
-          <p>Attachments</p>
-          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
+        <br/>
+
+        <TextField
+          required
+          id="title"
+          label="Title"
+          margin="normal"
+          type="title"
+          value={this.state.title}
+          onChange={this._change('title')}
+          style={{width: "20rem"}}
+        />
+
+        <br/>
+
+        <TextField
+          required
+          id="description"
+          label="Description"
+          margin="normal"
+          type="description"
+          value={this.state.description}
+          onChange={this._change('description')}
+          // autoFocus="true"
+          rowsMax="10"
+          style={{width: "25rem"}}
+        />
+
+        <br/>
+
+        <p>Category</p>
+        <TextField
+          required
+          id="length"
+          label="Length"
+          margin="normal"
+          type="length"
+          value={this.state.length}
+          onChange={this._change('length')}
+          focused="true"
+          style={{width: "20rem"}}
+        />
+        
+        <p>Attachments</p>
+        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
         </form>
       </div>
 
