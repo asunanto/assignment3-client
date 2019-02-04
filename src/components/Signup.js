@@ -13,7 +13,7 @@ const style = {
 
 export default ({ handleSignup, signupError }) => (
     <Paper style={style.Paper}>
-
+        <h2>Register</h2>
         <form onSubmit={handleSignup}>
             {signupError && <p>{signupError}</p>}
             <TextField
