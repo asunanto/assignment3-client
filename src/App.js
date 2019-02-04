@@ -42,26 +42,6 @@ class App extends Component {
     // fetchBookmarks()
     fetchActivities()
     fetchPrograms()
-
-    api.get('/users').then((res) => {
-      this.setState({ ...res.data })
-
-    }).catch((err) => {
-      console.error('Could not fetch user', err)
-    })
-
-    api.get('/users/programs').then((res) => {
-      this.setState({ ...this.state, programs: res.data })
-
-    }).catch((err) => {
-      console.error('Could not fetch programs', err)
-    })
-
-    api.get('/users/activities').then((res) => {
-      this.setState({ ...this.state, activities: res.data })
-    }).catch((err) => {
-      console.error('Could not fetch programs', err)
-    })
   }
 
   handleSignIn = async (event) => {
@@ -100,8 +80,18 @@ class App extends Component {
       const form = event.target
       const response = await api.post('/auth/register', {
         email: form.elements.email.value,
-        password: form.elements.password.value
+        password: form.elements.password.value,
+        name: {
+          fristname: form.elements.firstname.value,
+          lastname: form.elements.lastname.value,
+        },
+        membershipNo: form.elements.membershipNo,
+        phone: form.elements.phonenumber,
+        unit: {
+          name: ''
+        }
       })
+
       let token = response.data.token
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
