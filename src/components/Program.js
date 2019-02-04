@@ -87,6 +87,8 @@ class Program extends React.Component {
             // <button onClick={() => removeProgram(program._id)}>Delete</button>
             // Make another option "view":
             //<a href={`/programs/${program._id}`}><button>View</button></a>
+            // <a href={`/programs/${program._id}`}><button>View</button></a>
+            // <a href={`/programs/${program._id}/editprogram`}><button>Edit</button></a>
           }
 
           title={program && program.program.name}

@@ -10,7 +10,7 @@ function Activities(props) {
     const activities = props.activities
     return (
         <div>
-            <h1>Activities Library</h1>
+            <h1>Activities List</h1>
             <ul>
             {/* For each activity in the activities array, pass key info to the ActivityCard and display all cards as list items */}
                 {activities.map(activity => (
