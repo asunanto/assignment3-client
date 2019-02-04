@@ -42,10 +42,14 @@ class Unit extends Component {
         <Paper style={style.Paper}>
           <h2>Guide Hut</h2>
         </Paper>
+
+        {/* Display a list of leaders associated with the unit */}
         <Paper style={style.Paper}>
           <h2>Unit Leaders</h2>
           {this.state.users.map((user) => <p key={user._id}>{user.name.firstname} {user.name.lastname}</p>)}
         </Paper>
+
+        {/* Display a list of programs created by the unit leaders */}
         <Paper style={style.Paper}>
           <h2>Unit Programs</h2>
           {this.state.programs.map((program) => {
@@ -62,6 +66,8 @@ class Unit extends Component {
             </Fab>
           </Link>
         </Paper>
+
+        {/* Display a list of members belonging to the unit */}
         <Paper style={style.Paper}>
           <h2>Unit Members</h2>
           <Fab className="plusButton" size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
