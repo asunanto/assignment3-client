@@ -1,10 +1,75 @@
 import React from 'react'
+import { Paper, Button, TextField } from '@material-ui/core'
+
+const style = {
+    Paper: {
+        'width': '500px',
+        'margin': '10% auto 0 auto',
+        'textAlign': 'center',
+        'padding': '5%'
+
+    }
+}
 
 export default ({ handleSignup, signupError }) => (
-    <form onSubmit={handleSignup}>
-        {signupError && <p>{signupError}</p>}
-        <label>Email: <input type="email" name="email" /></label><br />
-        <label>Password: <input type="password" name="password" /></label><br />
-        <button type="submit">Sign Up</button>
-    </form>
+    <Paper style={style.Paper}>
+
+        <form onSubmit={handleSignup}>
+            {signupError && <p>{signupError}</p>}
+            <TextField
+                required
+                id="email"
+                label="Email"
+                margin="normal"
+                type="email"
+            />
+            <br />
+            <TextField
+                required
+                id="password"
+                label="Password"
+                margin="normal"
+                type="password"
+            />
+            <br />
+
+            <TextField
+                required
+                id="fristname"
+                label="First Name"
+                margin="normal"
+                type="fristname"
+            />
+            <br />
+            <TextField
+                required
+                id="lastname"
+                label="Last Name"
+                margin="normal"
+                type="lastname"
+            />
+            <br />
+
+            <TextField
+                required
+                id="membershipNo"
+                label="Membership Number"
+                margin="normal"
+                type="membershipNo"
+            />
+            <br />
+
+            <TextField
+                required
+                id="phonenumber"
+                label="Phone Number"
+                margin="normal"
+                type="phonenumber"
+            />
+            <br />
+            <Button type="submit" variant="contained" color="primary">Register</Button>
+
+        </form>
+
+    </Paper>
 )
