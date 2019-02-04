@@ -38,7 +38,7 @@ class EditProgram extends Component {
         this.setState({
             [name]: event.target.value,
             [description]: event.target.value,
-            [length]: event.target.length,
+            [length]: event.target.value,
             [date]: event.target.value
 
         });

@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 
 class CreateActivity extends Component {
   state = {
-    // ageLevel: null,
+    ageLevel: {},
     ageLevels: []
   }
 
@@ -46,7 +46,7 @@ class CreateActivity extends Component {
   render() {
     return (
       <div>
-      
+        <form onChange={this.handleSubmit}>
         <h1>Create a new activity to add to our share library</h1>
 
         <p>Age Level</p>
