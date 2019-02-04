@@ -1,24 +1,27 @@
-import React from 'react'
-import { removeActivity } from '../services/ActivityService'
+/* 
+    This ActivityList component is a grid list of all activity items shown as ActivityCards.
+*/
 
+import React from 'react'
+import Activity from './Activity.js'
+
+// Should be renamed to ActivityList for clarity
 function Activities(props) {
     const activities = props.activities
     return (
         <div>
-            <h1>Activities</h1>
+            <h1>Activities Library</h1>
             <ul>
+            {/* For each activity in the activities array, pass key info to the ActivityCard and display all cards as list items */}
                 {activities.map(activity => (
-                    <li key={activity._id}>
-                        <p>Activity Title: {activity.title}</p>
-                        <p>Description: {activity.description}</p>
-                        <p>Age Level: {activity.ageLevel.name}</p>
-                        <a href={`/activities/${activity._id}`}><button>View</button></a>
-                        <a href={`/activities/${activity._id}/edit`}><button>Edit</button></a>
-                        <button onClick={() => removeActivity(activity._id)}>Delete</button>
+                    <li>
+                        {/* Display an activity item as an ActivityCard instance */}
+                        <Activity key={activity._id} activity={activity}></Activity>
                     </li>
                 ))}
             </ul>
         </div>
     )
 }
+
 export default Activities

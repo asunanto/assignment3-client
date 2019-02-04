@@ -36,6 +36,7 @@ import UpdateActivitytoProgram from './components/UpdateActivitytoProgram';
 import EditActivity from './components/EditActivity'
 import EditUser from './components/EditUser'
 
+
 class App extends Component {
 
   componentDidMount() {
@@ -157,7 +158,7 @@ class App extends Component {
                 {/* <Route path="/activities/:id" render={() => 
                   <Activity activity={activity}/>
                 } /> */}
-                <Route exact path="/activities/:id" exact component={Activity} />
+                <Route path="/activities/:id" exact component={Activity} />
                 <Route path="/activities/:id/edit" exact component={EditActivity} />
                 <Route path="/user/edit" exact component={EditUser} />
                 <Route exact path="/programs" render={() => (
@@ -174,6 +175,7 @@ class App extends Component {
                 <Route path="/programs/:id" exact component={Program} />
                 <Route path="/programs/:id/updateactivities" exact component={UpdateActivitytoProgram} />
                 <Route path="/programs/:id/editprogram" exact component={EditProgram} />
+                <Route path="/user/:id/manage-account" exact component={ManageAccount}/>
                 <Route component={NotFound} />
               </Switch>
             </Fragment>
