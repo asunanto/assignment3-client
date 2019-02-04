@@ -3,7 +3,7 @@ import { Button, Fab, Paper } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add/';
 import { api, setJwt } from '../api/init'
 import { Link } from 'react-router-dom';
-import store from '../config/store'
+// import store from '../config/store'
 // import { fetchUser } from '../services/UserService'
 import Activity from './Activity.js'
 

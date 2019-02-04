@@ -9,10 +9,11 @@ export default function Programs(props) {
             <ul>
                 {programs.map(program => (
                     <li>
-                        <p>{program.name}</p>
+                        {/* For each program in the programs array, show as a ProgramCard */}
+                        {/* <p>{program.name}</p>
                         <p>{program.description}</p>
                         <a href={`/programs/${program._id}`}><button>View</button></a>
-                        <a href={`/programs/${program._id}/editprogram`}><button>Edit</button></a>
+                        <a href={`/programs/${program._id}/editprogram`}><button>Edit</button></a> */}
                     </li>
                 ))}
             </ul>

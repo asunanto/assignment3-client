@@ -82,6 +82,7 @@ class Activity extends React.Component {
           action={
             // Fix this button to allow users to option to edit and delete etc.
             <IconButton>
+              {/* Make pre-filled edit page */}
               {/* Need to make the edit icon orange */}
               <Link to={`/activities/${this.props.key}/edit`}><i className="material-icons">edit</i></Link> 
             </IconButton>
