@@ -80,7 +80,7 @@ class Activity extends React.Component {
           // This isn't a user's avatar, but a simple "A" to distinguish this icon from other non-activity items
           avatar={
             <Avatar aria-label="Activity" className={classes.avatar}>
-              
+            A
             </Avatar>
           }
           action={

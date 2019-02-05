@@ -79,14 +79,12 @@ class User extends Component {
           Hi {this.state.name && this.state.name.firstname}!
         </Typography>
         <Link to={'/user/edit'}>
-          <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Manage Account</Button>
+          <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Manage Account</Button>
         </Link>
-        <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535' }} onClick={this.props.handleSignOut}>Log Out</Button>
+        <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535', margin: 15}} onClick={this.props.handleSignOut}>Log Out</Button>
         
         {/* 'My Guide Hut' Section */}
-        <Typography variant='subtitle1' gutterBottom>
-          My Guide Hut:
-        </Typography>
+        <h2>My Guide Hut</h2>
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <Paper style={styles.paper}>
@@ -94,11 +92,6 @@ class User extends Component {
             </Paper>
           </Grid>
         </Grid>
-        
-        {/* Displays Guide Hut info */}
-        {/* <Paper style={styles.Paper}>
-          <h2>My Guide Hut</h2>
-        </Paper> */}
 
         <Divider style={styles.divider} />
 
@@ -133,7 +126,7 @@ class User extends Component {
 
           {/* User can add a new activity (button) */}
           <Link to='/create-activity/'>
-            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange', margin: 15}}>
               <AddIcon />
             </Fab>
           </Link>
