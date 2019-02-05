@@ -13,7 +13,7 @@ const style = {
 
 export default ({ handleSignUp, signupError, units }) => (
     <Paper style={style.Paper}>
-        <h2>Register</h2>
+        <h2>Register as a New Leader</h2>
 
         <form onSubmit={handleSignUp}>
             {signupError && <p>{signupError}</p>}
@@ -82,7 +82,7 @@ export default ({ handleSignUp, signupError, units }) => (
                 {units.map((unit, index) =>
                     <option key={index} value={index}>{unit.name}</option>)}
             </select>
-            <Button type="submit" variant="contained" color="primary">Register</Button>
+            <Button type="submit" variant="contained" color="primary" style={{'margin': 15}}>Sign Up</Button>
 
         </form>
 
