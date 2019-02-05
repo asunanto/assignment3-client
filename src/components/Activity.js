@@ -148,6 +148,14 @@ class Activity extends React.Component {
 
 Activity.propTypes = {
   classes: PropTypes.object.isRequired,
+  activity: PropTypes.shape =  ({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    user: PropTypes.object,
+    ageLevel: PropTypes.object,
+    length: PropTypes.number
+  }).isRequired
 };
+
 
 export default withStyles(styles)(Activity);
