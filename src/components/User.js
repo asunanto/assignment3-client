@@ -37,7 +37,14 @@ const styles = theme => ({
 });
 
 class User extends Component {
-  state = { programs: [], activities: [], units: [], direction: 'row', justify: 'center', alignItems: 'center' }
+  state = { 
+    programs: [], 
+    activities: [], 
+    units: [], 
+    direction: 'row', 
+    justify: 'center', 
+    alignItems: 'center' 
+  }
 
   componentDidMount() {
     const token = localStorage.getItem('token')
@@ -68,7 +75,7 @@ class User extends Component {
 
 
   render() {
-    const { classes } = this.props;
+    // const { classes } = this.props;
     const { alignItems, direction, justify } = this.state;
     
     return (
@@ -112,10 +119,10 @@ class User extends Component {
             direction={direction} 
             justify={justify }
             alignItems={alignItems} >
-              {this.state.programs.map((program) => (
-                <Program key={program._id} program={program} />
-                )
-              )}
+            {this.state.programs.map((program) => (
+              <Program key={program._id} program={program} />
+              )
+            )}
           </Grid>
 
 
