@@ -4,6 +4,7 @@ import { Paper, Button, TextField } from '@material-ui/core'
 import { addActivity } from '../services/ActivityService'
 import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import UploadFile from './UploadFile'
 
 class CreateActivity extends Component {
   state = {
@@ -90,7 +91,7 @@ class CreateActivity extends Component {
 
             <br/>
 
-        <p>Category</p>
+        {/* <p>Category</p>
         <TextField
           required
           id="len"
@@ -98,10 +99,13 @@ class CreateActivity extends Component {
           margin="normal"
           type="len"
           style={{width: "20rem"}}
-        />
+        /> */}
 
+        {/* Allow user to upload a file relating to the activity the server */}
         <p>Attachments</p>
-        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
+        <UploadFile />
+        {/* <Button ref={UploadFile} type="file" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Upload File</Button> */}
+        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Submit</Button>
         </form>
       </div>
 
