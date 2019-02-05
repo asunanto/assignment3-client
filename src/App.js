@@ -158,7 +158,7 @@ class App extends Component {
                 {/* <Route path="/activities/:id" render={() => 
                   <Activity activity={activity}/>
                 } /> */}
-                <Route path="/activities/:id" exact component={Activity} />
+                <Route exact path="/activities/:id" exact component={Activity} />
                 <Route path="/activities/:id/edit" exact component={EditActivity} />
                 <Route path="/user/edit" exact component={EditUser} />
                 <Route exact path="/programs" render={() => (
