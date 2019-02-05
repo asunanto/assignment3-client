@@ -5,9 +5,20 @@ import { fetchProgram } from '../services/ProgramService'
 import { Paper, Button, TextField } from '@material-ui/core'
 
 class EditProgram extends Component {
+    state = {
+        program:{
+            name: '',
+            description: '',
+            length: '',
+            date: ''
+        },
+        activities:[]
+    }
 
     componentDidMount() {
-        fetchProgram(this.props.match.params.id)
+        api.get(`programs/${this.props.match.params.id}`).then((res)=> {
+            this.setState(res.data)
+        })  
     }
 
 
@@ -22,7 +33,7 @@ class EditProgram extends Component {
             api.put(`/programs/${id}`, {
                 name: name.value,
                 description: description.value,
-                length: length.value,
+                length: this.state.program.length,
                 date: date.value
 
             })
@@ -35,17 +46,16 @@ class EditProgram extends Component {
 
 
     _change = (name, description, length, date) => event => {
-        this.setState({
+        this.setState({program: {
             [name]: event.target.value,
             [description]: event.target.value,
-            [length]: event.target.length,
+            [length]: event.target.value,
             [date]: event.target.value
 
-        });
+        }});
     };
 
     render() {
-        const program = store.getState().program
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -56,7 +66,7 @@ class EditProgram extends Component {
                         label="Name"
                         margin="normal"
                         type="name"
-                        value={program && program.program.name}
+                        value={ this.state.program.name}
                         onChange={this._change('name')}
                     />
                     <br />
@@ -66,7 +76,7 @@ class EditProgram extends Component {
                         label="Description"
                         margin="normal"
                         type="description"
-                        value={program && program.program.description}
+                        value={this.state.program.description}
                         multiline={true}
                         onChange={this._change('description')}
                     />
@@ -78,7 +88,7 @@ class EditProgram extends Component {
                         label="Length"
                         margin="normal"
                         type="length"
-                        value={program && program.program.length}
+                        value={this.state.program.length}
                         onChange={this._change('length')}
                     />
                     <br />
@@ -89,7 +99,7 @@ class EditProgram extends Component {
                         label="Date"
                         margin="normal"
                         type="date"
-                        value={program && program.program.date}
+                        value={this.state.program.date}
                         onChange={this._change('date')}
                     />
 

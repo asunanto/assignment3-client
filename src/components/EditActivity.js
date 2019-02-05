@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
+import { updateActivity } from '../services/ActivityService';
 
 class EditActivity extends Component {
+
   state = {
     title: '',
+    description: '',
+    length: '',
     ageLevels: []
   }
 
@@ -34,15 +38,16 @@ class EditActivity extends Component {
     e.preventDefault()
     try {
       const { id } = this.props.match.params
-      const { title, description, length } = e.target.elements
-      api.put(`/activities/${id}`, {
+      const { title, description} = e.target.elements
+      const req = {
+        id,
         title: title.value,
         description: description.value,
-        length: length.value,
+        len: this.state.length,   // i know this is pretty bad naming please forgive us
         ageLevel: this.state.ageLevel
-     })
-     this.props.history.push(`/user`)
-
+      }
+      updateActivity(req)
+      this.props.history.push(`/user`)
     }
     catch (error) { console.error(error) }
   }
@@ -63,49 +68,59 @@ class EditActivity extends Component {
       <div>
         
         <form onSubmit={this.handleSubmit}>
-          <h1>Edit Activity</h1>
-          <p>Age Level :
-
+        <h1>Edit activity</h1>
+        <p>Age Level</p>
         <select value={ageIndex} onChange={this.handleChange} >
-              {this.state.ageLevels.map((ageLevel, index) =>
-                <option key={index} value={index}>{ageLevel.name}</option>
-              )};
+          { this.state.ageLevels.map((ageLevel,index) =>
+            <option key={index} value={index}>{ageLevel.name}</option>
+          )}
         </select>
-          </p>
-          <TextField
-            required
-            id="title"
-            label="Title"
-            margin="normal"
-            type="title"
-            value={this.state.title}
-            onChange={this._change('title')}
-          />
-          <br />
-          <TextField
-            required
-            id="description"
-            label="Description"
-            margin="normal"
-            type="description"
-            value={this.state.description}
-            multiline={true}
-            onChange={this._change('description')}
-          />
-          <br />
-          <p>Category</p>
-          <TextField
-            required
-            id="length"
-            label="Length"
-            margin="normal"
-            type="length"
-            value={this.state.length}
-            onChange={this._change('length')}
-          />
 
-          <p>Attachments</p>
-          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
+        <br/>
+
+        <TextField
+          required
+          id="title"
+          label="Title"
+          margin="normal"
+          type="title"
+          value={this.state.title}
+          onChange={this._change('title')}
+          style={{width: "20rem"}}
+        />
+
+        <br/>
+
+        <TextField
+          required
+          id="description"
+          label="Description"
+          margin="normal"
+          type="description"
+          value={this.state.description}
+          onChange={this._change('description')}
+          // autoFocus="true"
+          rowsMax="10"
+          style={{width: "25rem"}}
+        />
+
+        <br/>
+
+        <p>Category</p>
+        <TextField
+          required
+          id="length"
+          label="Length"
+          margin="normal"
+          type="length"
+          value={this.state.length}
+          onChange={this._change('length')}
+          focused="true"
+          style={{width: "20rem"}}
+        />
+        
+        <p>Attachments</p>
+        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
         </form>
       </div>
 
