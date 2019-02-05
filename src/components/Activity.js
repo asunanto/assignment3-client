@@ -32,7 +32,8 @@ import decodeJWT from 'jwt-decode'
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    width: 400,
+    margin: 15
   },
   media: {
     height: 0,

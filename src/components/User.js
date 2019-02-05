@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 // import { fetchUser } from '../services/UserService'
 import Activity from './Activity'
 import Program from './Program'
-import Unit from './Unit'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -59,12 +58,6 @@ class User extends Component {
     }).catch((err) => {
       console.error('Could not fetch programs', err)
     })
-    // Retrieve unit info for particular unit the user belongs to
-    // api.get('/users/units').then((res) => {
-    //   this.setState({ units: res.data })
-    // }).catch((err) => {
-    //   console.error('Could not fetch units', err)
-    // })
   }
 
   handleChange = key => (event, value) => {
@@ -81,30 +74,6 @@ class User extends Component {
     return (
       <React.Fragment>
 
-      <Grid container className={classes.root}>
-        <Grid item xs={12}>
-          <Grid 
-            container
-            spacing={16}
-            className={classes.demo}
-            alignItems={alignItems}
-            direction={direction}
-            justify={justify}
-          >
-             {[0, 1, 2].map(value => (
-              <Grid key={value} item>
-                <Paper
-                  className={classes.paper}
-                  style={{ paddingTop: (value + 1) * 10, paddingBottom: (value + 1) * 10 }}
-                >
-                  {`Cell ${value + 1}`}
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
-      </Grid>
-
         {/* Header with logo, user name, action buttons to manage account and logout */}
         <Typography variant='h1' gutterBottom>
           Hi {this.state.name && this.state.name.firstname}!
@@ -114,7 +83,7 @@ class User extends Component {
         </Link>
         <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535' }} onClick={this.props.handleSignOut}>Log Out</Button>
         
-        {/* Guide Hut */}
+        {/* 'My Guide Hut' Section */}
         <Typography variant='subtitle1' gutterBottom>
           My Guide Hut:
         </Typography>
@@ -133,60 +102,54 @@ class User extends Component {
 
         <Divider style={styles.divider} />
 
-          {/* Displays programs created by the user */}
-        {/* <Paper style={styles.paper}> */}
+          {/* 'My Programs' Section */}
           <h2>My Programs</h2>
+
+          {/* Users can add a new program (button) */}
+          <Link to='/create-activity/'>
+            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange', margin: 15 }}>
+              <AddIcon />
+            </Fab>
+          </Link>
+
+          {/* User can view all programs they've created as cards */}
           <Grid 
             container 
             spacing={16}
             direction={direction} 
             justify={justify }
             alignItems={alignItems} >
-            {/* User can view all programs they've created (cards) */}
               {this.state.programs.map((program) => (
-                <Program key={program._id} program={program}>
-                  <Paper
-                    className={classes.paper}
-                    style={{ paddingTop: (program + 1) * 10, paddingBottom: (program + 1) * 10 }}
-                  >
-                    {`Cell ${program + 1}`}
-                  </Paper>
-                </Program>
+                <Program key={program._id} program={program} />
                 )
               )}
-            {/* </Paper> */}
           </Grid>
 
-          {/* Users can add a new program (button) */}
-          <Link to='/create-activity/'>
-            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-              <AddIcon />
-            </Fab>
-          </Link>
-        {/* </Paper> */}
 
         <Divider style={styles.divider} />
         
-        {/* Displays activities created by the user */}
-        {/* <Paper style={styles.Paper}> */}
+        {/* 'My Activities' Section */}
           <h2>My Activities</h2>
-            {/* User can view all activities they've created (cards) */}
-            {this.state.activities.map((activity) => {
-              return (
-                <div key={activity._id}>
-                  <Activity activity={activity}></Activity>
-                </div>
-              )
-            })}
 
-          {/* Users can add a new activity (button) */}
+          {/* User can add a new activity (button) */}
           <Link to='/create-activity/'>
             <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
               <AddIcon />
             </Fab>
           </Link>
 
-        {/* </Paper> */}
+          {/* User can view all activities they've created as cards */}
+          <Grid 
+            container 
+            spacing={16}
+            direction={direction} 
+            justify={justify }
+            alignItems={alignItems} >
+              {this.state.activities.map((activity) => (
+                  <Activity key={activity._id} activity={activity} />
+              )
+            )}
+          </Grid>
 
       </React.Fragment> 
     )

@@ -28,7 +28,10 @@ import Activity from './Activity'
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    width: 400,
+    margin: 15,
+    // marginBottom: 20,
+
   },
   media: {
     height: 0,
