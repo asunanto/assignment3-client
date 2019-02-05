@@ -183,7 +183,7 @@ class App extends Component {
                 {/* <Route path="/activity" exact component={Activity} /> */}
                 <Route path="/programs/:id" exact component={Program} />
                 <Route path="/programs/:id/updateactivities" exact component={UpdateActivitytoProgram} />
-                <Route path="/programs/:id/editprogram" exact component={EditProgram} />
+                <Route path="/programs/:id/edit" exact component={EditProgram} />
                 <Route component={NotFound} />
               </Switch>
             </Fragment>

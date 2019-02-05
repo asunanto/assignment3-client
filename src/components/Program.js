@@ -81,7 +81,7 @@ class Program extends React.Component {
             // Fix this button to allow users to option to edit and delete etc.
             <IconButton>
               {/* Need to make the edit icon orange */}
-              <Link to={`/programs/${this.props.key}/edit`}><i className="material-icons">edit</i></Link> 
+              <Link to={`/programs/${program._id}/edit`}><i className="material-icons">edit</i></Link> 
             </IconButton>
             // Make another option "delete":
             // <button onClick={() => removeProgram(program._id)}>Delete</button>
@@ -128,7 +128,7 @@ class Program extends React.Component {
         </CardActions>
 
         {/* For each activity belonging to a particular program, show as ActivityCard in a list. */}
-        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+        {/* <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>Activities:</Typography>
             <Typography>
@@ -141,7 +141,7 @@ class Program extends React.Component {
             </ul>
             </Typography>
           </CardContent>
-        </Collapse>
+        </Collapse> */}
 
     </Card>
 
