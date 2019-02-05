@@ -126,6 +126,7 @@ class EditUser extends Component {
     }
 
     render() {
+        const defaultUnitIndex = this.state.user.unit && this.state.units.findIndex(unit => unit.name == this.state.user.unit.name)
         return (<form onSubmit={this.handleSubmit}>
 
             <h2>Edit Profile</h2>
@@ -182,7 +183,7 @@ class EditUser extends Component {
             />
             <br />
 
-            <select type='unitName' id='unitName'
+            <select value={defaultUnitIndex} type='unitName' id='unitName'
                 onChange={this._changeUnit()}
             >
                 {/* <option key={this.state.user.unit._id} value={this.state.user.unit.name}>{this.state.user.unit.name}</option> */}
