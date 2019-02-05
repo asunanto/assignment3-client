@@ -19,7 +19,8 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import { fetchActivities } from './services/ActivityService'
 import { fetchPrograms } from './services/ProgramService'
 
-import TabBar from './components/TabBar'
+// import TabBar from './components/TabBar'
+import BottomNav from './components/BottomNav'
 import NotFound from './components/NotFound'
 import AboutPage from './components/AboutPage'
 import User from './components/User'
@@ -140,8 +141,11 @@ class App extends Component {
           <Router>
 
             <Fragment>
-              <TabBar tokenDetails={tokenDetails} />
+              {/* <TabBar tokenDetails={tokenDetails} /> */}
               {/* {!tokenDetails ? <Redirect from="*" to="/login" />:null} */}
+
+              <BottomNav tokenDetails={tokenDetails} />
+
               <Switch>
                 <Route exact path='/login' render={() => {
                   if (tokenDetails) {
