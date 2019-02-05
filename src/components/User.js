@@ -3,9 +3,10 @@ import { Button, Fab, Paper } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add/';
 import { api, setJwt } from '../api/init'
 import { Link } from 'react-router-dom';
-import store from '../config/store'
+// import store from '../config/store'
 // import { fetchUser } from '../services/UserService'
-import Activity from './Activity.js'
+import Activity from './Activity'
+import Program from './Program'
 
 const style = {
   Paper: {
@@ -57,22 +58,20 @@ class User extends Component {
         <Paper style={style.Paper}>
           <h2>My Guide Hut</h2>
         </Paper>
+
+        {/* For each program created by the user, show as a ProgramCard */}
         <Paper style={style.Paper}>
           <h2>My Programs</h2>
-          {
-            this.state.programs.map((program) => {
+            {this.state.programs.map((program) => {
               return (
-                <div key={program._id}>
-                  <h3>{program.name}</h3>
-                  <p>{program.description}</p>
-                  <Link to={`programs/${program._id}`}><button>Visit</button></Link>
-                </div>
+                <Program key={program._id} program={program}></Program>
               )
-            })
-          }
-          <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-            <AddIcon />
-          </Fab>
+            })}
+            <Link to='/create-activity/'>
+              <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+                <AddIcon />
+              </Fab>
+            </Link>
         </Paper>
         
         {/* For each activity created by the user, show as an ActivityCard */}

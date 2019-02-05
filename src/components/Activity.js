@@ -69,21 +69,21 @@ class Activity extends React.Component {
   render() {
     const activity = this.props.activity //store.getState().activity
     const { classes } = this.props;
-
     return (
       <Card className={classes.card}>
         <CardHeader
           // This isn't a user's avatar, but a simple "A" to distinguish this icon from other non-activity items
           avatar={
             <Avatar aria-label="Activity" className={classes.avatar}>
-              A
+              
             </Avatar>
           }
           action={
             // Fix this button to allow users to option to edit and delete etc.
             <IconButton>
+              {/* Make pre-filled edit page */}
               {/* Need to make the edit icon orange */}
-              <Link to={`/activities/${this.props.key}/edit`}><i className="material-icons">edit</i></Link> 
+              <Link to={`/activities/${activity._id}/edit`}><i className="material-icons">edit</i></Link> 
             </IconButton>
             // Make another option "delete":
             // <button onClick={() => removeActivity(activity._id)}>Delete</button>
@@ -92,7 +92,7 @@ class Activity extends React.Component {
           }
           title={activity && activity.title}
           // Displays the appropriate age level for the activity as the subheader - .createdAt and .categories are missing though?!
-          subheader={activity && activity.ageLevel.name}
+          subheader={activity && activity.ageLevel && activity.ageLevel.name}
         />
 
         {/* If we have time: users can add images to an activity */}
@@ -149,6 +149,14 @@ class Activity extends React.Component {
 
 Activity.propTypes = {
   classes: PropTypes.object.isRequired,
+  activity: PropTypes.shape =  ({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    user: PropTypes.object,
+    ageLevel: PropTypes.object,
+    length: PropTypes.number
+  }).isRequired
 };
+
 
 export default withStyles(styles)(Activity);
