@@ -15,9 +15,9 @@ function Activities(props) {
             <ul>
             {/* For each activity in the activities array, pass key info to the ActivityCard and display all cards as list items */}
                 {activities.map(activity => (
-                    <li>
+                    <li key={activity._id} >
                         {/* Display an activity item as an ActivityCard instance */}
-                        <Activity key={activity._id} activity={activity}></Activity>
+                        <Activity activity={activity}></Activity>
                     </li>
                 ))}
             </ul>
