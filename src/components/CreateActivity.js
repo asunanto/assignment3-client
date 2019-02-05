@@ -91,7 +91,7 @@ class CreateActivity extends Component {
 
             <br/>
 
-        {/* <p>Category</p>
+        <p>Category</p>
         <TextField
           required
           id="len"
@@ -99,12 +99,11 @@ class CreateActivity extends Component {
           margin="normal"
           type="len"
           style={{width: "20rem"}}
-        /> */}
+        />
 
         {/* Allow user to upload a file relating to the activity the server */}
         <p>Attachments</p>
         <UploadFile />
-        {/* <Button ref={UploadFile} type="file" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Upload File</Button> */}
         <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Submit</Button>
         </form>
       </div>
