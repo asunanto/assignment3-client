@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import TabBarStyles from '../styles/TabBarStyles'
 
 class TabBar extends Component {
+  
   render() {
     return (
+      this.props.tokenDetails ? (
       <footer>
         <TabBarStyles>
           <Link to="/user"><i style={{ color: (window.location.pathname === '/user' ? '#EC963A' : '#F5F9FF')}} className="material-icons">account_circle</i></Link>
@@ -13,7 +15,7 @@ class TabBar extends Component {
           <Link to="/activities"><i style={{ color: (window.location.pathname === '/activities' ? '#EC963A' : '#F5F9FF')}} className="material-icons">list</i></Link>
           <Link to="/about"><i style={{ color: (window.location.pathname === '/about' ? '#EC963A' : '#F5F9FF')}} className="material-icons">info</i></Link>
         </TabBarStyles>
-      </footer>
+      </footer>) : null
     )
   }
 }
