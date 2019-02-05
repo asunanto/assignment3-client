@@ -4,6 +4,7 @@
 
 import React from 'react'
 import Activity from './Activity.js'
+import PropTypes from 'prop-types'
 
 // Should be renamed to ActivityList for clarity
 function Activities(props) {
@@ -22,6 +23,9 @@ function Activities(props) {
             </ul>
         </div>
     )
+}
+Activities.propTypes = {
+    activities: PropTypes.array
 }
 
 export default Activities

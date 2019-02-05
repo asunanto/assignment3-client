@@ -15,6 +15,7 @@ function Programs(props) {
             <ul>
             {/* For each program in the programs array, pass key info to ProgramCard and display all programs as list items*/}
                 {programs.map(program => (
+
                     <li>
                         {/* Display a program item as a ProgramCard instance */}
                         <Program key={program._id} program={program}></Program>

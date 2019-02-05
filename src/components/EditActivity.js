@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
+import { updateActivity } from '../services/ActivityService';
 
 class EditActivity extends Component {
+
   state = {
     title: '',
     description: '',
@@ -14,7 +16,6 @@ class EditActivity extends Component {
     const { id } = this.props.match.params
     api.get(`/activities/${id}`).then((res) => {
       this.setState({ ...res.data })
-      console.log(res.data)
     }).catch((err) => {
       console.error('Could not fetch age activity', err)
     })
@@ -37,14 +38,16 @@ class EditActivity extends Component {
     e.preventDefault()
     try {
       const { id } = this.props.match.params
-      const { title, description, length } = e.target.elements
-      api.put(`/activities/${id}`, {
+      const { title, description} = e.target.elements
+      const req = {
+        id,
         title: title.value,
         description: description.value,
-        length: this.state.length,
+        len: this.state.length,   // i know this is pretty bad naming please forgive us
         ageLevel: this.state.ageLevel
-     })
-     this.props.history.push(`/user`)
+      }
+      updateActivity(req)
+      this.props.history.push(`/user`)
     }
     catch (error) { console.error(error) }
   }

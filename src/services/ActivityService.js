@@ -26,10 +26,31 @@ const addActivity = (activity) => {
         description: activity.description,
         length: activity.length,
         ageLevel: activity.ageLevel
-     }).then((res)=>{
+    }).then((res)=>{
         const newActivities = [...store.getState().activities,res.data]
         store.dispatch(setActivitiesAction(newActivities))
-     })
+    }).catch((err) => {
+        console.error('Could not add activities', err)
+    })
+}
+
+const updateActivity = (activity) => {
+    const {title, description, len, ageLevel, id} = activity
+    const index = store.getState().activities.findIndex(activity => activity._id === id)
+    api.put(`/activities/${id}`, {
+        title,
+        description,
+        length: len,
+        ageLevel
+    }).then((res)=>{
+        if (index >= 0) {
+            const newActivities = [...store.getState().activities]
+            newActivities[index] = res.data
+            store.dispatch(setActivitiesAction(newActivities))
+        }
+    }).catch((err) => {
+        console.error('Could not update activities', err)
+    })
 }
 
 const removeActivity = (id) => {
@@ -43,4 +64,4 @@ const removeActivity = (id) => {
   
   }
 
-export { fetchActivities, fetchActivity, removeActivity, addActivity }
+export { fetchActivities, fetchActivity, removeActivity, addActivity, updateActivity }

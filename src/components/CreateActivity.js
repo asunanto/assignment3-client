@@ -3,6 +3,7 @@ import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
 import { addActivity } from '../services/ActivityService'
 import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class CreateActivity extends Component {
   state = {
@@ -29,6 +30,12 @@ class CreateActivity extends Component {
     e.preventDefault()
     try {
       const { title, description, len } = e.target.elements
+      console.log('title, description, length', title.value, description.value, len.value)
+      const length= len.value
+      if (!length.match(/[a-z][A-Z]/g) || length<1 || length >120) {
+        alert ('Length must be between 1 and 120 minutes and digits only')
+        return
+      }
       
       const req = {
         title: title.value,
@@ -46,7 +53,7 @@ class CreateActivity extends Component {
   render() {
     return (
       <div>
-        <form onChange={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
         <h1>Create a new activity to add to our share library</h1>
 
         <p>Age Level</p>
