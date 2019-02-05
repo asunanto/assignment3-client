@@ -27,7 +27,8 @@ import orange from '@material-ui/core/colors/orange';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import store from '../config/store';
+import decodeJWT from 'jwt-decode'
 const styles = theme => ({
   card: {
     maxWidth: 400,
@@ -69,6 +70,8 @@ class Activity extends React.Component {
   render() {
     const activity = this.props.activity //store.getState().activity
     const { classes } = this.props;
+    const token = store.getState().token
+    const tokenDetails = token && decodeJWT(token)
     return (
       <Card className={classes.card}>
         <CardHeader
@@ -80,11 +83,15 @@ class Activity extends React.Component {
           }
           action={
             // Fix this button to allow users to option to edit and delete etc.
+          
+            (tokenDetails && tokenDetails.sub) == activity.user._id ?
             <IconButton>
               {/* Make pre-filled edit page */}
               {/* Need to make the edit icon orange */}
               <Link to={`/activities/${activity._id}/edit`}><i className="material-icons">edit</i></Link> 
             </IconButton>
+            :null
+          
             // Make another option "delete":
             // <button onClick={() => removeActivity(activity._id)}>Delete</button>
             // Make another option "view":
