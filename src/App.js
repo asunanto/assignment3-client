@@ -37,12 +37,18 @@ import EditActivity from './components/EditActivity'
 import EditUser from './components/EditUser'
 
 
+
 class App extends Component {
 
   componentDidMount() {
     // fetchBookmarks()
     fetchActivities()
     fetchPrograms()
+    const token = localStorage.getItem('token')
+    if (token) {
+      store.dispatch(setTokenAction(token))
+      setJwt(token)
+    }
   }
 
   handleSignIn = async (event) => {
@@ -57,8 +63,7 @@ class App extends Component {
       localStorage.setItem('token', token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
-
-      // fetchBookmarks()
+      fetchActivities()
       fetchPrograms()
     } catch (error) {
       store.dispatch(setLoginErrorAction(error.message))
@@ -69,9 +74,10 @@ class App extends Component {
     api.get('/auth/logout').then(() => {
       localStorage.removeItem('token')
       store.dispatch(setTokenAction(null))
-      store.dispatch(setBookmarksAction([]))
+      // store.dispatch(setBookmarksAction([]))
       store.dispatch(setActivitiesAction([]))
       store.dispatch(setProgramsAction([]))
+      console.log('ping')
     })
   }
 
@@ -100,7 +106,10 @@ class App extends Component {
     } catch (error) {
       store.dispatch(setSignupErrorAction(error.message))
     }
+
   }
+
+  
 
   render() {
     // const bookmarks = store.getState().bookmarks
@@ -109,14 +118,16 @@ class App extends Component {
     const token = store.getState().token
     const tokenDetails = token && decodeJWT(token)
     // const activity = store.getState().activity
-    // console.log(activity)
+    console.log('activities array',activities)
     return (
       <div className="App">
         {
+          
           <Router>
+            
             <Fragment>
-              {/* <Route exact path='/' render = { ()=> <Redirect to ="/"/>}/> */}
-              <TabBar />
+              <TabBar tokenDetails={tokenDetails}/>
+              {/* {!tokenDetails ? <Redirect from="*" to="/login" />:null} */}
               <Switch>
                 <Route exact path='/login' render={() => {
                   if (tokenDetails) {
@@ -125,6 +136,7 @@ class App extends Component {
                     return (<Signin loginError={store.getState().loginError} handleSignIn={this.handleSignIn} />)
                   }
                 }} />
+
                 <Route exact path='/signup' render={() => {
                   if (tokenDetails) {
                     return (<Redirect to="/" />)
@@ -132,29 +144,26 @@ class App extends Component {
                     return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
                   }
                 }} />
-                {/* <Route exact path="/" render={() => (
-                  <Fragment>
-                    {tokenDetails && (
-                      <div>
-                        <h4>Welcome {tokenDetails.email}</h4>
-                        <p>You logged in at: {new Date(tokenDetails.iat * 1000).toLocaleString()}</p>
-                        <p>Your token expires at: {new Date(tokenDetails.exp * 1000).toLocaleString()}</p>
-                      </div>
-                    )}
-                    <h1> Bookmarks</h1>
-                    <ul> */}
-                {/* {bookmarks.map(bookmark => <li key={bookmark._id}><Bookmark {...bookmark} remove={removeBookmark} /></li>)} */}
-                {/* </ul>
-                  </Fragment>
-                )
-                } /> */}
-                <Route exact path="/" render={() => (
-                  <Redirect to="/user" />
-                )} />
+               
+                <Route exact path="/" render={() => {
+                  if (tokenDetails) {
+                    return <Redirect to="/user" /> 
+                  } else {
+                    return <Redirect to="/login" />
+                  }
+                }} />
 
-                <Route exact path="/activities" render={() => (
-                  <Activities activities={activities} />
-                )} />
+                <Route exact path="/activities" render={() => {
+                    return <Activities activities={activities} />
+                }} />
+
+                <Route path="/user" render={() => {
+                  if (tokenDetails) {
+                    return (<User handleSignOut={this.handleSignOut} />)
+                  } else {
+                    return <Redirect to="/login" />
+                  }
+                }} />
                 {/* <Route path="/activities/:id" render={() => 
                   <Activity activity={activity}/>
                 } /> */}
@@ -164,7 +173,7 @@ class App extends Component {
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
-                <Route path="/user" render={() => (<User handleSignOut={this.handleSignOut} />)} />
+                
                 <Route path="/unit" exact component={Unit} />
                 <Route path="/create-program" exact component={CreateProgram} />
                 <Route path="/create-program" exact component={CreateProgram} />

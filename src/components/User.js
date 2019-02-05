@@ -20,27 +20,24 @@ const style = {
 class User extends Component {
   state = { programs: [], activities: [] }
 
+  
+
   componentDidMount() {
     const token = localStorage.getItem('token')
     setJwt(token)
     api.get('/users').then((res) => {
-      this.setState({ ...res.data })
-
+      this.setState(res.data)
     }).catch((err) => {
-
       console.error('Could not fetch user', err)
     })
-
     api.get('/users/programs').then((res) => {
       console.log(res)
-      this.setState({ ...this.state, programs: res.data })
-
+      this.setState({ programs: res.data })
     }).catch((err) => {
       console.error('Could not fetch programs', err)
     })
-
     api.get('/users/activities').then((res) => {
-      this.setState({ ...this.state, activities: res.data })
+      this.setState({ activities: res.data })
     }).catch((err) => {
       console.error('Could not fetch programs', err)
     })
@@ -81,7 +78,9 @@ class User extends Component {
         <h2>My Activities</h2>
           {this.state.activities.map((activity) => {
             return (
-              <Activity key={activity._id} activity={activity}></Activity>
+              <div key={activity._id}>
+                <Activity activity={activity}></Activity>
+              </div>
             )
           })}
       <Link to='/create-activity/'>
