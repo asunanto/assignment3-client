@@ -32,13 +32,18 @@ class CreateActivity extends Component {
       const { title, description, len } = e.target.elements
       const length = parseInt(len.value)
       console.log('title, description, length', title.value, description.value, length)
+<<<<<<< HEAD
       if (isNaN(length) || length<1 || length >120)
 
       {
         alert ('Length must be between 1 and 120 minutes and digits only')
+=======
+      if (isNaN(length) || length < 1 || length > 120) {
+        alert('Length must be between 1 and 120 minutes and digits only')
+>>>>>>> 21532956b815a48f510429fce4de35ee8573bfa2
         return
       }
-      
+
       const req = {
         title: title.value,
         description: description.value,
@@ -56,54 +61,54 @@ class CreateActivity extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-        <h1>Create a new activity to add to our share library</h1>
+          <h1>Create a new activity to add to our share library</h1>
 
-        <p>Age Level</p>
-        <select onChange={this.handleChange} >
-          { this.state.ageLevels.map((ageLevel,index) =>
-            <option key={index} value={index}>{ageLevel.name}</option>
-          )}
+          <p>Age Level</p>
+          <select onChange={this.handleChange} >
+            {this.state.ageLevels.map((ageLevel, index) =>
+              <option key={index} value={index}>{ageLevel.name}</option>
+            )}
 
-        </select>
-        <br/>
-        <TextField
-          required
-          id="title"
-          label="Title"
-          margin="normal"
-          type="title"
-          style={{width: "20rem"}}
-        />
+          </select>
+          <br />
+          <TextField
+            required
+            id="title"
+            label="Title"
+            margin="normal"
+            type="title"
+            style={{ width: "20rem" }}
+          />
 
-            <br />
+          <br />
 
-        <TextField
-          required
-          id="description"
-          label="Description"
-          margin="normal"
-          type="description"
-          multiline={true}
-          rowsMax="10"
-          style={{width: "25rem"}}
+          <TextField
+            required
+            id="description"
+            label="Description"
+            margin="normal"
+            type="description"
+            multiline={true}
+            rowsMax="10"
+            style={{ width: "25rem" }}
           // rows={2}
           // rowsMax={4}
-        />
+          />
 
-            <br/>
+          <br />
 
-        <p>Category</p>
-        <TextField
-          required
-          id="len"
-          label="Length"
-          margin="normal"
-          type="len"
-          style={{width: "20rem"}}
-        />
+          <p>Category</p>
+          <TextField
+            required
+            id="len"
+            label="Length"
+            margin="normal"
+            type="len"
+            style={{ width: "20rem" }}
+          />
 
-        <p>Attachments</p>
-        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
+          <p>Attachments</p>
+          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
         </form>
       </div>
 
