@@ -9,7 +9,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 // Defines an endpoint for the file
-const endpoint = 'http://localhost:8000/upload'
+const endpoint = 'http://localhost:3001/upload'
 
 class UploadFile extends Component {
   constructor() {
