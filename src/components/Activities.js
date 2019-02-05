@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 // Should be renamed to ActivityList for clarity
 function Activities(props) {
     const activities = props.activities
+
     return (
         <div>
             <h1>Activities List</h1>

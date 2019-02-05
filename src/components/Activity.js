@@ -29,6 +29,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import store from '../config/store';
 import decodeJWT from 'jwt-decode'
+
 const styles = theme => ({
   card: {
     maxWidth: 400,

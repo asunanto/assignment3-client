@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Fab, Paper } from '@material-ui/core/';
+import { Button, Fab, Paper, Grid, Divider, Typography } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add/';
 import { api, setJwt } from '../api/init'
 import { Link } from 'react-router-dom';
@@ -7,21 +7,38 @@ import { Link } from 'react-router-dom';
 // import { fetchUser } from '../services/UserService'
 import Activity from './Activity'
 import Program from './Program'
+import Unit from './Unit'
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
-const style = {
-  Paper: {
-    'width': '400px',
-    'margin': '10% auto 0 auto',
-    'textAlign': 'center',
-    'padding': '5%'
-
-  }
-}
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  container: {
+    display:'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gridGap: `${theme.spacing.unit * 3}px`,
+  },
+  paper: {
+    padding: theme.spacing.unit,
+    textAlgin: 'centre',
+    color: theme.palette.text.secondary,
+    whiteSpace: 'nowrap',
+    marginBottom: theme.spacing.unit,
+    // 'max-width': '90%',
+    // 'min-width': '400px',
+    // 'margin': '10% auto 0 auto',
+    // 'textAlign': 'center',
+    // 'padding': '5%'
+  },
+  divider: {
+    margin: `${theme.spacing.unit *2}px 0`,
+  },
+});
 
 class User extends Component {
-  state = { programs: [], activities: [] }
-
-  
+  state = { programs: [], activities: [], units: [], direction: 'row', justify: 'center', alignItems: 'center' }
 
   componentDidMount() {
     const token = localStorage.getItem('token')
@@ -42,55 +59,142 @@ class User extends Component {
     }).catch((err) => {
       console.error('Could not fetch programs', err)
     })
+    // Retrieve unit info for particular unit the user belongs to
+    // api.get('/users/units').then((res) => {
+    //   this.setState({ units: res.data })
+    // }).catch((err) => {
+    //   console.error('Could not fetch units', err)
+    // })
   }
 
+  handleChange = key => (event, value) => {
+    this.setState({
+      [key]: value,
+    });
+  };
+
+
   render() {
+    const { classes } = this.props;
+    const { alignItems, direction, justify } = this.state;
+    
     return (
       <React.Fragment>
-        <h1>Hi, {this.state.name && this.state.name.firstname}!</h1>
+
+      <Grid container className={classes.root}>
+        <Grid item xs={12}>
+          <Grid 
+            container
+            spacing={16}
+            className={classes.demo}
+            alignItems={alignItems}
+            direction={direction}
+            justify={justify}
+          >
+             {[0, 1, 2].map(value => (
+              <Grid key={value} item>
+                <Paper
+                  className={classes.paper}
+                  style={{ paddingTop: (value + 1) * 10, paddingBottom: (value + 1) * 10 }}
+                >
+                  {`Cell ${value + 1}`}
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
+
+        {/* Header with logo, user name, action buttons to manage account and logout */}
+        <Typography variant='h1' gutterBottom>
+          Hi {this.state.name && this.state.name.firstname}!
+        </Typography>
         <Link to={'/user/edit'}>
           <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Manage Account</Button>
         </Link>
         <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535' }} onClick={this.props.handleSignOut}>Log Out</Button>
-        <Paper style={style.Paper}>
+        
+        {/* Guide Hut */}
+        <Typography variant='subtitle1' gutterBottom>
+          My Guide Hut:
+        </Typography>
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <Paper style={styles.paper}>
+              {/* Render unit information here: address & map */}
+            </Paper>
+          </Grid>
+        </Grid>
+        
+        {/* Displays Guide Hut info */}
+        {/* <Paper style={styles.Paper}>
           <h2>My Guide Hut</h2>
-        </Paper>
+        </Paper> */}
 
-        {/* For each program created by the user, show as a ProgramCard */}
-        <Paper style={style.Paper}>
+        <Divider style={styles.divider} />
+
+          {/* Displays programs created by the user */}
+        {/* <Paper style={styles.paper}> */}
           <h2>My Programs</h2>
-            {this.state.programs.map((program) => {
+          <Grid 
+            container 
+            spacing={16}
+            direction={direction} 
+            justify={justify }
+            alignItems={alignItems} >
+            {/* User can view all programs they've created (cards) */}
+              {this.state.programs.map((program) => (
+                <Program key={program._id} program={program}>
+                  <Paper
+                    className={classes.paper}
+                    style={{ paddingTop: (program + 1) * 10, paddingBottom: (program + 1) * 10 }}
+                  >
+                    {`Cell ${program + 1}`}
+                  </Paper>
+                </Program>
+                )
+              )}
+            {/* </Paper> */}
+          </Grid>
+
+          {/* Users can add a new program (button) */}
+          <Link to='/create-activity/'>
+            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+              <AddIcon />
+            </Fab>
+          </Link>
+        {/* </Paper> */}
+
+        <Divider style={styles.divider} />
+        
+        {/* Displays activities created by the user */}
+        {/* <Paper style={styles.Paper}> */}
+          <h2>My Activities</h2>
+            {/* User can view all activities they've created (cards) */}
+            {this.state.activities.map((activity) => {
               return (
-                <Program key={program._id} program={program}></Program>
+                <div key={activity._id}>
+                  <Activity activity={activity}></Activity>
+                </div>
               )
             })}
-            <Link to='/create-activity/'>
-              <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-                <AddIcon />
-              </Fab>
-            </Link>
-        </Paper>
-        
-        {/* For each activity created by the user, show as an ActivityCard */}
-        <Paper style={style.Paper}>
 
-        <h2>My Activities</h2>
-          {this.state.activities.map((activity) => {
-            return (
-              <div key={activity._id}>
-                <Activity activity={activity}></Activity>
-              </div>
-            )
-          })}
-      <Link to='/create-activity/'>
-        <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-          <AddIcon />
-        </Fab>
-      </Link>
-      </Paper>
+          {/* Users can add a new activity (button) */}
+          <Link to='/create-activity/'>
+            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+              <AddIcon />
+            </Fab>
+          </Link>
 
-     </React.Fragment> 
+        {/* </Paper> */}
+
+      </React.Fragment> 
     )
   }
 }
-export default User;
+
+User.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(User);
