@@ -143,8 +143,7 @@ class App extends Component {
             <Fragment>
               {/* <TabBar tokenDetails={tokenDetails} /> */}
               {/* {!tokenDetails ? <Redirect from="*" to="/login" />:null} */}
-
-              <BottomNav tokenDetails={tokenDetails} />
+              <div><BottomNav tokenDetails={tokenDetails} /></div>
 
               <Switch>
                 <Route exact path='/login' render={() => {
