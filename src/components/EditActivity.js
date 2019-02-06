@@ -38,7 +38,13 @@ class EditActivity extends Component {
     e.preventDefault()
     try {
       const { id } = this.props.match.params
-      const { title, description} = e.target.elements
+      const { title, description, len } = e.target.elements
+      const length = parseInt(len.value)
+      if (isNaN(length) || length < 1 || length > 120) {
+        alert('Length must be between 1 and 120 minutes and digits only')
+        return
+      }
+
       const req = {
         id,
         title: title.value,
@@ -109,7 +115,7 @@ class EditActivity extends Component {
         <p>Category</p>
         <TextField
           required
-          id="length"
+          id="len"
           label="Length"
           margin="normal"
           type="length"
