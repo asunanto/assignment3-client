@@ -15,7 +15,7 @@ const styles = theme => ({
     flexGrow: 1,
   },
   container: {
-    display:'grid',
+    display: 'grid',
     gridTemplateColumns: 'repeat(12, 1fr)',
     gridGap: `${theme.spacing.unit * 3}px`,
   },
@@ -32,18 +32,18 @@ const styles = theme => ({
     // 'padding': '5%'
   },
   divider: {
-    margin: `${theme.spacing.unit *2}px 0`,
+    margin: `${theme.spacing.unit * 2}px 0`,
   },
 });
 
 class User extends Component {
-  state = { 
-    programs: [], 
-    activities: [], 
-    units: [], 
-    direction: 'row', 
-    justify: 'center', 
-    alignItems: 'center' 
+  state = {
+    programs: [],
+    activities: [],
+    units: [],
+    direction: 'row',
+    justify: 'center',
+    alignItems: 'center'
   }
 
   componentDidMount() {
@@ -77,7 +77,7 @@ class User extends Component {
   render() {
     // const { classes } = this.props;
     const { alignItems, direction, justify } = this.state;
-    
+
     return (
       <React.Fragment>
 
@@ -88,8 +88,8 @@ class User extends Component {
         <Link to={'/user/edit'}>
           <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Manage Account</Button>
         </Link>
-        <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535', margin: 15}} onClick={this.props.handleSignOut}>Log Out</Button>
-        
+        <Button className="textButton" type="button" variant='contained' color="primary" style={{ 'backgroundColor': '#ff3535', margin: 15 }} onClick={this.props.handleSignOut}>Log Out</Button>
+
         {/* 'My Guide Hut' Section */}
         <h2>My Guide Hut</h2>
         <Grid container spacing={24}>
@@ -102,56 +102,56 @@ class User extends Component {
 
         <Divider style={styles.divider} />
 
-          {/* 'My Programs' Section */}
-          <h2>My Programs</h2>
+        {/* 'My Programs' Section */}
+        <h2>My Programs</h2>
 
-          {/* Users can add a new program (button) */}
-          <Link to='/create-activity/'>
-            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange', margin: 15 }}>
-              <AddIcon />
-            </Fab>
-          </Link>
+        {/* Users can add a new program (button) */}
+        <Link to='/create-program/'>
+          <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange', margin: 15 }}>
+            <AddIcon />
+          </Fab>
+        </Link>
 
-          {/* User can view all programs they've created as cards */}
-          <Grid 
-            container 
-            spacing={16}
-            direction={direction} 
-            justify={justify }
-            alignItems={alignItems} >
-            {this.state.programs.map((program) => (
-              <Program key={program._id} program={program} />
-              )
-            )}
-          </Grid>
+        {/* User can view all programs they've created as cards */}
+        <Grid
+          container
+          spacing={16}
+          direction={direction}
+          justify={justify}
+          alignItems={alignItems} >
+          {this.state.programs.map((program) => (
+            <Program key={program._id} program={program} />
+          )
+          )}
+        </Grid>
 
 
         <Divider style={styles.divider} />
-        
+
         {/* 'My Activities' Section */}
-          <h2>My Activities</h2>
+        <h2>My Activities</h2>
 
-          {/* User can add a new activity (button) */}
-          <Link to='/create-activity/'>
-            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange', margin: 15}}>
-              <AddIcon />
-            </Fab>
-          </Link>
+        {/* User can add a new activity (button) */}
+        <Link to='/create-activity/'>
+          <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange', margin: 15 }}>
+            <AddIcon />
+          </Fab>
+        </Link>
 
-          {/* User can view all activities they've created as cards */}
-          <Grid 
-            container 
-            spacing={16}
-            direction={direction} 
-            justify={justify }
-            alignItems={alignItems} >
-              {this.state.activities.map((activity) => (
-                  <Activity key={activity._id} activity={activity} />
-              )
-            )}
-          </Grid>
+        {/* User can view all activities they've created as cards */}
+        <Grid
+          container
+          spacing={16}
+          direction={direction}
+          justify={justify}
+          alignItems={alignItems} >
+          {this.state.activities.map((activity) => (
+            <Activity key={activity._id} activity={activity} />
+          )
+          )}
+        </Grid>
 
-      </React.Fragment> 
+      </React.Fragment>
     )
   }
 }
