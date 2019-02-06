@@ -1,7 +1,27 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { api, setJwt } from '../api/init'
-import { Button, TextField } from '@material-ui/core'
+import { Paper, Button, TextField, Grid, Typography, Toolbar } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles';
 import { updateActivity } from '../services/ActivityService';
+
+const styles = theme => ({
+  root: {
+      width: '100%',
+      minWidth: '200px'
+  },
+  paper: {
+      margin: '10% auto 0 auto',
+      padding: '5%',
+      maxWidth: 800,
+      minWidth: 300
+  },
+  grid: {
+      direction: "row",
+      justify: "center",
+      alignItems: "flex-start"
+  },
+})
 
 class EditActivity extends Component {
 
@@ -69,18 +89,45 @@ class EditActivity extends Component {
 
   render() {
     const ageIndex = this.state.ageLevel && this.state.ageLevels.findIndex(ageLevel => ageLevel.name == this.state.ageLevel.name)
+    const {classes} = this.props
 
     return (
-      <div>
-        {/* Instructive form heading */}
-        <h1>Edit activity</h1>
+        <div className={classes.root}>
+
+        <h1>Edit Activity</h1>
+
+        <Paper className={classes.paper}>
+
           <form onSubmit={this.handleSubmit}>
+
+          <Grid container className={classes.grid} spacing={16}>
+
+            {/* Update your program title */}
+            <Grid item xs={8} md={10}>
+            <TextField
+              required
+              style={{backgroundColor:'#F5F9FF'}}
+              id="title"
+              label="Title"
+              placeholder="My Fun Activity"
+              // helperText="Update your activity title"
+              margin="normal"
+              type="title"
+              value={this.state.title}
+              onChange={this._change('title')}
+              fullWidth
+              variant="outlined"
+            />
+            </Grid>
 
             {/* Update age level for activity */}
             {/* BUG: Sometimes the age doesn't update the first time you 'save changes'. Only if you go back to edit page and save it again.  */}
+            <Grid item xs={4} md={2}>
             <TextField
+              style={{backgroundColor:'#D4E2FB'}}
               id="age"
               label="Age Level"
+              fullWidth
               select
               value={ageIndex}
               onChange={this.handleChange}
@@ -94,31 +141,15 @@ class EditActivity extends Component {
                 <option key={index} value={index}>{ageLevel.name}</option>
               )}
             </TextField>
-
-            {/* Update your program title */}
-            <TextField
-              required
-              id="title"
-              label="Title"
-              style={{ margin: 15 }}
-              placeholder="My Fun Activity"
-              // helperText="Update your activity title"
-              margin="normal"
-              type="title"
-              value={this.state.title}
-              onChange={this._change('title')}
-              fullWidth
-              variant="outlined"
-            />
-
-            <br/>
+            </Grid>
 
             {/* Update your description of the activty */}
+            <Grid item xs={12}>
             <TextField
               required
+              style={{backgroundColor:'#F5F9FF'}}
               id="description"
               label="Description"
-              style={{ margin: 15 }}
               placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
               // helperText="Update your activity description"
               margin="normal"
@@ -130,40 +161,79 @@ class EditActivity extends Component {
               variant="outlined"
               type="description"
             />
-
-            <br/>
+            </Grid>
             
             {/* Update categories for this activity */}
             {/* <p>Category</p> */}
 
             {/* Update how many minutes your activity will be run for */}
+            <Grid item xs={6} sm={4}>
             <TextField
               required
+              style={{backgroundColor:'#D4E2FB'}}
               id="len"
               label="Length"
-              style={{ margin: 15}}
               placeholder="Enter number between 1 - 120"
-              helperText="How many minutes will your activity run for?"
+              // helperText="How many minutes will your activity run for?"
               margin="normal"
               type="length"
               value={this.state.length}
               onChange={this._change('length')}
               variant="outlined"
-              focused="true" // What does 'focused' do?
             />
-            <br />
+            </Grid>
             
-            {/* Update attached files - add new file or remove existing file */}
-            {/* <p>Attachments</p> */}
+            {/* Give categories to this activity */}
+          <Grid item xs={6} sm={4}>
+          <TextField
+            style={{backgroundColor:'#D4E2FB'}}
+            id="categories"
+            label="Categories"
+            placeholder="Most relevant"
+            // helperText="Which categories match this activity best?"
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            InputLabelProps={{
+                shrink: true,
+            }} 
+          />
+          </Grid>
+
+           {/* Update attached files - add new file or remove existing file */}
+          <Grid item xs={12} sm={4}>
+          <TextField
+            style={{backgroundColor:'#D4E2FB'}}
+            id="attachment"
+            label="Attachment"
+            placeholder="Upload file"
+            // helperText="Do you want to attach any helpful files?"
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            InputLabelProps={{
+                shrink: true,
+            }} 
+          />
+          </Grid>
 
             {/* Click 'save changes' to update your program with the new details */}
-            <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Save Changes</Button>
-          
+            <Grid item xs={12}>
+              <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Save Changes</Button>
+            </Grid>
+
+          </Grid>
           </form>
+          </Paper>
       </div>
 
     )
   }
 }
 
-export default EditActivity
+EditActivity.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+
+export default withStyles(styles)(EditActivity)
