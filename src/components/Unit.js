@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Button, Fab, Paper, Grid, Divider, Typography } from '@material-ui/core/';
-import AddIcon from '@material-ui/icons/Add';
+import React, { Component } from 'react'
+import { Button, Fab, Paper, Grid, Divider, Typography } from '@material-ui/core/'
+import AddIcon from '@material-ui/icons/Add'
 import { api, setJwt } from '../api/init'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import Program from './Program'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   root: {

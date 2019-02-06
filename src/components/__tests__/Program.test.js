@@ -11,5 +11,5 @@ describe("Program", () => {
         const component = shallow(<Program />);
         // then
         expect(component.getElements()).toMatchSnapshot();
-    });
-});
+    })
+})

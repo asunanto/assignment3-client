@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from 'react'; // add Fragment later
+import React, { Component, Fragment } from 'react'
 import './App.css';
 import store from './config/store'
 import {
-  setBookmarksAction,
   setTokenAction,
   setLoginErrorAction,
   setSignupErrorAction,
@@ -11,16 +10,12 @@ import {
 } from './config/actions'
 import { api, setJwt } from './api/init'
 import decodeJWT from 'jwt-decode'
-// import Bookmark from './components/Bookmark'
 import Signin from './components/Signin'
 import Signup from './components/Signup'
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom' // add Redirect later
-// import { fetchBookmarks, removeBookmark } from './services/BookmarkService'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { fetchActivities } from './services/ActivityService'
 import { fetchPrograms } from './services/ProgramService'
-
-// import TabBar from './components/TabBar'
-import BottomNav from './components/BottomNav'
+import TabBar from './components/TabBar'
 import NotFound from './components/NotFound'
 import AboutPage from './components/AboutPage'
 import User from './components/User'
@@ -40,10 +35,8 @@ import EditUser from './components/EditUser'
 
 
 class App extends Component {
-  units = []
 
   componentDidMount() {
-    // fetchBookmarks()
     fetchActivities()
     fetchPrograms()
     const token = localStorage.getItem('token')
@@ -51,13 +44,6 @@ class App extends Component {
       store.dispatch(setTokenAction(token))
       setJwt(token)
     }
-
-    api.get('/units').then((res) => {
-      this.units = [...res.data]
-      console.log(this.units)
-    }).catch((err) => {
-      console.error('Could not fetch age levels', err)
-    })
   }
 
   handleSignIn = async (event) => {
@@ -83,7 +69,6 @@ class App extends Component {
     api.get('/auth/logout').then(() => {
       localStorage.removeItem('token')
       store.dispatch(setTokenAction(null))
-      // store.dispatch(setBookmarksAction([]))
       store.dispatch(setActivitiesAction([]))
       store.dispatch(setProgramsAction([]))
       console.log('ping')
@@ -91,33 +76,26 @@ class App extends Component {
   }
 
   handleSignUp = async (event) => {
-
-
     try {
       event.preventDefault()
       const form = event.target
-      let unitIndex = this.units[form.elements.unit.value]
-      console.log(unitIndex)
-
       const response = await api.post('/auth/register', {
         email: form.elements.email.value,
         password: form.elements.password.value,
         name: {
-          firstname: form.elements.firstname.value,
+          fristname: form.elements.firstname.value,
           lastname: form.elements.lastname.value,
-          guidename: form.elements.guidename.value
         },
-        membershipNo: form.elements.membershipNo.value,
-        phone: form.elements.phone.value,
+        membershipNo: form.elements.membershipNo,
+        phone: form.elements.phonenumber,
         unit: {
-          ...unitIndex
+          name: ''
         }
       })
+
       let token = response.data.token
-      localStorage.setItem('token', token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
-
     } catch (error) {
       store.dispatch(setSignupErrorAction(error.message))
     }
@@ -127,7 +105,6 @@ class App extends Component {
 
 
   render() {
-    // const bookmarks = store.getState().bookmarks
     const activities = store.getState().activities
     const programs = store.getState().programs
     const token = store.getState().token
@@ -141,10 +118,8 @@ class App extends Component {
           <Router>
 
             <Fragment>
-              {/* <TabBar tokenDetails={tokenDetails} /> */}
+              <TabBar tokenDetails={tokenDetails} />
               {/* {!tokenDetails ? <Redirect from="*" to="/login" />:null} */}
-              <div><BottomNav tokenDetails={tokenDetails} /></div>
-
               <Switch>
                 <Route exact path='/login' render={() => {
                   if (tokenDetails) {
@@ -158,7 +133,7 @@ class App extends Component {
                   if (tokenDetails) {
                     return (<Redirect to="/" />)
                   } else {
-                    return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} units={this.units && this.units} />)
+                    return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
                   }
                 }} />
 
@@ -174,33 +149,28 @@ class App extends Component {
                   return <Activities activities={activities} />
                 }} />
 
-                <Route exact path="/user" render={() => {
+                <Route path="/user" render={() => {
                   if (tokenDetails) {
                     return (<User handleSignOut={this.handleSignOut} />)
                   } else {
                     return <Redirect to="/login" />
                   }
                 }} />
-                {/* <Route path="/activities/:id" render={() => 
-                  <Activity activity={activity}/>
-                } /> */}
                 <Route exact path="/activities/:id" component={Activity} />
                 <Route exact path="/activities/:id/edit" component={EditActivity} />
                 <Route path="/user/edit" exact component={EditUser} />
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
-
                 <Route path="/unit" exact component={Unit} />
                 <Route path="/create-program" exact component={CreateProgram} />
                 <Route path="/create-program" exact component={CreateProgram} />
                 <Route path="/create-activity" exact component={CreateActivity} />
                 <Route path="/library" exact component={Library} />
                 <Route path="/about" exact component={AboutPage} />
-                {/* <Route path="/activity" exact component={Activity} /> */}
                 <Route path="/programs/:id" exact component={Program} />
                 <Route path="/programs/:id/updateactivities" exact component={UpdateActivitytoProgram} />
-                <Route path="/programs/:id/edit" exact component={EditProgram} />
+                <Route path="/programs/:id/editprogram" exact component={EditProgram} />
                 <Route component={NotFound} />
               </Switch>
             </Fragment>
