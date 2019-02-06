@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField } from '@material-ui/core'
-import { updateActivity } from '../services/ActivityService';
+import { updateActivity } from '../services/ActivityService'
 
 class EditActivity extends Component {
 
@@ -38,7 +38,7 @@ class EditActivity extends Component {
     e.preventDefault()
     try {
       const { id } = this.props.match.params
-      const { title, description, len} = e.target.elements
+      const { title, description, len } = e.target.elements
       const length = parseInt(len.value)
       if (isNaN(length) || length < 1 || length > 120) {
         alert('Length must be between 1 and 120 minutes and digits only')
@@ -72,61 +72,61 @@ class EditActivity extends Component {
 
     return (
       <div>
-        
+
         <form onSubmit={this.handleSubmit}>
-        <h1>Edit activity</h1>
-        <p>Age Level</p>
-        <select value={ageIndex} onChange={this.handleChange} >
-          { this.state.ageLevels.map((ageLevel,index) =>
-            <option key={index} value={index}>{ageLevel.name}</option>
-          )}
-        </select>
+          <h1>Edit activity</h1>
+          <p>Age Level</p>
+          <select value={ageIndex} onChange={this.handleChange} >
+            {this.state.ageLevels.map((ageLevel, index) =>
+              <option key={index} value={index}>{ageLevel.name}</option>
+            )}
+          </select>
 
-        <br/>
+          <br />
 
-        <TextField
-          required
-          id="title"
-          label="Title"
-          margin="normal"
-          type="title"
-          value={this.state.title}
-          onChange={this._change('title')}
-          style={{width: "20rem"}}
-        />
+          <TextField
+            required
+            id="title"
+            label="Title"
+            margin="normal"
+            type="title"
+            value={this.state.title}
+            onChange={this._change('title')}
+            style={{ width: "20rem" }}
+          />
 
-        <br/>
+          <br />
 
-        <TextField
-          required
-          id="description"
-          label="Description"
-          margin="normal"
-          type="description"
-          value={this.state.description}
-          onChange={this._change('description')}
-          // autoFocus="true"
-          rowsMax="10"
-          style={{width: "25rem"}}
-        />
+          <TextField
+            required
+            id="description"
+            label="Description"
+            margin="normal"
+            type="description"
+            value={this.state.description}
+            onChange={this._change('description')}
+            // autoFocus="true"
+            rowsMax="10"
+            style={{ width: "25rem" }}
+          />
 
-        <br/>
+          <br />
 
-        <p>Category</p>
-        <TextField
-          required
-          id="len"
-          label="Length"
-          margin="normal"
-          type="length"
-          value={this.state.length}
-          onChange={this._change('length')}
-          focused="true"
-          style={{width: "20rem"}}
-        />
-        
-        <p>Attachments</p>
-        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
+          <p>Category</p>
+          <TextField
+            required
+            id="len"
+            label="Length"
+            margin="normal"
+            type="length"
+            value={this.state.length}
+            onChange={this._change('length')}
+            focused="true"
+            style={{ width: "20rem" }}
+          />
+
+          <p>Attachments</p>
+          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
         </form>
       </div>
 

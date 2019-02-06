@@ -5,7 +5,7 @@
 import React from 'react'
 import Activity from './Activity.js'
 import PropTypes from 'prop-types'
-import { Grid } from '@material-ui/core/';
+import { Grid } from '@material-ui/core/'
 
 // Should be renamed to ActivityList for clarity
 function Activities(props) {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
-import store from '../config/store'
-import { fetchProgram } from '../services/ProgramService'
 import { Paper, Button, TextField } from '@material-ui/core'
 
 class EditProgram extends Component {

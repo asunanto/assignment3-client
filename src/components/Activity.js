@@ -8,26 +8,24 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import store from '../config/store'
-// import { fetchActivity } from '../services/ActivityService'
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classnames from 'classnames';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import classnames from 'classnames'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
 // import CardMedia from '@material-ui/core/CardMedia';
 // import { removeActivity } from '../services/ActivityService'
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import orange from '@material-ui/core/colors/orange';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import store from '../config/store';
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
+import Collapse from '@material-ui/core/Collapse'
+import Avatar from '@material-ui/core/Avatar'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import orange from '@material-ui/core/colors/orange'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import ShareIcon from '@material-ui/icons/Share'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import store from '../config/store'
 import decodeJWT from 'jwt-decode'
 
 const styles = theme => ({
@@ -60,10 +58,6 @@ const styles = theme => ({
 // Should be renamed to ActivityCard for clarity
 class Activity extends React.Component {
   state = { expanded: false };
-
-  // componentDidMount() {
-  //   fetchActivity(this.props.key)
-  // }
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
