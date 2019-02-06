@@ -49,14 +49,14 @@ class CreateProgram extends Component {
                 <form onSubmit={this.handleSubmit}>
                     {console.log(this.props.history)}
 
-                    {/* Give your program a title */}
+                    {/* Give your program a name */}
                     <TextField
                         required
-                        id="title"
+                        id="name"
                         style={{ margin: 8 }}
-                        label="Title"
+                        label="name"
                         placeholder="My Awesome Program"
-                        helperText="Give your program a title"
+                        helperText="Give your program a name"
                         fullWidth
                         margin="normal"
                         variant="outlined"
@@ -116,7 +116,14 @@ class CreateProgram extends Component {
                     {/* <p>Attachments</p> */}
 
                     {/* Click 'next' to continue to form's second step: 'add activities to program' */}
-                    <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Next</Button>
+                    <Button 
+                        type="submit" 
+                        variant='contained' 
+                        color="primary" 
+                        style={{ 'backgroundColor': 'orange', margin: 15 }}
+                    >
+                        Next
+                    </Button>
                 
                 </form>
                 {/* </Paper> */}
