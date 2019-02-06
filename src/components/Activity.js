@@ -80,20 +80,22 @@ class Activity extends React.Component {
           // This isn't a user's avatar, but a simple "A" to distinguish this icon from other non-activity items
           avatar={
             <Avatar aria-label="Activity" className={classes.avatar}>
-            A
+              A
             </Avatar>
           }
           action={
             // Fix this button to allow users to option to edit and delete etc.
-          
+
             (tokenDetails && tokenDetails.sub) == activity.user._id ?
-            <IconButton>
-              {/* Make pre-filled edit page */}
-              {/* Need to make the edit icon orange */}
-              <Link to={`/activities/${activity._id}/edit`}><i className="material-icons">edit</i></Link> 
-            </IconButton>
-            :null
-          
+              <Link to={`/activities/${activity._id}/edit`}>
+                <IconButton>
+                  {/* Make pre-filled edit page */}
+                  {/* Need to make the edit icon orange */}
+                  <i className="material-icons">edit</i>
+                </IconButton>
+              </Link>
+              : null
+
             // Make another option "delete":
             // <button onClick={() => removeActivity(activity._id)}>Delete</button>
             // Make another option "view":
@@ -147,7 +149,7 @@ class Activity extends React.Component {
               {activity && activity.instructions}
             </Typography>
             <Typography paragraph>Resources Needed:</Typography>
-              {activity && activity.resources}
+            {activity && activity.resources}
           </CardContent>
         </Collapse>
 
