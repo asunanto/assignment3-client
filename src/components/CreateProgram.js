@@ -4,7 +4,6 @@ import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField, Grid, Typography, Toolbar } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar'
-import { fade } from '@material-ui/core/styles/colorManipulator';
 import logo from '../assets/logo.svg'
 
 const styles = theme => ({
@@ -90,8 +89,8 @@ class CreateProgram extends Component {
                         <img src={logo} alt="Girl Guides Australia Logo" className={classes.logoIcon}></img>
                     </div>
                     <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                            {/* Create a New Program */}
-                            Girl Guides Helper App
+                            Create a New Program
+                            {/* Girl Guides Helper App */}
                     </Typography>
                 </Toolbar>
             </AppBar>
