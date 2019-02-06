@@ -82,10 +82,12 @@ class Program extends React.Component {
           }
           action={
             // Fix this button to allow users to option to edit and delete etc.
-            <IconButton>
-              {/* Need to make the edit icon orange */}
-              <Link to={`/programs/${program._id}/edit`}><i className="material-icons">edit</i></Link> 
-            </IconButton>
+            <Link to={`/programs/${program._id}/edit`}>
+              <IconButton>
+                {/* Need to make the edit icon orange */}
+                <i className="material-icons">edit</i>
+              </IconButton>
+            </Link>
             // Make another option "delete":
             // <button onClick={() => removeProgram(program._id)}>Delete</button>
             // Make another option "view":
@@ -146,7 +148,7 @@ class Program extends React.Component {
           </CardContent>
         </Collapse> */}
 
-    </Card>
+      </Card>
 
     );
   }
