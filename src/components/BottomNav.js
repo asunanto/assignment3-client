@@ -63,7 +63,7 @@ class LabelBottomNavigation extends React.Component {
             icon={<CreateIcon />} />
           <BottomNavigationAction
             component={Link}
-            to="/library"
+            to="/activities"
             label="Library"
             value="library"
             icon={<ListIcon />} />
