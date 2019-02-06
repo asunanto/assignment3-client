@@ -139,7 +139,7 @@ class CreateActivity extends Component {
             style={{backgroundColor:'#F5F9FF'}}
             id="description"
             label="Description"
-            placeholder="Give details about this program"
+            placeholder="Purpose, instructions, resources needed..."
             // helperText="Write a description of your program"
             multiline
             rowsMax="20"
