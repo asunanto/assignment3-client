@@ -6,7 +6,7 @@
     - CreateActivity
     - EditProgram
     - EditActivity
-    - Edit User
+    - Edit User #
     - SignIn
     - SignUp
     * Update Activities to Program

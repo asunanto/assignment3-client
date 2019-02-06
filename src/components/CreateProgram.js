@@ -1,30 +1,9 @@
-/*  Users can create a new program for their unit.
-
-    FORMS
-    -----
-    - CreateProgram
-    - CreateActivity
-    - EditProgram
-    - EditActivity
-    - Edit User
-    - SignIn
-    - SignUp
-    * Update Activities to Program
-
-    Forms share the same styles and layouts as other forms on the app:
-        - grid, textfields, paper
-    Plus, the colours, typography and button styles are the same across the app.
-        - MUI theme?
-    
-*/
-
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
-import { Paper, Button, TextField } from '@material-ui/core'
+import { Paper, Button, TextField, Grid } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
 class CreateProgram extends Component {
-
 
     handleSubmit = (e) => {
         const token = localStorage.getItem("token")
@@ -53,18 +32,34 @@ class CreateProgram extends Component {
             <div>
             {/* Instructive form heading */}
             <h1>Create a new program for your unit</h1>
-            {/* <Paper style={styles.paper}> */}
+            
+            <Paper 
+                style={{
+                margin: '10% auto 0 auto',
+                padding: '5%',
+                maxWidth: 800,
+                }}
+            >
+
                 <form onSubmit={this.handleSubmit}>
                     {console.log(this.props.history)}
 
+                <Grid 
+                    container
+                    spacing={16}
+                    direction="row"
+                    justify="center"
+                    alignItems="flex-start"
+                >
+
                     {/* Give your program a name */}
+                    <Grid item xs={12}>
                     <TextField
                         required
                         id="name"
-                        style={{ margin: 15 }}
+                        style={{backgroundColor:'#F5F9FF'}}
                         label="Title"
-                        placeholder="My Awesome Program"
-                        helperText="Give your program a name"
+                        placeholder="Give your program a title"
                         fullWidth
                         margin="normal"
                         variant="outlined"
@@ -73,16 +68,16 @@ class CreateProgram extends Component {
                             shrink: true,
                         }} 
                     />
-                    <br />
+                    </Grid>
 
                     {/* Write a description of your program */}
+                    <Grid item xs={12}>
                     <TextField
                         required
                         id="description"
                         label="Description"
-                        style={{ margin: 15 }}
-                        placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
-                        helperText="Write a description of your program"
+                        style={{backgroundColor:'#F5F9FF'}}
+                        placeholder="Write a short description of your program"
                         multiline
                         rowsMax="20" // Once the text exceeds 20 lines, the container becomes scrollable
                         fullWidth
@@ -93,57 +88,78 @@ class CreateProgram extends Component {
                             shrink: true,
                         }} 
                     />
-                    <br />
+                    </Grid>
 
                     {/* When will your program be run? */}
+                    <Grid item xs={6} sm={4}>
                     <TextField
                         required
                         id="date"
                         label="Date"
-                        style={{ margin: 15}}
-                        helperText="When will you run your program?"
+                        style={{backgroundColor:'#D4E2FB'}}
+                        placeholder="When will you run your program?"
                         margin="normal"
                         variant="outlined"
+                        fullWidth
                         type="date"
                         InputLabelProps={{
                             shrink: true,
                         }}
                     />
-                    <br />
+                    </Grid>
 
                     {/* How many minutes will your program run for? */}
                     {/* In the designs, this 'length' field has two pickers instead: 'start time' and 'end time' from which the length was to be calculted */}
+                    <Grid item xs={6} sm={4}>
                     <TextField
                         required
                         id="len"
                         label="Length"
-                        style={{ margin: 15}}
-                        placeholder="Enter number between 1 - 120"
-                        helperText="How many minutes will your program run for?"
+                        placeholder="1 - 120 minutes"
+                        // helperText="How many minutes will your program run for?"
                         margin="normal"
                         variant="outlined"
+                        fullWidth
                         type="length"
+                        style={{backgroundColor:'#D4E2FB'}}
                         InputLabelProps={{
                             shrink: true,
                         }} 
                     />
-                    <br />
+                    </Grid>
 
                     {/* Attach files (optional) */}
-                    {/* <p>Attachments</p> */}
+                    <Grid item xs={12} sm={4}>
+                    <TextField
+                        style={{backgroundColor:'#D4E2FB'}}
+                        id="attachment"
+                        label="Attachment"
+                        placeholder="Upload any helpful files"
+                        // helperText="Do you want to attach any helpful files?"
+                        margin="normal"
+                        fullWidth
+                        variant="outlined"
+                        InputLabelProps={{
+                            shrink: true,
+                        }} 
+                    />
+                    </Grid>
 
                     {/* Click 'next' to continue to form's second step: 'add activities to program' */}
+                    <Grid item xs={12}>
                     <Button 
                         type="submit" 
                         variant='contained' 
                         color="primary" 
-                        style={{ 'backgroundColor': 'orange', margin: 15 }}
+                        style={{ 'backgroundColor': 'orange',  }}
                     >
                         Next
                     </Button>
-                
+                    </Grid>
+
+                    </Grid>
                 </form>
-                {/* </Paper> */}
+                </Paper>
             </div>
         )
     }
