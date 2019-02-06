@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
-import { Paper, Button, TextField } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 import { updateActivity } from '../services/ActivityService';
 
 class EditActivity extends Component {
@@ -72,62 +72,94 @@ class EditActivity extends Component {
 
     return (
       <div>
-        
-        <form onSubmit={this.handleSubmit}>
+        {/* Instructive form heading */}
         <h1>Edit activity</h1>
-        <p>Age Level</p>
-        <select value={ageIndex} onChange={this.handleChange} >
-          { this.state.ageLevels.map((ageLevel,index) =>
-            <option key={index} value={index}>{ageLevel.name}</option>
-          )}
-        </select>
+          <form onSubmit={this.handleSubmit}>
 
-        <br/>
+            {/* Update age level for activity */}
+            {/* BUG: Sometimes the age doesn't update the first time you 'save changes'. Only if you go back to edit page and save it again.  */}
+            <TextField
+              id="age"
+              label="Age Level"
+              select
+              value={ageIndex}
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            >
+              { this.state.ageLevels.map((ageLevel,index) =>
+                <option key={index} value={index}>{ageLevel.name}</option>
+              )}
+            </TextField>
 
-        <TextField
-          required
-          id="title"
-          label="Title"
-          margin="normal"
-          type="title"
-          value={this.state.title}
-          onChange={this._change('title')}
-          style={{width: "20rem"}}
-        />
+            {/* Update your program title */}
+            <TextField
+              required
+              id="title"
+              label="Title"
+              style={{ margin: 8 }}
+              placeholder="My Fun Activity"
+              // helperText="Update your activity title"
+              margin="normal"
+              type="title"
+              value={this.state.title}
+              onChange={this._change('title')}
+              fullWidth
+              variant="outlined"
+            />
 
-        <br/>
+            <br/>
 
-        <TextField
-          required
-          id="description"
-          label="Description"
-          margin="normal"
-          type="description"
-          value={this.state.description}
-          onChange={this._change('description')}
-          // autoFocus="true"
-          rowsMax="10"
-          style={{width: "25rem"}}
-        />
+            {/* Update your description of the activty */}
+            <TextField
+              required
+              id="description"
+              label="Description"
+              style={{ margin: 8 }}
+              placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
+              // helperText="Update your activity description"
+              margin="normal"
+              value={this.state.description}
+              onChange={this._change('description')}
+              multiline
+              rowsMax="20"
+              fullWidth
+              variant="outlined"
+              type="description"
+            />
 
-        <br/>
+            <br/>
+            
+            {/* Update categories for this activity */}
+            {/* <p>Category</p> */}
 
-        <p>Category</p>
-        <TextField
-          required
-          id="len"
-          label="Length"
-          margin="normal"
-          type="length"
-          value={this.state.length}
-          onChange={this._change('length')}
-          focused="true"
-          style={{width: "20rem"}}
-        />
-        
-        <p>Attachments</p>
-        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
-        </form>
+            {/* Update how many minutes your activity will be run for */}
+            <TextField
+              required
+              id="len"
+              label="Length"
+              style={{ margin: 8}}
+              placeholder="Enter number between 1 - 120"
+              helperText="How many minutes will your activity run for?"
+              margin="normal"
+              type="length"
+              value={this.state.length}
+              onChange={this._change('length')}
+              variant="outlined"
+              focused="true" // What does 'focused' do?
+            />
+            <br />
+            
+            {/* Update attached files - add new file or remove existing file */}
+            {/* <p>Attachments</p> */}
+
+            {/* Click 'save changes' to update your program with the new details */}
+            <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Save Changes</Button>
+          
+          </form>
       </div>
 
     )

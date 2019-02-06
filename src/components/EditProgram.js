@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import store from '../config/store'
 import { fetchProgram } from '../services/ProgramService'
-import { Paper, Button, TextField } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 
 class EditProgram extends Component {
     state = {
@@ -61,7 +61,7 @@ class EditProgram extends Component {
         return (
             <div>
              {/* Instructive form heading */}
-             <h1>Edit Program Details</h1>
+             <h1>Edit Program</h1>
                 <form onSubmit={this.handleSubmit}>
                     
                     {/* Update your program title */}
@@ -93,7 +93,7 @@ class EditProgram extends Component {
                         placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
                         // helperText="Update your program description"
                         value={this.state.program.description}
-                        multiline={true}
+                        multiline
                         rowsMax="20"
                         onChange={this._change('description')}
 <<<<<<< HEAD
@@ -113,10 +113,16 @@ class EditProgram extends Component {
                         fullWidth
                         variant="outlined"
                         type="description"
+<<<<<<< HEAD
                         // InputLabelProps={{
                         //     shrink: true,
                         // }}
 >>>>>>> added styling to text fields of Edit Program form
+=======
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+>>>>>>> added styling to textfields on Edit Activity form
                     />
                     <br />
                     
