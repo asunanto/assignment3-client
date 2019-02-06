@@ -1,3 +1,23 @@
+/*  Users can create a new activity for their unit.
+
+    FORMS
+    -----
+    - CreateProgram
+    - CreateActivity
+    - EditProgram
+    - EditActivity
+    - Edit User
+    - SignIn
+    - SignUp
+    * Update Activities to Program
+
+    Forms share the same styles and layouts as other forms on the app:
+        - grid, textfields, paper
+    Plus, the colours, typography and button styles are the same across the app.
+        - MUI theme?
+    
+*/
+
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import { Paper, Button, TextField, Grid } from '@material-ui/core'
