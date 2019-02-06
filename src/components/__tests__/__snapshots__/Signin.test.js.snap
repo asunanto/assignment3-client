@@ -39,6 +39,11 @@ Array [
       <br />
       <WithStyles(Button)
         color="primary"
+        style={
+          Object {
+            "margin": 15,
+          }
+        }
         type="submit"
         variant="contained"
       >
@@ -53,12 +58,13 @@ Array [
           style={
             Object {
               "backgroundColor": "orange",
+              "margin": 15,
             }
           }
           type="button"
           variant="contained"
         >
-          Register
+          Sign Up
         </WithStyles(Button)>
       </Link>
     </form>

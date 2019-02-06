@@ -42,7 +42,7 @@ Array [
       />
       <br />
       <TextField
-        id="length"
+        id="len"
         label="Length"
         margin="normal"
         required={true}
