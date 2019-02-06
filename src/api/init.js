@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const api = axios.create({
-  // baseURL: 'https://assignment3-server.herokuapp.com/'
-  baseURL: 'http://localhost:3001'
+  baseURL: 'https://assignment3-server.herokuapp.com/'
+  // baseURL: 'http://localhost:3001'
 })
 
   // Add the bearer token to the axios instance
