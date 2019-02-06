@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Fab, Paper } from '@material-ui/core/';
-import AddIcon from '@material-ui/icons/Add/';
+import AddIcon from '@material-ui/icons/Add';
 import { api, setJwt } from '../api/init'
 import { Link } from 'react-router-dom';
 import Program from './Program'
 
 const style = {
   Paper: {
-      'width': '400px',
-      'margin': '10% auto 0 auto',
-      'textAlign': 'center',
-      'padding': '5%'
+    'width': '400px',
+    'margin': '10% auto 0 auto',
+    'textAlign': 'center',
+    'padding': '5%'
 
   }
 }
@@ -32,7 +32,7 @@ class Unit extends Component {
       console.error('Could not fetch user', err)
     })
   }
-  
+
 
   render() {
     console.log(this.state.users[0])
@@ -54,10 +54,10 @@ class Unit extends Component {
         <Paper style={style.Paper}>
           <h2>Unit Programs</h2>
           {this.state.programs.map((program) => {
-              return (
-                <Program key={program._id} program={program}></Program>
-              )
-            })}
+            return (
+              <Program key={program._id} program={program}></Program>
+            )
+          })}
           <Link to='/create-program'>
             <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
               <AddIcon />

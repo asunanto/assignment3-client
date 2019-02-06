@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Fab, Paper } from '@material-ui/core/';
-import AddIcon from '@material-ui/icons/Add/';
+import AddIcon from '@material-ui/icons/Add';
 import { api, setJwt } from '../api/init'
 import { Link } from 'react-router-dom';
 // import store from '../config/store'
@@ -21,7 +21,7 @@ const style = {
 class User extends Component {
   state = { programs: [], activities: [] }
 
-  
+
 
   componentDidMount() {
     const token = localStorage.getItem('token')
@@ -59,22 +59,22 @@ class User extends Component {
         {/* For each program created by the user, show as a ProgramCard */}
         <Paper style={style.Paper}>
           <h2>My Programs</h2>
-            {this.state.programs.map((program) => {
-              return (
-                <Program key={program._id} program={program}></Program>
-              )
-            })}
-            <Link to='/create-activity/'>
-              <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-                <AddIcon />
-              </Fab>
-            </Link>
+          {this.state.programs.map((program) => {
+            return (
+              <Program key={program._id} program={program}></Program>
+            )
+          })}
+          <Link to='/create-activity/'>
+            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+              <AddIcon />
+            </Fab>
+          </Link>
         </Paper>
-        
+
         {/* For each activity created by the user, show as an ActivityCard */}
         <Paper style={style.Paper}>
 
-        <h2>My Activities</h2>
+          <h2>My Activities</h2>
           {this.state.activities.map((activity) => {
             return (
               <div key={activity._id}>
@@ -82,14 +82,14 @@ class User extends Component {
               </div>
             )
           })}
-      <Link to='/create-activity/'>
-        <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
-          <AddIcon />
-        </Fab>
-      </Link>
-      </Paper>
+          <Link to='/create-activity/'>
+            <Fab size="medium" color="secondary" aria-label="Add" style={{ 'backgroundColor': 'orange' }}>
+              <AddIcon />
+            </Fab>
+          </Link>
+        </Paper>
 
-     </React.Fragment> 
+      </React.Fragment>
     )
   }
 }
