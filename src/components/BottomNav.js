@@ -17,12 +17,12 @@ import { Link } from 'react-router-dom';
 // import { blue } from '@material-ui/core/colors';
 // import Grid from '@material-ui/core/Grid';
 
-const styles = { 
-    // Stick to bottom of viewport
-    root: {
-      width: '100%',
-      position: 'fixed',
-      bottom: 0,
+const styles = {
+  // Stick to bottom of viewport
+  root: {
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
     //   background: '#0033A1',
   }
 };
@@ -41,38 +41,39 @@ class LabelBottomNavigation extends React.Component {
     const { value } = this.state;
 
     return (
-      <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
-        <BottomNavigationAction 
+      this.props.tokenDetails ? (
+        <BottomNavigation value={value} onChange={this.handleChange} className={classes.root}>
+          <BottomNavigationAction
             component={Link}
             to="/user"
-            label="Profile" 
-            value="profile" 
+            label="Profile"
+            value="profile"
             icon={<PersonIcon />} />
-        <BottomNavigationAction 
+          <BottomNavigationAction
             component={Link}
             to="/unit"
-            label="Unit" 
-            value="unit" 
+            label="Unit"
+            value="unit"
             icon={<HomeIcon />} />
-        <BottomNavigationAction 
+          <BottomNavigationAction
             component={Link}
             to="/create-program"
-            label="Create" 
-            value="create" 
+            label="Create"
+            value="create"
             icon={<CreateIcon />} />
-        <BottomNavigationAction 
+          <BottomNavigationAction
             component={Link}
             to="/library"
-            label="Library" 
-            value="library" 
+            label="Library"
+            value="library"
             icon={<ListIcon />} />
-        <BottomNavigationAction 
+          <BottomNavigationAction
             component={Link}
             to="/about"
-            label="Info" 
-            value="info" 
+            label="Info"
+            value="info"
             icon={<InfoIcon />} />
-      </BottomNavigation>
+        </BottomNavigation>) : null
     );
   }
 }
