@@ -67,9 +67,9 @@ class EditProgram extends Component {
                     {/* Update your program title */}
                     <TextField
                         required
-                        id="title"
+                        id="name"
                         label="Title"
-                        style={{ margin: 8 }}
+                        style={{ margin: 15 }}
                         placeholder="My Awesome Program"
                         // helperText="Update your program title"
                         margin="normal"
@@ -89,13 +89,18 @@ class EditProgram extends Component {
                         required
                         id="description"
                         label="Description"
-                        style={{ margin: 8 }}
+                        style={{ margin: 15 }}
                         placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
                         // helperText="Update your program description"
                         value={this.state.program.description}
                         multiline
                         rowsMax="20"
                         onChange={this._change('description')}
+                        variant="outlined"
+                        fullWidth
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
                     />
                     <br />
                     
@@ -104,7 +109,7 @@ class EditProgram extends Component {
                         required
                         id="date"
                         label="Date"
-                        style={{ margin: 8}}
+                        style={{ margin: 15}}
                         helperText="When will you run your program?"
                         margin="normal"
                         variant="outlined"
@@ -122,7 +127,7 @@ class EditProgram extends Component {
                         required
                         id="length"
                         label="Length"
-                        style={{ margin: 8}}
+                        style={{ margin: 15}}
                         placeholder="Enter number between 1 - 120"
                         helperText="How many minutes will your program run for?"
                         margin="normal"

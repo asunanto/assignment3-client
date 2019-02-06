@@ -50,60 +50,100 @@ class CreateActivity extends Component {
   }
 
   render() {
+    const ageIndex = this.state.ageLevel && this.state.ageLevels.findIndex(ageLevel => ageLevel.name == this.state.ageLevel.name)
+
     return (
       <div>
+      {/* Instructive form heading */}
+      <h1>Create a new activity to add to our share library</h1>
         <form onSubmit={this.handleSubmit}>
-          <h1>Create a new activity to add to our share library</h1>
 
-          <p>Age Level</p>
-          <select onChange={this.handleChange} >
-            {this.state.ageLevels.map((ageLevel, index) =>
+          {/* Set an age level for this activity */}
+          <TextField
+              id="age"
+              label="Age Level"
+              select
+              value={ageIndex}
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+          >
+            { this.state.ageLevels.map((ageLevel,index) =>
               <option key={index} value={index}>{ageLevel.name}</option>
             )}
+          </TextField>
 
-          </select>
           <br />
+
+          {/* Give your activity a title */}
           <TextField
             required
             id="title"
             label="Title"
+            style={{ margin: 8 }}
+            placeholder="My Fun Activity"
+            helperText="Give your activity title"
             margin="normal"
             type="title"
-            style={{ width: "20rem" }}
+            fullWidth
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }} 
           />
-
           <br />
 
+          {/* Give your activity a description */}
           <TextField
             required
             id="description"
             label="Description"
+            style={{ margin: 15 }}
+            placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
+            helperText="Write a description of your program"
+            multiline
+            rowsMax="20"
+            fullWidth
             margin="normal"
+            variant="outlined"
             type="description"
-            multiline={true}
-            rowsMax="10"
-            style={{ width: "25rem" }}
-          // rows={2}
-          // rowsMax={4}
+            InputLabelProps={{
+                shrink: true,
+            }} 
           />
-
           <br />
 
-          <p>Category</p>
+          {/* Give categories to this activity */}
+          {/* <p>Category</p> */}
+
+          {/* How many minutes will the activity run for? */}
           <TextField
             required
             id="len"
             label="Length"
+            style={{ margin: 15}}
+            placeholder="Enter number between 1 - 120"
+            helperText="How many minutes will the activity run for?"
             margin="normal"
-            type="len"
-            style={{ width: "20rem" }}
+            variant="outlined"
+            type="length"
+            InputLabelProps={{
+                shrink: true,
+            }} 
           />
+          <br />
 
-          <p>Attachments</p>
-          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
+          {/* Attach files (optional) */}
+          {/* <p>Attachments</p> */}
+
+          {/* Click 'create' to save your activity to the database */}
+          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Create</Button>
+        
         </form>
       </div>
-
     )
   }
 }

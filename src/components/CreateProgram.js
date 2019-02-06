@@ -53,14 +53,17 @@ class CreateProgram extends Component {
                     <TextField
                         required
                         id="name"
-                        style={{ margin: 8 }}
-                        label="name"
+                        style={{ margin: 15 }}
+                        label="Title"
                         placeholder="My Awesome Program"
                         helperText="Give your program a name"
                         fullWidth
                         margin="normal"
                         variant="outlined"
                         type="name" // What does 'type' mean?
+                        InputLabelProps={{
+                            shrink: true,
+                        }} 
                     />
                     <br />
 
@@ -69,15 +72,18 @@ class CreateProgram extends Component {
                         required
                         id="description"
                         label="Description"
-                        style={{ margin: 8 }}
+                        style={{ margin: 15 }}
                         placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
-                        helperText="Write a descritpion of your program"
+                        helperText="Write a description of your program"
                         multiline
                         rowsMax="20" // Once the text exceeds 20 lines, the container becomes scrollable
                         fullWidth
                         margin="normal"
                         variant="outlined"
                         type="description"
+                        InputLabelProps={{
+                            shrink: true,
+                        }} 
                     />
                     <br />
 
@@ -86,7 +92,7 @@ class CreateProgram extends Component {
                         required
                         id="date"
                         label="Date"
-                        style={{ margin: 8}}
+                        style={{ margin: 15}}
                         helperText="When will you run your program?"
                         margin="normal"
                         variant="outlined"
@@ -103,12 +109,15 @@ class CreateProgram extends Component {
                         required
                         id="len"
                         label="Length"
-                        style={{ margin: 8}}
+                        style={{ margin: 15}}
                         placeholder="Enter number between 1 - 120"
                         helperText="How many minutes will your program run for?"
                         margin="normal"
                         variant="outlined"
                         type="length"
+                        InputLabelProps={{
+                            shrink: true,
+                        }} 
                     />
                     <br />
 
