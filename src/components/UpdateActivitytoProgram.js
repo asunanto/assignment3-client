@@ -57,28 +57,32 @@ class UpdateActivitytoProgram extends Component {
 
         return (
             <div>
-
-                <h1>Add activities to {program && program.program.name}</h1>
+                {/* Instructive form heading */}
+                <h1>Add Activities to {program && program.program.name}</h1>
 
                 <form onSubmit={this.handleSubmit}>
 
-                    <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>
-                        Add Activities
+                    {/* Click 'done' to update the program with selected activities */}
+                    <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>
+                        Done
                     </Button>
+
+                    {/* Render a list of activities (cards) with a checkbox selector */}
                     {this.state.activities.map((activity, index) => (
                         <div key={index} className="input-group">
                             <label>
-                                <p> Activity Title: {activity.title}</p>
+                                <p>Activity Title: {activity.title}</p>
                                 <p>Description: {activity.description}</p>
                                 <p>Age Level: {activity.ageLevel.name}</p>
                                 <a href={`/activities/${activity._id}`}><button>View</button></a>
                             </label>
+
+                            {/* Tick the checkbox to add a given activity to your program */}
                             <input type="checkbox" value={index} onChange={this.onChange} />
                         </div>
                     ))}
+                    
                 </form>
-
-
 
             </div>
         )
