@@ -100,7 +100,7 @@ class EditActivity extends Component {
               required
               id="title"
               label="Title"
-              style={{ margin: 8 }}
+              style={{ margin: 15 }}
               placeholder="My Fun Activity"
               // helperText="Update your activity title"
               margin="normal"
@@ -118,7 +118,7 @@ class EditActivity extends Component {
               required
               id="description"
               label="Description"
-              style={{ margin: 8 }}
+              style={{ margin: 15 }}
               placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
               // helperText="Update your activity description"
               margin="normal"
@@ -141,7 +141,7 @@ class EditActivity extends Component {
               required
               id="len"
               label="Length"
-              style={{ margin: 8}}
+              style={{ margin: 15}}
               placeholder="Enter number between 1 - 120"
               helperText="How many minutes will your activity run for?"
               margin="normal"

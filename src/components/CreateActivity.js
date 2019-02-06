@@ -83,7 +83,7 @@ class CreateActivity extends Component {
             required
             id="title"
             label="Title"
-            style={{ margin: 8 }}
+            style={{ margin: 15 }}
             placeholder="My Fun Activity"
             helperText="Give your activity title"
             margin="normal"
