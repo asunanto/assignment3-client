@@ -39,16 +39,24 @@ import EditUser from './components/EditUser'
 
 
 class App extends Component {
+  units = []
 
   componentDidMount() {
     // fetchBookmarks()
     fetchActivities()
     fetchPrograms()
-    const token = localStorage.getItem('token')
-    if (token) {
-      store.dispatch(setTokenAction(token))
-      setJwt(token)
-    }
+    // const token = localStorage.getItem('token')
+    // if (token) {
+    //   store.dispatch(setTokenAction(token))
+    //   setJwt(token)
+    // }
+
+    api.get('/units').then((res) => {
+      this.units = [...res.data]
+      console.log(this.units)
+    }).catch((err) => {
+      console.error('Could not fetch age levels', err)
+    })
   }
 
   handleSignIn = async (event) => {
@@ -82,27 +90,33 @@ class App extends Component {
   }
 
   handleSignUp = async (event) => {
+
+
     try {
       event.preventDefault()
       const form = event.target
+      let unitIndex = this.units[form.elements.unit.value]
+      console.log(unitIndex)
+
       const response = await api.post('/auth/register', {
         email: form.elements.email.value,
         password: form.elements.password.value,
         name: {
-          fristname: form.elements.firstname.value,
+          firstname: form.elements.firstname.value,
           lastname: form.elements.lastname.value,
+          guidename: form.elements.guidename.value
         },
-        membershipNo: form.elements.membershipNo,
-        phone: form.elements.phonenumber,
+        membershipNo: form.elements.membershipNo.value,
+        phone: form.elements.phone.value,
         unit: {
-          name: ''
+          ...unitIndex
         }
       })
-
       let token = response.data.token
+      localStorage.setItem('token', token)
       setJwt(response.data.token)
       store.dispatch(setTokenAction(token))
-      // fetchBookmarks()
+
     } catch (error) {
       store.dispatch(setSignupErrorAction(error.message))
     }
@@ -141,7 +155,7 @@ class App extends Component {
                   if (tokenDetails) {
                     return (<Redirect to="/" />)
                   } else {
-                    return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
+                    return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} units={this.units && this.units} />)
                   }
                 }} />
 
@@ -157,7 +171,7 @@ class App extends Component {
                   return <Activities activities={activities} />
                 }} />
 
-                <Route path="/user" render={() => {
+                <Route exact path="/user" render={() => {
                   if (tokenDetails) {
                     return (<User handleSignOut={this.handleSignOut} />)
                   } else {
@@ -183,7 +197,7 @@ class App extends Component {
                 {/* <Route path="/activity" exact component={Activity} /> */}
                 <Route path="/programs/:id" exact component={Program} />
                 <Route path="/programs/:id/updateactivities" exact component={UpdateActivitytoProgram} />
-                <Route path="/programs/:id/editprogram" exact component={EditProgram} />
+                <Route path="/programs/:id/edit" exact component={EditProgram} />
                 <Route component={NotFound} />
               </Switch>
             </Fragment>

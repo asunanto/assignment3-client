@@ -156,7 +156,7 @@ class Activity extends React.Component {
 
 Activity.propTypes = {
   classes: PropTypes.object.isRequired,
-  activity: PropTypes.shape =  ({
+  activity: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
     user: PropTypes.object,
