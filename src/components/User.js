@@ -14,7 +14,6 @@ const style = {
     'margin': '10% auto 0 auto',
     'textAlign': 'center',
     'padding': '5%'
-
   }
 }
 
