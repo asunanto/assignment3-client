@@ -60,24 +60,24 @@ class CreateProgram extends Component {
                         fullWidth
                         margin="normal"
                         variant="outlined"
-                        // type="name" // What does 'type' mean?
+                        type="name" // What does 'type' mean?
                     />
                     <br />
 
-                    {/* Write a short description of your program */}
+                    {/* Write a description of your program */}
                     <TextField
                         required
                         id="description"
                         label="Description"
                         style={{ margin: 8 }}
                         placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
-                        helperText="Write a short descritpion of your program"
+                        helperText="Write a descritpion of your program"
                         multiline
                         rowsMax="20" // Once the text exceeds 20 lines, the container becomes scrollable
                         fullWidth
                         margin="normal"
                         variant="outlined"
-                        // type="description"
+                        type="description"
                     />
                     <br />
 
@@ -108,7 +108,7 @@ class CreateProgram extends Component {
                         helperText="How many minutes will your program run for?"
                         margin="normal"
                         variant="outlined"
-                        // type="length"
+                        type="length"
                     />
                     <br />
 
