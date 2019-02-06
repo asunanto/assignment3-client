@@ -16,7 +16,8 @@ export default ({ handleSignIn, loginError }) => (
     <Paper style={style.Paper}>
         <img src={logo} alt="Girl Guides Australia Logo"></img>
         <form onSubmit={handleSignIn}>
-
+            {/* <input type='email' id='email' name="email" placeholder='Enter your email' required /><br /> */}
+            {/* <input type='password' id='password' name="password" placeholder='Password' required /><br /> */}
             {loginError && <p>{loginError}</p>}
             <TextField
                 required
@@ -34,9 +35,19 @@ export default ({ handleSignIn, loginError }) => (
                 type="password"
             />
             <br />
-            <Button type="submit" variant="contained" color="primary" style={{ 'margin': 15 }}>Sign In</Button>
+            <Button type="submit" variant="contained" color="primary" style={{'margin': 15}}>Sign In</Button>
             <Link to='/signup'><Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Sign Up</Button></Link>
         </form>
 
     </Paper >
 )
+
+
+// export default ({ handleSignIn, loginError }) => (
+//     <form onSubmit={handleSignIn}>
+//         {loginError && <p>{loginError}</p>}
+//         <label>Email: <input type="email" name="email" /></label><br />
+//         <label>Password: <input type="password" name="password" /></label><br />
+//         <button type="submit">Login</button>
+//     </form>
+// )
