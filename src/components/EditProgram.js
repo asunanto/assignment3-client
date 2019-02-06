@@ -58,53 +58,95 @@ class EditProgram extends Component {
     render() {
         return (
             <div>
+             {/* Instructive form heading */}
+             <h1>Edit Program Details</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <h1>Edit Program Details</h1>
+                    
+                    {/* Update your program title */}
                     <TextField
                         required
-                        id="name"
-                        label="Name"
+                        id="title"
+                        label="Title"
+                        style={{ margin: 8 }}
+                        placeholder="My Awesome Program"
+                        // helperText="Update your program title"
                         margin="normal"
                         type="name"
                         value={ this.state.program.name}
                         onChange={this._change('name')}
+                        fullWidth
+                        variant="outlined"
+                        InputLabelProps={{
+                            shrink: true,
+                        }} // When you begin typing, this makes sure the Labels don't cover up the other fields' input boxes and overlap with the prefilled text. 
                     />
                     <br />
+                    
+                    {/* Update your description of the program */}
                     <TextField
                         required
                         id="description"
                         label="Description"
-                        margin="normal"
-                        type="description"
+                        style={{ margin: 8 }}
+                        placeholder="Give details about this program, e.g. its purpose, theme, requirements etc."
+                        // helperText="Update your program description"
                         value={this.state.program.description}
                         multiline={true}
+                        rowsMax="20"
                         onChange={this._change('description')}
-                    />
-                    <br />
-                    <p>Category</p>
-                    <TextField
-                        required
-                        id="length"
-                        label="Length"
                         margin="normal"
-                        type="length"
-                        value={this.state.program.length}
-                        onChange={this._change('length')}
+                        fullWidth
+                        variant="outlined"
+                        type="description"
+                        // InputLabelProps={{
+                        //     shrink: true,
+                        // }}
                     />
                     <br />
-                    <p>Category</p>
+                    
+                    {/* Update the date when your program will be run */}
                     <TextField
                         required
                         id="date"
                         label="Date"
+                        style={{ margin: 8}}
+                        helperText="When will you run your program?"
                         margin="normal"
+                        variant="outlined"
                         type="date"
                         value={this.state.program.date}
                         onChange={this._change('date')}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
                     />
+                    <br />
 
-                    <p>Attachments</p>
-                    <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
+                    {/* Update how many minutes your program will be run for */}
+                    <TextField
+                        required
+                        id="length"
+                        label="Length"
+                        style={{ margin: 8}}
+                        placeholder="Enter number between 1 - 120"
+                        helperText="How many minutes will your program run for?"
+                        margin="normal"
+                        type="length"
+                        value={this.state.program.length}
+                        onChange={this._change('length')}
+                        variant="outlined"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <br />
+
+                    {/* Update attached files - add new file or remove existing file */}
+                    {/* <p>Attachments</p> */}
+                    
+                    {/* Click 'save changes' to update your program with the new details */}
+                    <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange', margin: 15 }}>Save Changes</Button>
+                
                 </form>
             </div>
 
