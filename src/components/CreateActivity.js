@@ -31,7 +31,6 @@ class CreateActivity extends Component {
     try {
       const { title, description, len } = e.target.elements
       const length = parseInt(len.value)
-      console.log('title, description, length', title.value, description.value, length)
       if (isNaN(length) || length < 1 || length > 120) {
         alert('Length must be between 1 and 120 minutes and digits only')
         return

@@ -46,11 +46,11 @@ class App extends Component {
     // fetchBookmarks()
     fetchActivities()
     fetchPrograms()
-    const token = localStorage.getItem('token')
-    if (token) {
-      store.dispatch(setTokenAction(token))
-      setJwt(token)
-    }
+    // const token = localStorage.getItem('token')
+    // if (token) {
+    //   store.dispatch(setTokenAction(token))
+    //   setJwt(token)
+    // }
 
     api.get('/units').then((res) => {
       this.units = [...res.data]
@@ -174,7 +174,7 @@ class App extends Component {
                   return <Activities activities={activities} />
                 }} />
 
-                <Route path="/user" render={() => {
+                <Route exact path="/user" render={() => {
                   if (tokenDetails) {
                     return (<User handleSignOut={this.handleSignOut} />)
                   } else {
