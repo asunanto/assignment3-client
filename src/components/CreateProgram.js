@@ -82,17 +82,18 @@ class CreateProgram extends Component {
                     <br />
 
                     {/* When will your program be run? */}
-                    {/* <p>Date</p> */}
                     <TextField
                         required
-                        select
                         id="date"
                         label="Date"
                         style={{ margin: 8}}
                         helperText="When will you run your program?"
                         margin="normal"
                         variant="outlined"
-                        // type="date"
+                        type="date"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
                     />
                     <br />
 
