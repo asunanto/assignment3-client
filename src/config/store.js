@@ -5,6 +5,7 @@ const initialState = {
   activity: null,
   program: null,
   programs: [],
+  // bookmarks: [],
   loggedIn: false,
   signedUp: false,
   token: null,
@@ -14,6 +15,8 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    // case 'set_bookmarks':
+    //   return { ...state, bookmarks: action.bookmarks }
     case 'set_activities':
       return { ...state, activities: action.activities }
     case 'set_activity':
