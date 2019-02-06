@@ -109,7 +109,7 @@ class App extends Component {
 
   }
 
-  
+
 
   render() {
     // const bookmarks = store.getState().bookmarks
@@ -118,15 +118,15 @@ class App extends Component {
     const token = store.getState().token
     const tokenDetails = token && decodeJWT(token)
     // const activity = store.getState().activity
-    console.log('activities array',activities)
+    console.log('activities array', activities)
     return (
       <div className="App">
         {
-          
+
           <Router>
-            
+
             <Fragment>
-              <TabBar tokenDetails={tokenDetails}/>
+              <TabBar tokenDetails={tokenDetails} />
               {/* {!tokenDetails ? <Redirect from="*" to="/login" />:null} */}
               <Switch>
                 <Route exact path='/login' render={() => {
@@ -144,17 +144,17 @@ class App extends Component {
                     return (<Signup signupError={store.getState().signupError} handleSignUp={this.handleSignUp} />)
                   }
                 }} />
-               
+
                 <Route exact path="/" render={() => {
                   if (tokenDetails) {
-                    return <Redirect to="/user" /> 
+                    return <Redirect to="/user" />
                   } else {
                     return <Redirect to="/login" />
                   }
                 }} />
 
                 <Route exact path="/activities" render={() => {
-                    return <Activities activities={activities} />
+                  return <Activities activities={activities} />
                 }} />
 
                 <Route path="/user" render={() => {
@@ -173,7 +173,7 @@ class App extends Component {
                 <Route exact path="/programs" render={() => (
                   <Programs programs={programs} />
                 )} />
-                
+
                 <Route path="/unit" exact component={Unit} />
                 <Route path="/create-program" exact component={CreateProgram} />
                 <Route path="/create-program" exact component={CreateProgram} />
