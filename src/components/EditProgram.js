@@ -96,33 +96,6 @@ class EditProgram extends Component {
                         multiline
                         rowsMax="20"
                         onChange={this._change('description')}
-<<<<<<< HEAD
-                    />
-                    <br />
-                    <p>Category</p>
-                    <TextField
-                        required
-                        id="len"
-                        label="Length"
-                        margin="normal"
-                        type="length"
-                        value={this.state.program.length}
-                        onChange={this._change('len')}
-=======
-                        margin="normal"
-                        fullWidth
-                        variant="outlined"
-                        type="description"
-<<<<<<< HEAD
-                        // InputLabelProps={{
-                        //     shrink: true,
-                        // }}
->>>>>>> added styling to text fields of Edit Program form
-=======
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
->>>>>>> added styling to textfields on Edit Activity form
                     />
                     <br />
                     
