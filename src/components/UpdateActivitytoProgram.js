@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import store from '../config/store'
 import { fetchProgram } from '../services/ProgramService';
-import { Paper, Button, TextField } from '@material-ui/core'
+import { Paper, Button, TextField, Grid} from '@material-ui/core'
+import Activity from './Activity'
 // import fetchActivities from '../services/ActivityService'
 
 class UpdateActivitytoProgram extends Component {
 
     state = {
         options: [],
-        activities: []
+        activities: [],
+        direction: 'row',
+        justify: 'center',
+        alignItems: 'center'
     }
 
     onChange = (e) => {
@@ -54,10 +58,11 @@ class UpdateActivitytoProgram extends Component {
 
     render() {
         const program = store.getState().program
+        const { alignItems, direction, justify } = this.state;
 
         return (
             <div>
-                {/* Instructive form heading */}
+   
                 <h1>Add Activities to {program && program.program.name}</h1>
 
                 <form onSubmit={this.handleSubmit}>
@@ -68,19 +73,22 @@ class UpdateActivitytoProgram extends Component {
                     </Button>
 
                     {/* Render a list of activities (cards) with a checkbox selector */}
-                    {this.state.activities.map((activity, index) => (
-                        <div key={index} className="input-group">
-                            <label>
-                                <p>Activity Title: {activity.title}</p>
-                                <p>Description: {activity.description}</p>
-                                <p>Age Level: {activity.ageLevel.name}</p>
-                                <a href={`/activities/${activity._id}`}><button>View</button></a>
-                            </label>
-
-                            {/* Tick the checkbox to add a given activity to your program */}
-                            <input type="checkbox" value={index} onChange={this.onChange} />
-                        </div>
-                    ))}
+                    <Grid
+                        container
+                        spacing={16}
+                        direction={direction}
+                        justify={justify}
+                        alignItems={alignItems} 
+                    >
+                        {this.state.activities.map((activity) => (
+                            <div className="input-group">
+                                <Activity key={activity._id} activity={activity} />
+                                {/* Tick the checkbox to add a given activity to your program */}
+                                <input type="checkbox" onChange={this.onChange} />
+                            </div>
+                            )
+                        )}
+                    </Grid>
                     
                 </form>
 

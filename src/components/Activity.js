@@ -114,22 +114,26 @@ class Activity extends React.Component {
 
         {/* Displays a description of the activity */}
         <CardContent>
-          <Typography component="p">
+          <Typography variant="body2">
             {activity && activity.description}
           </Typography>
+          <br />
+          <Typography variant="subtitle2">{activity && activity.length} mins</Typography>
         </CardContent>
 
         {/* Add to Favourites and Share buttons not working yet */}
-        <CardActions className={classes.actions} disableActionSpacing>
+        {/* <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites">
             <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="Share">
             <ShareIcon />
-          </IconButton>
+          </IconButton> */}
+
+          {/* <a href={`/activities/${activity._id}`}><button>View</button></a> */}
 
           {/* An expandable section for activities with lots of information to display */}
-          <IconButton
+          {/* <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
             })}
@@ -139,18 +143,19 @@ class Activity extends React.Component {
           >
             <ExpandMoreIcon />
           </IconButton>
-        </CardActions>
-        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-          <CardContent>
+        </CardActions> */}
+        
+        {/* <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+          <CardContent> */}
             {/* We could have an expandable section for full-length description or step-by-step instructions  */}
-            <Typography paragraph>Instructions:</Typography>
+            {/* <Typography paragraph>Instructions:</Typography>
             <Typography paragraph>
               {activity && activity.instructions}
             </Typography>
             <Typography paragraph>Resources Needed:</Typography>
             {activity && activity.resources}
           </CardContent>
-        </Collapse>
+        </Collapse> */}
 
       </Card>
     );
