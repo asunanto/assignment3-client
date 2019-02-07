@@ -231,6 +231,12 @@ Client communication evidences here
 
 We rescheduled our code handoff to the next week so that we can fix some bugs and write documentation.
 
+Client Interaction Diary:
+https://docs.google.com/document/d/1I_JBZPpjIel3LkQ3FJK5-_vTCYDK-XBSWv-4FH3VM0A/edit?usp=sharing
+
+Meeting Minutes:
+https://docs.google.com/document/d/1FFERWP-sj8ZL-UAFzIdYiE719z4w26_kthE0BhkmZ1Y/edit?usp=sharing
+
 # Short-Answer Questions
 
 ### 1. What are the most important aspects of quality software?
