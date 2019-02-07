@@ -23,6 +23,7 @@ const styles = {
     width: '100%',
     position: 'fixed',
     bottom: 0,
+    
     //   background: '#0033A1',
   }
 };

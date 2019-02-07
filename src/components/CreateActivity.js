@@ -1,9 +1,44 @@
+/*  Users can create a new activity for their unit.
+
+    FORMS
+    -----
+    - CreateProgram #
+    - CreateActivity #
+    - EditProgram #
+    - EditActivity
+    - Edit User #
+    - SignIn
+    - SignUp
+    * Update Activities to Program
+
+    Forms share the same styles and layouts as other forms on the app:
+        - grid, textfields, paper
+    Plus, the colours, typography and button styles are the same across the app.
+        - MUI theme?
+    
+*/
+
 import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
-import { Paper, Button, TextField } from '@material-ui/core'
+import { Paper, Button, TextField, Grid } from '@material-ui/core'
 import { addActivity } from '../services/ActivityService'
 import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  textField: {
+    backgroundColor: '#F5F9FF'
+  }
+});
 
 class CreateActivity extends Component {
   state = {
@@ -50,61 +85,160 @@ class CreateActivity extends Component {
   }
 
   render() {
+    const ageIndex = this.state.ageLevel && this.state.ageLevels.findIndex(ageLevel => ageLevel.name == this.state.ageLevel.name)
+
     return (
       <div>
+      {/* Instructive form heading */}
+      <h1>Create a new activity to add to our share library</h1>
+      
+      <Paper 
+        style={{
+          margin: '10% auto 0 auto',
+          padding: '5%',
+          maxWidth: 800,
+        }}
+      >
+
         <form onSubmit={this.handleSubmit}>
-          <h1>Create a new activity to add to our share library</h1>
 
-          <p>Age Level</p>
-          <select onChange={this.handleChange} >
-            {this.state.ageLevels.map((ageLevel, index) =>
-              <option key={index} value={index}>{ageLevel.name}</option>
-            )}
+        <Grid 
+          container
+          spacing={16}
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+        >
 
-          </select>
-          <br />
+          {/* Give your activity a title */}
+          <Grid item xs={8} md={10}>
           <TextField
             required
+            style={{backgroundColor:'#F5F9FF'}}
             id="title"
             label="Title"
+            placeholder="My Fun Activity"
+            // helperText="Give your activity title"
             margin="normal"
             type="title"
-            style={{ width: "20rem" }}
+            fullWidth
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
+          </Grid>
 
-          <br />
+          {/* Set an age level for this activity */}
+          <Grid item xs={4} md={2}>
+          <TextField
+            style={{backgroundColor:'#D4E2FB'}}
+            id="age"
+            label="Age Level"
+            select
+            // placeholder="Select appropriate age"
+            value={ageIndex}
+            onChange={this.handleChange}
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          >
+            { this.state.ageLevels.map((ageLevel,index) =>
+              <option key={index} value={index}>{ageLevel.name}</option>
+            )}
+          </TextField>
+          </Grid>
 
+          {/* Give your activity a description */}
+          <Grid item xs={12}>
           <TextField
             required
+            style={{backgroundColor:'#F5F9FF'}}
             id="description"
             label="Description"
+            placeholder="Purpose, instructions, resources needed..."
+            // helperText="Write a description of your program"
+            multiline
+            rowsMax="20"
+            fullWidth
             margin="normal"
+            variant="outlined"
             type="description"
-            multiline={true}
-            rowsMax="10"
-            style={{ width: "25rem" }}
-          // rows={2}
-          // rowsMax={4}
+            InputLabelProps={{
+                shrink: true,
+            }} 
           />
+          </Grid>
 
-          <br />
-
-          <p>Category</p>
+          {/* How many minutes will the activity run for? */}
+          <Grid item xs={6} sm={3}>
           <TextField
             required
+            style={{backgroundColor:'#D4E2FB'}}
             id="len"
             label="Length"
+            placeholder="1 - 120 mins"
+            // helperText="How many minutes will the activity run for?"
             margin="normal"
-            type="len"
-            style={{ width: "20rem" }}
+            variant="outlined"
+            fullWidth
+            type="length"
+            InputLabelProps={{
+                shrink: true,
+            }} 
           />
+          </Grid>
 
-          <p>Attachments</p>
-          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
+          {/* Give categories to this activity */}
+          <Grid item xs={6} sm={3}>
+          <TextField
+            style={{backgroundColor:'#D4E2FB'}}
+            id="categories"
+            label="Categories"
+            placeholder="Most relevant"
+            // helperText="Which categories match this activity best?"
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            InputLabelProps={{
+                shrink: true,
+            }} 
+          />
+          </Grid>
+
+          {/* Attach files (optional) */}
+          <Grid item xs={6} sm={3}>
+          <TextField
+            style={{backgroundColor:'#D4E2FB'}}
+            id="attachment"
+            label="Attachment"
+            placeholder="Upload file"
+            // helperText="Do you want to attach any helpful files?"
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            InputLabelProps={{
+                shrink: true,
+            }} 
+          />
+          </Grid>
+
+          {/* Click 'create' to save your activity to the database */}
+          <Grid item xs={12}>
+          <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange'}}>Create</Button>
+          </Grid>
+
+          </Grid>
         </form>
+        </Paper>
       </div>
-
     )
   }
 }
-export default CreateActivity;
+
+
+
+export default withStyles(styles)(CreateActivity);
