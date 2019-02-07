@@ -158,6 +158,11 @@ Per our assignment requirements, we are using MongoDB - a NoSQL database with no
 
 ## Project Breakdown & Schedule
 
+- **16 January to 28 January** Project planning and client communications, discussions on scope and getting client confirmation on specs, First draft of Readme
+- **21 January to 25 January** Backend Development, setting up all tables in database and routes. Initial Frontend Development
+- **28 January to 01 February** Focus on Frontend Development, setting up all views and controls in React, Testing
+- **04 February to 07 February** Testing and Debugging, Finishing Frontend Development
+
 ## Team Managment
 
 After discussing our individual strengths and things we'd like to learn, we allocated roles and responsibilities among team members as follows:
@@ -166,13 +171,19 @@ After discussing our individual strengths and things we'd like to learn, we allo
 - **Caitlin:** client relations, documentation, design direction, frontend development, backend development when needed
 - **Danylo & Skye:** API integration, frontend development, frontend test design, authentication and authorisation on the client
 
-## Task Delegation & Monitoring
-
 ## Post-Project Review
 
 ### Challenges
 
+- Complexity of the application
+- TDD
+- Coordinating remotely
+- Debugging code every time it breaks with new features being introduced
+
+
 ### Improvements
+
+- Admin Dashboard and access
 
 ## Client Satisfaction Questionniare
 
