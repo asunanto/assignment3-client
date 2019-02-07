@@ -24,7 +24,6 @@ import orange from '@material-ui/core/colors/orange';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Activity from './Activity'
 
 const styles = theme => ({
   card: {
