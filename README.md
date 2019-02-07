@@ -2,8 +2,6 @@
 
 ![Girl Guides Queensland](./docs/logo-ggq.jpg)
 
-Deployed on Netlify: [Girl Guides Helper App (Client)](https://5c3db9c1268ad9f0e15ddad0--assignment3-client.netlify.com)
-
 Deployed on Heroku: [Girl Guides Helper App (Server)](https://assignment3-client.herokuapp.com/)
 
 **Dev Team:** @asunanto (Bo), @watsbeat (Caitlin), @DanBytes (Danylo), @markconanan (Mark), @Shadow-Blitz (Skye).
@@ -156,7 +154,7 @@ Per our assignment requirements, we are using MongoDB - a NoSQL database with no
 
 ## Project Charter
 
-## Project Breakdown & Schedule
+## Project Breakdown & Schedule Key Dates
 
 - **16 January to 28 January** Project planning and client communications, discussions on scope and getting client confirmation on specs, First draft of Readme
 - **21 January to 25 January** Backend Development, setting up all tables in database and routes. Initial Frontend Development
@@ -176,7 +174,7 @@ After discussing our individual strengths and things we'd like to learn, we allo
 ### Challenges
 
 - Complexity of the application
-- TDD
+- TDD (Automated Testing)
 - Coordinating remotely
 - Debugging code every time it breaks with new features being introduced
 
@@ -184,6 +182,7 @@ After discussing our individual strengths and things we'd like to learn, we allo
 ### Improvements
 
 - Admin Dashboard and access
+- Make use of redux and globals store
 
 # Tools & Methodologies
 
@@ -229,6 +228,8 @@ Before merging pull requests into the pristine master branch, we assign another 
 ### Client Communication
 
 Client communication evidences here
+
+We rescheduled our code handoff to the next week so that we can fix some bugs and write documentation.
 
 # Short-Answer Questions
 
@@ -288,6 +289,22 @@ Because of the complexity of our application, knowledge and skills on the MERN S
 The team had to research and learn how to implement the features intended for our application, and have to do trial and error and manual testing in getting things to work. In the end it paid off as we are able to complete the core functionalities of the application.
 
 ### 5. Evaluate how effective your knowledge and skills were in this project, using examples, and suggest changes or improvements for future projects of a similiar nature.
+We have few skills that we can definitely improve on. This includes: 
+- Testing and reviewing code
+- React framework
+- Team communication
+
+Testing and Reviewing
+Making sure that the code is tested and working on the local machine before making a pull request. In a few instances buggy pull requests were merged to the pristine master.
+
+Automated tests is still tough to grasp and we need more practice with it.
+
+React Framework
+Our React code could definitely use some refactoring. Some things were hard to do and were done in roundabout way and caused untidy code.
+
+Team Communication
+There were some gaps in our communication. It can be challenging when working in a team. In the future it is a good practice to keep our tasks up to date and ensure that everyone is well informed on progress. 
+
 
 # Installation / Setup / Deployment
 
@@ -315,6 +332,6 @@ Make sure [nodemon](https://nodemon.io/) and [mongodb](https://www.npmjs.com/pac
 ## Deployment
 
 ### Via Heroku
-
+Deployed on Heroku: [Girl Guides Helper App (Server)](https://assignment3-client.herokuapp.com/)
 1. Set up an account with [Heroku](https://www.heroku.com/), a cloud platform for deploying and running apps.
 2. Login to Heroku from both your frontend and backend directories: `heroku login`
