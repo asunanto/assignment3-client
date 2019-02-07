@@ -24,6 +24,7 @@ import orange from '@material-ui/core/colors/orange';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Activity from './Activity'
 
 const styles = theme => ({
   card: {
@@ -104,7 +105,8 @@ class Program extends React.Component {
         <CardContent>
           <Typography variant="subtitle1">{program && program.length} mins | {program && program.unit.name}</Typography>
           <br />
-          <Typography variant="body2">{program && program.description}</Typography>
+          <Typography variant="body2">{program && program.description}</Typography><br />
+          <Link to={`programs/${program._id}`}><Typography variant="body2">View This Program</Typography></Link>
         </CardContent>
 
         {/* Add to Favourites and Share buttons not working yet */}
@@ -117,7 +119,7 @@ class Program extends React.Component {
           </IconButton>
 
           {/* An expandable section for activities with lots of information to display */}
-          <IconButton
+          {/* <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
             })}
@@ -126,7 +128,7 @@ class Program extends React.Component {
             aria-label="Show more"
           >
             <ExpandMoreIcon />
-          </IconButton>
+          </IconButton> */}
         </CardActions>
 
         {/* For each activity belonging to a particular program, show as ActivityCard in a list. */}
@@ -145,7 +147,7 @@ class Program extends React.Component {
           </CardContent>
         </Collapse> */}
 
-      </Card>
+      </Card >
 
     );
   }
