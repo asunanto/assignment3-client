@@ -336,8 +336,14 @@ Make sure [nodemon](https://nodemon.io/) and [mongodb](https://www.npmjs.com/pac
 
 1. Open the backend folder: `cd backend`
 2. Install npm packages: `npm install`
-3. Launch the server: `nodemon server` or `node server`
-3. Go to `localhost:3000` in your web browser
+3. set up .env file example
+JWT_SECRET=abc123
+for deployment
+DB_USER=admin
+DB_PASSWORD=admin123
+4. cd to the imports folder and run ./import.sh (this script will populate the DB)
+5. Launch the server: `nodemon server` or `node server`
+6. Go to `localhost:3000` in your web browser
 
 ## Deployment
 
