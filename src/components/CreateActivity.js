@@ -42,7 +42,11 @@ const styles = theme => ({
 
 class CreateActivity extends Component {
   state = {
+<<<<<<< HEAD
     ageLevel: {},
+=======
+    // ageLevel: null,
+>>>>>>> f3bcf5120e59314153a57835adb103916a55114c
     ageLevels: []
   }
 
@@ -89,6 +93,7 @@ class CreateActivity extends Component {
 
     return (
       <div>
+<<<<<<< HEAD
       {/* Instructive form heading */}
       <h1>Create a new activity to add to our share library</h1>
       
@@ -232,6 +237,57 @@ class CreateActivity extends Component {
           </Grid>
 
           </Grid>
+=======
+      
+        <form onSubmit={this.handleSubmit}>
+        <h1>Create a new activity to add to our share library</h1>
+
+        <p>Age Level</p>
+        <select onChange={this.handleChange} >
+          { this.state.ageLevels.map((ageLevel,index) =>
+            <option key={index} value={index}>{ageLevel.name}</option>
+          )}
+        </select>
+        <br/>
+        <TextField
+          required
+          id="title"
+          label="Title"
+          margin="normal"
+          type="title"
+          style={{width: "20rem"}}
+        />
+
+            <br />
+
+        <TextField
+          required
+          id="description"
+          label="Description"
+          margin="normal"
+          type="description"
+          multiline={true}
+          rowsMax="10"
+          style={{width: "25rem"}}
+          // rows={2}
+          // rowsMax={4}
+        />
+
+            <br/>
+
+        <p>Category</p>
+        <TextField
+          required
+          id="length"
+          label="Length"
+          margin="normal"
+          type="length"
+          style={{width: "20rem"}}
+        />
+
+        <p>Attachments</p>
+        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Create</Button>
+>>>>>>> f3bcf5120e59314153a57835adb103916a55114c
         </form>
         </Paper>
       </div>

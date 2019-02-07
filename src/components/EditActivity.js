@@ -92,6 +92,7 @@ class EditActivity extends Component {
     const {classes} = this.props
 
     return (
+<<<<<<< HEAD
         <div className={classes.root}>
 
         <h1>Edit Activity</h1>
@@ -225,6 +226,65 @@ class EditActivity extends Component {
           </Grid>
           </form>
           </Paper>
+=======
+      <div>
+        
+        <form onSubmit={this.handleSubmit}>
+        <h1>Edit activity</h1>
+        <p>Age Level</p>
+        <select value={ageIndex} onChange={this.handleChange} >
+          { this.state.ageLevels.map((ageLevel,index) =>
+            <option key={index} value={index}>{ageLevel.name}</option>
+          )}
+        </select>
+
+        <br/>
+
+        <TextField
+          required
+          id="title"
+          label="Title"
+          margin="normal"
+          type="title"
+          value={this.state.title}
+          onChange={this._change('title')}
+          style={{width: "20rem"}}
+        />
+
+        <br/>
+
+        <TextField
+          required
+          id="description"
+          label="Description"
+          margin="normal"
+          type="description"
+          value={this.state.description}
+          onChange={this._change('description')}
+          autoFocus="true"
+          rowsMax="10"
+          style={{width: "25rem"}}
+        />
+
+        <br/>
+
+        <p>Category</p>
+        <TextField
+          required
+          id="length"
+          label="Length"
+          margin="normal"
+          type="length"
+          value={this.state.length}
+          onChange={this._change('length')}
+          focused="true"
+          style={{width: "20rem"}}
+        />
+        
+        <p>Attachments</p>
+        <Button type="submit" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Save Changes</Button>
+        </form>
+>>>>>>> f3bcf5120e59314153a57835adb103916a55114c
       </div>
 
     )
