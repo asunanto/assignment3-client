@@ -185,10 +185,6 @@ After discussing our individual strengths and things we'd like to learn, we allo
 
 - Admin Dashboard and access
 
-## Client Satisfaction Questionniare
-
-_How satisfied was the client with our product and services?_
-
 # Tools & Methodologies
 
 ### Agile
@@ -232,7 +228,7 @@ Before merging pull requests into the pristine master branch, we assign another 
 
 ### Client Communication
 
-Meeting minutes, emails etc.
+Client communication evidences here
 
 # Short-Answer Questions
 
@@ -286,6 +282,10 @@ Soft skills are essential for us developers. We must not only know how to build 
 On a technical level, it doesn't really matter what stack the developer is using so long as they have an deep understanding of it and how it can cater to the clients needs.
 
 ### 4. What knowledge or skills were required to complete your own project and overcome challenges?
+
+Because of the complexity of our application, knowledge and skills on the MERN Stack is required. Everyone in the group are fairly new to Node and React, so it was very challenging to code the whole application as everyone is still learning. Going thru the project the team had to step up and learn the stack as much as we can to be able to finish the whole application.
+
+The team had to research and learn how to implement the features intended for our application, and have to do trial and error and manual testing in getting things to work. In the end it paid off as we are able to complete the core functionalities of the application.
 
 ### 5. Evaluate how effective your knowledge and skills were in this project, using examples, and suggest changes or improvements for future projects of a similiar nature.
 
