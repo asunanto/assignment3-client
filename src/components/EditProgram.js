@@ -154,7 +154,7 @@ class EditProgram extends Component {
                     <Grid item xs={6} sm={4}>
                     <TextField
                         required
-                        id="length"
+                        id="len"
                         label="Length"
                         style={{backgroundColor:'#D4E2FB'}}
                         placeholder="Enter number between 1 - 120"
@@ -162,7 +162,7 @@ class EditProgram extends Component {
                         margin="normal"
                         type="length"
                         value={this.state.program.length}
-                        onChange={this._change('length')}
+                        onChange={this._change('len')}
                         variant="outlined"
                         fullWidth
                         InputLabelProps={{
