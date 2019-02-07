@@ -115,9 +115,11 @@ class Activity extends React.Component {
 
         {/* Displays a description of the activity */}
         <CardContent>
-          <Typography component="p">
+          <Typography variant="body2">
             {activity && activity.description}
           </Typography>
+          <br />
+          <Typography variant="subtitle2">{activity && activity.length} mins</Typography>
         </CardContent>
 
         {/* Add to Favourites and Share buttons not working yet */}

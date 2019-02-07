@@ -103,11 +103,9 @@ class Program extends React.Component {
 
         {/* Displays a description of the program */}
         <CardContent>
-          <Typography paragraph>{program && program.unit.name}</Typography>
-          <Typography paragraph>{program && program.length}</Typography>
-          <Typography component="p">
-            {program && program.description}
-          </Typography>
+          <Typography variant="subtitle1">{program && program.length} mins | {program && program.unit.name}</Typography>
+          <br />
+          <Typography variant="body2">{program && program.description}</Typography>
         </CardContent>
 
         {/* Add to Favourites and Share buttons not working yet */}

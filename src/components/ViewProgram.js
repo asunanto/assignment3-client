@@ -19,10 +19,11 @@ class ViewProgram extends Component {
 
     return (
       <div>
-        <h1>Program Title: {program && program.program.name}</h1>
-        <p>Description: {program && program.program.description}</p>
+        <h1>{program && program.program.name}</h1>
+        <p>{program && program.program.description}</p>
+        {/* Get button to direct to edit page */}
         <Button type="button" variant='contained' color="primary" style={{ 'backgroundColor': 'orange' }}>Edit program</Button>
-        <p>Unit: {program && program.program.unit.name}</p>
+        <p>{program && program.program.unit.name}</p>
         <h2>Activities</h2>
 
         {/* Display Activity cards belonging to the program */}
