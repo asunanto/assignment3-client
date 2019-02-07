@@ -36,6 +36,7 @@ import EditProgram from './components/EditProgram'
 import UpdateActivitytoProgram from './components/UpdateActivitytoProgram';
 import EditActivity from './components/EditActivity'
 import EditUser from './components/EditUser'
+import ViewProgram from './components/ViewProgram'
 
 
 
@@ -198,7 +199,7 @@ class App extends Component {
                 <Route path="/library" exact component={Library} />
                 <Route path="/about" exact component={AboutPage} />
                 {/* <Route path="/activity" exact component={Activity} /> */}
-                <Route path="/programs/:id" exact component={Program} />
+                <Route path="/programs/:id" exact component={ViewProgram} />
                 <Route path="/programs/:id/updateactivities" exact component={UpdateActivitytoProgram} />
                 <Route path="/programs/:id/edit" exact component={EditProgram} />
                 <Route component={NotFound} />
