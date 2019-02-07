@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Fab, Paper, Grid, Divider, Typography } from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add';
-import { api, setJwt } from '../api/init'
+import { api, setJwt } from '../api/init';
 import { Link } from 'react-router-dom';
 // import store from '../config/store'
 // import { fetchUser } from '../services/UserService'
-import Activity from './Activity'
-import Program from './Program'
+import Activity from './Activity';
+import Program from './Program';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   root: {
@@ -157,7 +157,17 @@ class User extends Component {
 }
 
 User.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+  name: PropTypes.shape ({
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    guidename: PropTypes.string
+  }),
+role: PropTypes.string,
+  unit: PropTypes.shape ({
+   name: PropTypes.string, 
+  }),
+  membershipNo: PropTypes.string,
+  phone: PropTypes.string,
+}
 
 export default withStyles(styles)(User);

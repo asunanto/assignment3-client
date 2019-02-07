@@ -6,8 +6,8 @@
     - on associated user or unit profile pages, as a list-item
 */
 
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 // import store from '../config/store'
 // import { fetchActivity } from '../services/ActivityService'
 import PropTypes from 'prop-types';
@@ -80,13 +80,12 @@ class Activity extends React.Component {
           // This isn't a user's avatar, but a simple "A" to distinguish this icon from other non-activity items
           avatar={
             <Avatar aria-label="Activity" className={classes.avatar}>
-              A
             </Avatar>
           }
           action={
             // Fix this button to allow users to option to edit and delete etc.
 
-            (tokenDetails && tokenDetails.sub) == activity.user._id ?
+            (tokenDetails && tokenDetails.sub) === activity.user._id ?
               <Link to={`/activities/${activity._id}/edit`}>
                 <IconButton>
                   {/* Make pre-filled edit page */}
@@ -159,15 +158,20 @@ class Activity extends React.Component {
 }
 
 Activity.propTypes = {
-  classes: PropTypes.object.isRequired,
-  activity: PropTypes.shape({
-    title: PropTypes.string,
-    description: PropTypes.string,
-    user: PropTypes.object,
-    ageLevel: PropTypes.object,
-    length: PropTypes.number
-  }).isRequired
-};
-
+  title: PropTypes.string,
+  description: PropTypes.string,
+  user: PropTypes.shape ({
+    name: PropTypes.shape ({
+      firstname: PropTypes.string,
+      lastname: PropTypes.string,
+      guidename: PropTypes.string,
+    }),
+    }),
+ageLevel: PropTypes.shape ({
+    name: PropTypes.string,
+  }),
+category: PropTypes.string,
+length: PropTypes.number,
+}
 
 export default withStyles(styles)(Activity);
