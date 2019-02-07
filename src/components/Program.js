@@ -2,8 +2,8 @@
   This ProgramCard component shows all of the relevant info and associated ActivityCards for a given Program.
 */
 
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 // import { Button } from '@material-ui/core/'
 // import store from '../config/store'
 // import { fetchProgram } from '../services/ProgramService'
@@ -155,7 +155,18 @@ class Program extends React.Component {
 }
 
 Program.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+  name: PropTypes.string,
+  description: PropTypes.string,
+  user: PropTypes.shape ({
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    guidename: PropTypes.string,
+  }),
+  unit: PropTypes.shape ({
+    name: PropTypes.string
+  }),
+  length: PropTypes.number,
+  date: PropTypes.string,
+}
 
 export default withStyles(styles)(Program);
