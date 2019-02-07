@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { api, setJwt } from '../api/init'
 import store from '../config/store'
 import { fetchProgram } from '../services/ProgramService';
-import { Paper, Button, TextField, Grid} from '@material-ui/core'
+import { Paper, Button, TextField, Grid } from '@material-ui/core'
 import Activity from './Activity'
 // import fetchActivities from '../services/ActivityService'
 
@@ -62,7 +62,7 @@ class UpdateActivitytoProgram extends Component {
 
         return (
             <div>
-   
+
                 <h1>Add Activities to {program && program.program.name}</h1>
 
                 <form onSubmit={this.handleSubmit}>
@@ -78,18 +78,21 @@ class UpdateActivitytoProgram extends Component {
                         spacing={16}
                         direction={direction}
                         justify={justify}
-                        alignItems={alignItems} 
+                        alignItems={alignItems}
                     >
-                        {this.state.activities.map((activity) => (
+                        {this.state.activities.map((activity, index) => (
                             <div className="input-group">
                                 <Activity key={activity._id} activity={activity} />
                                 {/* Tick the checkbox to add a given activity to your program */}
-                                <input type="checkbox" onChange={this.onChange} />
+                                <input type="checkbox" onChange={this.onChange} value={index} />
                             </div>
-                            )
+                        )
                         )}
+
+
+
                     </Grid>
-                    
+
                 </form>
 
             </div>
