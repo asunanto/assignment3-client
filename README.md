@@ -267,6 +267,10 @@ https://docs.google.com/document/d/1FFERWP-sj8ZL-UAFzIdYiE719z4w26_kthE0BhkmZ1Y/
 - [passport](https://www.npmjs.com/package/passport): an authentication package for users/
 - [passport-jwt](https://www.npmjs.com/package/passport-jwt): a passport strategy by authenticating with JWT.
 - [passport-local-mongoose](https://www.npmjs.com/package/passport-local-mongoose): a Mongoose plugin that simplifies building username and password.
+- [jest]
+(https://www.npmjs.com/package/jest): the all in one testing framework for node
+- [superTest]
+(https://www.npmjs.com/package/supertest): coupled with jest to make http assertions easy
 
 **Client:**
 
