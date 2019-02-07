@@ -1,8 +1,8 @@
 # Girl Guides Helper App
 
 ![Girl Guides Queensland](./docs/logo-ggq.jpg)
-
-Deployed on Heroku: [Girl Guides Helper App (Server)](https://assignment3-client.herokuapp.com/)
+Source code on GitHub: [Girl Guides app source code](https://github.com/asunanto/assignment3-client)
+Deployed app client on Heroku:  [Girl Guides Helper App (Client)](https://assignment3-client.herokuapp.com/)
 
 **Dev Team:** @asunanto (Bo), @watsbeat (Caitlin), @DanBytes (Danylo), @markconanan (Mark), @Shadow-Blitz (Skye).
 
